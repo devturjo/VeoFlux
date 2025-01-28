@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Website</title>
+  <style>.footer-designer{
+color: red;
+    }.footer-copyright{
+color:red;}
+    /* Menu Styles */
+    .menu {
+      position: fixed; 
+      left: -250px;
+      top: 0;
+      width: 250px;
+      height: 100%;
+      background: white;
+      transition: left 0.3s;
+      z-index: 1000;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .menu.open {
+      left: 0;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #333;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Slider Controls */
+    .slider-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 10px;
+    }
+
+    .slider-controls button {
+      background: rgba(0,0,0,0.5);
+      border: none;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    /* Search Suggestions */
+    .search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      z-index: 1000;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      display: none;
+    }
+
+    .search-result-item {
+      padding: 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+    }
+
+    .search-result-item:hover {
+      background: #f5f5f5;
+    }
+
+    /* Original Styles */
+    .post-category{
+      color: #ffff !important;
+    }
+    .post h3{
+      color: #ffff !important;
+    }
+    * {
+      color: #000;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f0f8ff;
+      line-height: 1.6;
+    }
+
+    .header {
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      background: #4a4a4a;
+      border-radius: 50%;
+    }
+
+    .website-name {
+      font-size: 24px;
+      flex-grow: 1;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      padding: 5px;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+    }
+
+    .search-box button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-banner {
+      background: white;
+      padding: 15px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    .slider-section {
+      background: white;
+      padding: 15px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slider-container {
+      display: flex;
+      transition: transform 0.5s ease;
+      width: 100%;
+    }
+
+    .slider-item {
+      min-width: 100%;
+      height: 300px;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slider-item img,
+    .slider-item iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .prayer-time {
+      background: white;
+      padding: 20px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    .recent-posts {
+      background: white;
+      padding: 15px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .post {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin: 10px 0;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      height: 150px;
+      display: flex;
+      align-items: flex-end;
+      color: white;
+    }
+
+    .post-category {
+      position: absolute;
+      right: 2px;
+      bottom: 2px;
+      border: 1px solid #ccc;
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    .more-posts {
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .more-posts-btn {
+      background: #007bff;
+      color: white;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .social-section {
+      background: white;
+      padding: 15px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .profile-section {
+      display: flex;
+      gap: 10px;
+    }
+
+    .profile-box {
+      border: 2px solid #ccc;
+      padding: 15px;
+      text-align: center;
+      height: 380px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .social-btn {
+      border: 2px solid #ccc;
+      padding: 8px;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+
+    /* Social Media Colors */
+    .social-btn.facebook { background-color: #1877f2; }
+    .social-btn.instagram { background-color: #e4405f; }
+    .social-btn.youtube { background-color: #ff0000; }
+    .social-btn.tiktok { background-color: #000000; }
+    .social-btn.whatsapp { background-color: #25d366; }
+    .social-btn.telegram { background-color: #0088cc; }
+    .social-btn.skype { background-color: #00aff0; }
+    .social-btn.imo { background-color: #ffd700; }
+
+    .social-btn img {
+      filter: invert(1);
+      width: 24px;
+      height: 24px;
+    }
+
+    .footer {
+      background: white;
+      padding: 15px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .footer-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .footer-contact {
+      padding: 15px;
+    }
+
+    .footer-designer {
+      padding: 15px;
+      border-left: 1px solid #ccc;
+    }
+
+    .footer-copyright {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .loading {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // CONFIGURATION START
+    const CONFIG = {
+      postsList: [
+        { title: 'বাংলাদেশের প্রাকৃতিক সৌন্দর্য', url: '#', category: 'প্রকৃতি', image: 'https://picsum.photos/300/150?nature' },
+        { title: 'টেকনোলজি আপডেট', url: '#', category: 'টেকনোলজি', image: 'https://picsum.photos/300/150?tech' },
+        { title: 'স্বাস্থ্য টিপস', url: '#', category: 'স্বাস্থ্য', image: 'https://picsum.photos/300/150?health' },
+        { title: 'রেসিপি সংগ্রহ', url: '#', category: 'রান্না', image: 'https://picsum.photos/300/150?food' },
+        { title: 'শিক্ষা বিষয়ক', url: '#', category: 'শিক্ষা', image: 'https://picsum.photos/300/150?education' },
+        { title: 'ক্রীড়া সংবাদ', url: '#', category: 'ক্রীড়া', image: 'https://picsum.photos/300/150?sports' },
+        { title: 'বিনোদন সংবাদ', url: '#', category: 'বিনোদন', image: 'https://picsum.photos/300/150?movie' },
+        { title: 'রাজনীতি বিশ্লেষণ', url: '#', category: 'রাজনীতি', image: 'https://picsum.photos/300/150?politics' },
+        { title: 'ব্যবসা আইডিয়া', url: '#', category: 'ব্যবসা', image: 'https://picsum.photos/300/150?business' },
+        { title: 'ভ্রমণ গাইড', url: '#', category: 'ভ্রমণ', image: 'https://picsum.photos/300/150?travel' },
+        { title: 'অতিরিক্ত পোস্ট ১', url: '#', category: 'অন্যান্য', image: 'https://picsum.photos/300/150?random1' },
+        { title: 'অতিরিক্ত পোস্ট ২', url: '#', category: 'অন্যান্য', image: 'https://picsum.photos/300/150?random2' }
+      ],
+      
+      slidersList: [
+        { type: 'image', url: 'https://picsum.photos/1200/600?nature' },
+        { type: 'video', url: 'https://www.youtube.com/embed/LwKaA6kOsvA' },
+        { type: 'image', url: 'https://picsum.photos/1200/600?technology' },
+        { type: 'image', url: 'https://picsum.photos/1200/600?city' }
+      ],
+      
+      menuItems: [
+        { name: 'হোম', url: '#' },
+        { name: 'আমাদের সম্পর্কে', url: '#' },
+        { name: 'যোগাযোগ', url: '#' },
+        { name: 'গোপনীয়তা', url: '#' }
+      ]
+    };
+    // CONFIGURATION END
+  </script>
+
+  <div class="container">
+    <header class="header">
+      <div class="menu-icon">☰</div>
+      <div class="logo"></div>
+      <h1 class="website-name">ওয়েবসাইট</h1>
+      <div class="search-box">
+        <input type="text" placeholder="খুঁজুন" id="searchInput">
+        <button>🔍</button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </header>
+
+    <div class="menu" id="menu">
+      <!-- Menu items will be populated by JavaScript -->
+    </div>
+
+    <div class="nav-banner">
+      <h2>হোম পরিচয় লেখাপড়া সেবা লেখনী সোশ্যাল'মিডিয়া গ্যালারি</h2>
+    </div>
+
+    <div class="slider-section">
+      <div class="slider-container"></div>
+      <div class="slider-controls">
+        <button class="slider-prev">❮</button>
+        <button class="slider-next">❯</button>
+      </div>
+    </div>
+
+    <div class="prayer-time">
+      <h3>নামাজের লাইভ সময় সূচি</h3>
+      <p>আজকের তারিখ: <span id="date"></span></p>
+    </div>
+
+    <div class="recent-posts">
+      <h2>সাম্প্রতিক পোস্ট</h2>
+      <div id="posts-container"></div>
+      <div class="more-posts">
+        <button class="more-posts-btn" id="load-more-btn">আরো পোস্ট দেখুন »</button>
+      </div>
+    </div>
+
+    <div class="social-section">
+      <div class="profile-section">
+        <div class="profile-box">
+          <iframe 
+            src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/MdBiniAmin01&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true" 
+            width="100%" 
+            height="600px" 
+            style="border: none; overflow: hidden;" 
+            scrolling="no" 
+            frameborder="0" 
+            allowfullscreen="true">
+          </iframe>
+        </div>
+        <div class="profile-box">
+          <iframe 
+            src="https://www.youtube.com/embed?listType=user_uploads&list=yarnhub" 
+            width="100%" 
+            height="600px" 
+            style="border: none;" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <div class="social-grid">
+        <a href="#" class="social-btn facebook"><img src="https://img.icons8.com/color/48/facebook.png" alt="Facebook"></a>
+        <a href="#" class="social-btn instagram"><img src="https://img.icons8.com/color/48/instagram-new.png" alt="Instagram"></a>
+        <a href="#" class="social-btn youtube"><img src="https://img.icons8.com/color/48/youtube.png" alt="YouTube"></a>
+        <a href="#" class="social-btn tiktok"><img src="https://img.icons8.com/color/48/tiktok.png" alt="TikTok"></a>
+        <a href="#" class="social-btn whatsapp"><img src="https://img.icons8.com/color/48/whatsapp.png" alt="WhatsApp"></a>
+        <a href="#" class="social-btn telegram"><img src="https://img.icons8.com/color/48/telegram-app.png" alt="Telegram"></a>
+        <a href="#" class="social-btn skype"><img src="https://img.icons8.com/color/48/skype.png" alt="Skype"></a>
+        <a href="#" class="social-btn imo"><img src="https://img.icons8.com/color/48/imo.png" alt="imo"></a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-info">
+        <div class="footer-contact">
+          <p>ডেমো ওয়েবসাইট</p>
+          <p>যোগাযোগ: +৮৮০ ১২৩৪-৫৬৭৮৯০</p>
+          <p><a href="mailto:support@demosite.com">সাপোর্ট: support@demosite.com</a></p>
+          <p><a href="mailto:info@demosite.com">E-mail: info@demosite.com</a></p>
+        </div>
+        <div class="footer-designer">
+          <span>ডিজাইন করেছেন:</span><br>
+         TURJO<br>
+          ফেসবুক: fb.com/designer<br>
+          WhatsApp: +৮৮০ ১২৩৪-৫৬৭৮৯০<br>
+          ইমেইল: designer@email.com
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <span>কপিরাইট © ২০২৪ | developed by Turjo
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Menu Toggle and Initialization
+    const menuIcon = document.querySelector('.menu-icon');
+    const menu = document.getElementById('menu');
+    
+    function initializeMenu() {
+      menu.innerHTML = CONFIG.menuItems.map(item => 
+        `<a href="${item.url}">${item.name}</a>`
+      ).join('');
+    }
+
+    menuIcon.addEventListener('click', () => menu.classList.toggle('open'));
+
+    // Slider Functionality
+    let currentSlide = 0;
+    let autoSlideInterval;
+    const totalSlides = CONFIG.slidersList.length;
+
+    function initializeSlider() {
+      const sliderContainer = document.querySelector('.slider-container');
+      sliderContainer.innerHTML = '';
+      
+      CONFIG.slidersList.forEach((slide, index) => {
+        const slideDiv = document.createElement('div');
+        slideDiv.className = 'slider-item';
+        
+        if(slide.type === 'image') {
+          slideDiv.innerHTML = `<img src="${slide.url}" alt="Slider ${index + 1}">`;
+        } 
+        else if(slide.type === 'video') {
+          slideDiv.innerHTML = `<iframe src="${slide.url}" frameborder="0" allowfullscreen></iframe>`;
+        }
+        
+        sliderContainer.appendChild(slideDiv);
+      });
+
+      startAutoSlide();
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(nextSlide, 2000);
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSliderPosition();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateSliderPosition();
+    }
+
+    function updateSliderPosition() {
+      const sliderContainer = document.querySelector('.slider-container');
+      sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    // Search Functionality
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    searchInput.addEventListener('input', function(e) {
+      const query = e.target.value.toLowerCase();
+      searchResults.innerHTML = '';
+      
+      if(query.length > 0) {
+        const results = CONFIG.postsList.filter(post => 
+          post.title.toLowerCase().includes(query)
+        );
+        
+        results.forEach(post => {
+          const div = document.createElement('div');
+          div.className = 'search-result-item';
+          div.textContent = post.title;
+          div.onclick = () => window.location.href = post.url;
+          searchResults.appendChild(div);
+        });
+        
+        searchResults.style.display = results.length ? 'block' : 'none';
+      } else {
+        searchResults.style.display = 'none';
+      }
+    });
+
+    // Posts Loading
+    function initializePosts() {
+      const postsContainer = document.getElementById('posts-container');
+      const loadMoreBtn = document.getElementById('load-more-btn');
+      let visiblePosts = 10;
+      const postsPerLoad = 10;
+
+      function createPostElement(post) {
+        const postElement = document.createElement('a');
+        postElement.className = 'post';
+        postElement.href = post.url;
+        postElement.style.backgroundImage = `url('${post.image}')`;
+        postElement.innerHTML = `
+          <h3>${post.title}</h3>
+          <div class="post-category">${post.category}</div>
+        `;
+        return postElement;
+      }
+
+      function loadPosts() {
+        loadMoreBtn.classList.add('loading');
+        const nextPosts = CONFIG.postsList.slice(visiblePosts, visiblePosts + postsPerLoad);
+        
+        nextPosts.forEach(post => {
+          postsContainer.appendChild(createPostElement(post));
+        });
+        
+        visiblePosts += nextPosts.length;
+        loadMoreBtn.style.display = visiblePosts >= CONFIG.postsList.length ? 'none' : 'block';
+        loadMoreBtn.classList.remove('loading');
+      }
+
+      CONFIG.postsList.slice(0, visiblePosts).forEach(post => {
+        postsContainer.appendChild(createPostElement(post));
+      });
+      
+      loadMoreBtn.style.display = CONFIG.postsList.length > visiblePosts ? 'block' : 'none';
+      loadMoreBtn.addEventListener('click', loadPosts);
+    }
+
+    // Date Display
+    function initializeDate() {
+      const dateElement = document.getElementById('date');
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      dateElement.textContent = new Date().toLocaleDateString('bn-BD', options);
+    }
+
+    // Event Listeners
+    document.querySelector('.slider-prev').addEventListener('click', () => {
+      clearInterval(autoSlideInterval);
+      prevSlide();
+      startAutoSlide();
+    });
+
+    document.querySelector('.slider-next').addEventListener('click', () => {
+      clearInterval(autoSlideInterval);
+      nextSlide();
+      startAutoSlide();
+    });
+
+    // Initialize All
+    window.addEventListener('DOMContentLoaded', () => {
+      initializeMenu();
+      initializeSlider();
+      initializePosts();
+      initializeDate();
+    });
+  </script>
+</body>
+</html>
