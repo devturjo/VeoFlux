@@ -1,21 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Website</title>
-  <style>
-    .footer-designer {
-      color: red;
-    }.social-grid {
+<style>.footer-designer {
+  color: red;
+}
+.social-grid {
     display: grid
 ;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    font-weight: 700;
-    font-size: 18px;
-}.social-grid a {
-margin: 0px 0px 0px 10px;
+    grid-template-columns: repeat(2, 130px);
+    gap: 5px;
+}
+.social-grid a {
+    margin: 0px 0px 0px 0px;
     color: #ffff;
     weight: 700;
     display: flex
@@ -23,424 +21,479 @@ margin: 0px 0px 0px 10px;
     front-size: 20px;
     flex-direction: row;
     justify-content: flex-start;
+    padding: 0px;
+    font-size: 14px;
 }
-    .footer-copyright {
-      color: #ffff;
-    }.social-grid img{
-
+.footer-copyright {
+  color: #ffff;
 }
-    /* Menu Styles */
-    .menu {
-      position: fixed;
-      left: -250px;
-      top: 0;
-      width: 250px;
-      height: 100%;
-      background: white;
-      transition: left 0.3s;
-      z-index: 1000;
-      padding: 20px;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+.social-grid img{
 
-    .menu.open {
-      left: 0;
-    }
+}button#lang-switch-btn {
+    padding: 5px 10px;
+    background-color: #98e2ff;
+    border-radius: 7px;
+}
+/* Menu Styles */
+.menu {
+  position: fixed;
+  left: -250px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: white;
+  transition: left 0.3s;
+  z-index: 1000;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
-    .menu a {
-      text-decoration: none;
-      color: #333;
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-    }
+.menu.open {
+  left: 0;
+}
 
-    /* Slider Controls */
-    .slider-controls {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      padding: 0 10px;
-    }
+.menu a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
 
-    .slider-controls button {
-      background: rgba(0, 0, 0, 0.5);
-      border: none;
-      color: white;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 50%;
-    }
+/* Slider Controls */
+.slider-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 10px;
+}
 
-    .footer-info p {
-      color: #ffff;
-    }
+.slider-controls button {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
 
-    .footer-info a {
-      color: #ffff;
-    }
+.footer-info p {
+  color: #ffff;
+}
 
-    /* Search Suggestions */
-    .search-results {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: white;
-      z-index: 1000;
-      max-height: 200px;
-      overflow-y: auto;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      display: none;
-    }
+.footer-info a {
+  color: #ffff;
+}
 
-    .search-result-item {
-      padding: 10px;
-      cursor: pointer;
-      border-bottom: 1px solid #eee;
-    }
+/* Search Suggestions */
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: none;
+}
 
-    .search-result-item:hover {
-      background: #f5f5f5;
-    }
+.search-result-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
 
-    /* Original Styles */
-    .post-category {
-      color: #ffff !important;
-    }
+.search-result-item:hover {
+  background: #f5f5f5;
+}
 
-    .post h3 {
-      color: #ffff !important;
-    }
+/* Original Styles */
+.post-category {
+  color: #ffff !important;
+}
 
-    * {
-      color: #000;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+.post h3 {
+  color: #ffff !important;
+}
 
-    body {
-      background: #f0f8ff;
-      line-height: 1.6;
-    }
+* {
+  color: #000;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
+body {
+  background: #f0f8ff;
+  line-height: 1.6;
+}
+
+.header {
+  background: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  justify-content: space-between;
+  align-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background: #4a4a4a;
+  border-radius: 50%;
+}
+
+.website-name img {
+  width: 250px;
+  height: 100px;
+  margin: 0px 250px -25px 0px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+}
+
+.search-box button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-banner {
+  background: white;
+  padding: 15px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.slider-section {
+  background: white;
+  padding: 15px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.slider-item {
+  min-width: 100%;
+  height: 300px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-item img,
+.slider-item iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prayer-time {
+  background: white;
+  padding: 20px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.recent-posts {
+  background: white;
+  padding: 15px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+}
+
+.post {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 10px 0;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 150px;
+  display: flex;
+  align-items: flex-end;
+  color: white;
+}
+
+.post-category {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.more-posts {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.more-posts-btn {
+  background: #007bff;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.social-section {
+  background: white;
+  padding: 15px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-box {
+  border: 2px solid #ccc;
+  padding: 15px;
+  text-align: center;
+  height: 380px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.social-btn {
+  border: 2px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+/* Social Media Colors */
+.social-btn.facebook {
+  background-color: #1877f2;
+}
+
+.social-btn.instagram {
+  background-color: #e4405f;
+}
+
+.social-btn.youtube {
+  background-color: #ff0000;
+}
+
+.social-btn.tiktok {
+  background-color: #000000;
+}
+
+.social-btn.whatsapp {
+  background-color: #25d366;
+}
+
+.social-btn.telegram {
+  background-color: #0088cc;
+}
+
+.social-btn.skype {
+  background-color: #00aff0;
+}
+
+.social-btn.imo {
+  background-color: #ffd700;
+}
+
+.social-btn img {
+  width: 45px;
+  height: 45px;
+}
+
+.footer {
+  background: #000000;
+  padding: 15px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+}
+@media (max-width: 767px) {
+  .website-name img {
+    width: 140px;
+    height: 65px;
+    margin: 0px auto -15px auto;
+  }.navI {
+    background: #fff;
+    padding: 10px 0;
+    white-space: nowrap;
+    overflow-x: scroll;
+    display: flex
+;
+    scrollbar-width: none;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.search-box {
+    margin: 0px 0px 0px 0px;
+}
 .header {
     background: white;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc; 
     display: flex
 ;
     align-items: center;
     gap: 10px;
     position: relative;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-content: space-between;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
-    .menu-icon {
-      font-size: 24px;
-      cursor: pointer;
-    }
+  .search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: relative;
+    margin: 0px 0px 0px 0px;
+  }
 
-    .logo {
-      width: 40px;
-      height: 40px;
-      background: #4a4a4a;
-      border-radius: 50%;
-    }
+  .search-box input {
+    border: none;
+    outline: none;
+  }
 
-
-.website-name img {
-    width: 250px;
-    height: 100px;
-    margin: 0px 250px -25px 0px;
+  .search-box button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
 }
 
-    .search-box {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      padding: 5px;
-      border-radius: 4px;
-      position: relative;
-    }
-
-    .search-box input {
-      border: none;
-      outline: none;
-    }
-
-    .search-box button {
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    .nav-banner {
-      background: white;
-      padding: 15px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      text-align: center;
-    }
-
-    .slider-section {
-      background: white;
-      padding: 15px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .slider-container {
-      display: flex;
-      transition: transform 0.5s ease;
-      width: 100%;
-    }
-
-    .slider-item {
-      min-width: 100%;
-      height: 300px;
-      border: 1px solid #ccc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .slider-item img,
-    .slider-item iframe {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .prayer-time {
-      background: white;
-      padding: 20px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      text-align: center;
-    }
-
-    .recent-posts {
-      background: white;
-      padding: 15px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-    }
-
-    .post {
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin: 10px 0;
-      position: relative;
-      background-size: cover;
-      background-position: center;
-      height: 150px;
-      display: flex;
-      align-items: flex-end;
-      color: white;
-    }
-
-    .post-category {
-      position: absolute;
-      right: 2px;
-      bottom: 2px;
-      border: 1px solid #ccc;
-      padding: 5px;
-      font-size: 14px;
-    }
-
-    .more-posts {
-      text-align: center;
-      margin: 15px 0;
-    }
-
-    .more-posts-btn {
-      background: #007bff;
-      color: white;
-      padding: 8px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .social-section {
-      background: white;
-      padding: 15px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 15px;
-    }
-
-    .profile-section {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .profile-box {
-      border: 2px solid #ccc;
-      padding: 15px;
-      text-align: center;
-      height: 380px;
-      overflow-y: auto;
-      flex: 1;
-    }
-
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
-    .social-btn {
-      border: 2px solid #ccc;
-      padding: 8px;
-      text-align: center;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.3s;
-    }
-
-    /* Social Media Colors */
-    .social-btn.facebook {
-      background-color: #1877f2;
-    }
-
-    .social-btn.instagram {
-      background-color: #e4405f;
-    }
-
-    .social-btn.youtube {
-      background-color: #ff0000;
-    }
-
-    .social-btn.tiktok {
-      background-color: #000000;
-    }
-
-    .social-btn.whatsapp {
-      background-color: #25d366;
-    }
-
-    .social-btn.telegram {
-      background-color: #0088cc;
-    }
-
-    .social-btn.skype {
-      background-color: #00aff0;
-    }
-
-    .social-btn.imo {
-      background-color: #ffd700;
-    }
-
-   .social-btn img {
-    width: 45px;
-    height: 45px;
+.footer-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid #ccc;
 }
 
-    .footer {
-      background: #000000;
-      padding: 15px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-    }
-@media (max-width: 767px) {
-    .website-name img {
-        width: 140px;
-        height: 65px;
-        margin: 0px auto -15px auto;
-    }
+.footer-contact {
+  padding: 15px;
 }
 
-    .footer-info {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-bottom: 1px solid #ccc;
-    }
+.footer-designer {
+  padding: 15px;
+  border-left: 1px solid #ccc;
+}
 
-    .footer-contact {
-      padding: 15px;
-    }
+.footer-copyright {
+  padding: 15px;
+  text-align: center;
+}
 
-    .footer-designer {
-      padding: 15px;
-      border-left: 1px solid #ccc;
-    }
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
 
-    .footer-copyright {
-      padding: 15px;
-      text-align: center;
-    }
+.navI {
+    background: #fff;
+    padding: 10px 0;
+    white-space: nowrap;
+    overflow-x: scroll;
+    display: flex
+;
+    scrollbar-width: none;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 
-    .loading {
-      opacity: 0.6;
-      pointer-events: none;
-    }
-  </style>
-</head>
+.navI::-webkit-scrollbar {
+  display: none;
+}
+
+.navI a, .navI span {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  padding: 10px 15px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.navI {
+  background: #fff;
+  padding: 10px 0;
+  white-space: nowrap;
+  overflow-x: auto;
+  display: flex;
+  scrollbar-width: none;
+  flex-direction: row;
+  justify-content: center;
+}</style>
+</head> 
 <body>
-  <script>
-    // CONFIGURATION START
-    const CONFIG = {
-      postsList: [
-        { title: 'বাংলাদেশের প্রাকৃতিক সৌন্দর্য', url: '#', category: 'প্রকৃতি', image: 'https://picsum.photos/300/150?nature' },
-        { title: 'টেকনোলজি আপডেট', url: '#', category: 'টেকনোলজি', image: 'https://picsum.photos/300/150?tech' },
-        { title: 'স্বাস্থ্য টিপস', url: '#', category: 'স্বাস্থ্য', image: 'https://picsum.photos/300/150?health' },
-        { title: 'রেসিপি সংগ্রহ', url: '#', category: 'রান্না', image: 'https://picsum.photos/300/150?food' },
-        { title: 'শিক্ষা বিষয়ক', url: '#', category: 'শিক্ষা', image: 'https://picsum.photos/300/150?education' },
-        { title: 'ক্রীড়া সংবাদ', url: '#', category: 'ক্রীড়া', image: 'https://picsum.photos/300/150?sports' },
-        { title: 'বিনোদন সংবাদ', url: '#', category: 'বিনোদন', image: 'https://picsum.photos/300/150?movie' },
-        { title: 'রাজনীতি বিশ্লেষণ', url: '#', category: 'রাজনীতি', image: 'https://picsum.photos/300/150?politics' },
-        { title: 'ব্যবসা আইডিয়া', url: '#', category: 'ব্যবসা', image: 'https://picsum.photos/300/150?business' },
-        { title: 'ভ্রমণ গাইড', url: '#', category: 'ভ্রমণ', image: 'https://picsum.photos/300/150?travel' },
-        { title: 'অতিরিক্ত পোস্ট ১', url: '#', category: 'অন্যান্য', image: 'https://picsum.photos/300/150?random1' },
-        { title: 'অতিরিক্ত পোস্ট ২', url: '#', category: 'অন্যান্য', image: 'https://picsum.photos/300/150?random2' }
-      ],
-
-      slidersList: [
-        { type: 'image', url: 'https://i.postimg.cc/0QbXBBbX/474718485-1196040922114350-2813767871145669113-n.jpg' },
-        { type: 'video', url: 'https://www.youtube.com/embed/LwKaA6kOsvA' },
-        { type: 'image', url: 'https://picsum.photos/1200/600?technology' },
-        { type: 'image', url: 'https://picsum.photos/1200/600?city' }
-      ],
-
-      menuItems: [
-        { name: 'হোম', url: '#' },
-        { name: 'আমাদের সম্পর্কে', url: '#' },
-        { name: 'যোগাযোগ', url: '#' },
-        { name: 'গোপনীয়তা', url: '#' }
-      ]
-    };
-    // CONFIGURATION END
-  </script>
-
   <div class="container">
     <header class="header">
       <div class="menu-icon">☰</div>
 
-      <h1 class="website-name"><img src="https://i.postimg.cc/0QbXBBbX/474718485-1196040922114350-2813767871145669113-n.jpg" alt="Logo"></h1><div class="sear">
-      <div class="search-box">
-        <input class="hi" type="text" placeholder="" id="searchInput">
-        <button>🔍</button>
-        <div class="search-results" id="searchResults"></div>
-      </div></div>
+      <h1 class="website-name"><img src="https://i.postimg.cc/0QbXBBbX/474718485-1196040922114350-2813767871145669113-n.jpg" alt="Logo"></h1>
+      <div class="sear">
+        <div class="search-box">
+          <input class="hi" type="text" placeholder="" id="searchInput">
+          <button>🔍</button>
+          <div class="search-results" id="searchResults"></div>
+        </div>
+      </div>
+      <button id="lang-switch-btn">Eng</button>
     </header>
 
     <div class="menu" id="menu">
@@ -448,49 +501,14 @@ margin: 0px 0px 0px 10px;
     </div>
 
     <div class="nav-banner">
-    <style>
- 
-        .navI {
-            background: #fff;
-            padding: 10px 0;
-            white-space: nowrap;
-            overflow-x: auto;
-            display: flex;
-            scrollbar-width: none; /* Hide scrollbar for Firefox */
-        }
-        .navI::-webkit-scrollbar {
-            display: none; /* Hide scrollbar for Chrome, Safari */
-        }
-        .navI a, .navI span {
-            text-decoration: none;
-            color: #000;
-            font-size: 16px;
-            padding: 10px 15px;
-            display: inline-block;
-            flex-shrink: 0;
-        }.navI {
-    background: #fff;
-    padding: 10px 0;
-    white-space: nowrap;
-    overflow-x: auto;
-    display: flex
-;
-    scrollbar-width: none;
-    flex-direction: row;
-    justify-content: center;
-}
-    </style>
-</head>
-<body>
-
-<nav class="navI">
-    <a href="https://jago-dummy-01.blogspot.com/search/label/Adventure">হোম</a>
-    <span>পরিচিতি</span>
-    <span>লেখা পড়া</span>
-    <a href="/p/dmca.html">DMCA</a>
-    <a href="/p/privacy-policy.html">Privacy Policy</a>
-    <a href="/p/terms-and-conditions.html">Terms and Conditions</a>
-</nav>
+      <nav class="navI">
+        <a href="https://jago-dummy-01.blogspot.com/search/label/Adventure">হোম</a>
+        <span>পরিচিতি</span>
+        <span>লেখা পড়া</span>
+        <a href="/p/dmca.html">DMCA</a>
+        <a href="/p/privacy-policy.html">Privacy Policy</a>
+        <a href="/p/terms-and-conditions.html">Terms and Conditions</a>
+      </nav>
     </div>
 
     <div class="slider-section">
@@ -544,13 +562,13 @@ margin: 0px 0px 0px 10px;
     <footer class="footer">
       <div class="footer-info">
         <div class="footer-contact">
-          <p>ডেমো ওয়েবসাইট</p>
-          <p>যোগাযোগ: +৮৮০ ১২৩৪-৫৬৭৮৯০</p>
-          <p><a href="https://support.com">support</a></p>
-          <p><a href="https://support.com">info</a></p>
+          <p class="footer-contact-demo">ডেমো ওয়েবসাইট</p>
+          <p class="footer-contact-number">যোগাযোগ: +৮৮০ ১২৩৪-৫৬৭৮৯০</p>
+          <p><a href="https://support.com" class="footer-contact-support">support</a></p>
+          <p><a href="https://support.com" class="footer-contact-info">info</a></p>
         </div>
         <div class="footer-designer">
-          <a>ডিজাইন করেছেন:</a><br>
+          <a class="footer-designer-designedby">ডিজাইন করেছেন:</a><br>
           TURJO<br>
           ফেসবুক: fb.com<br>
           WhatsApp: +৮৮০ ১২৩৪-৫৬৭৮৯০<br>
@@ -563,164 +581,253 @@ margin: 0px 0px 0px 10px;
     </footer>
   </div>
 
-  <script>
-    // Menu Toggle and Initialization
-    const menuIcon = document.querySelector('.menu-icon');
-    const menu = document.getElementById('menu');
+  <script>// CONFIGURATION START
+const CONFIG = {
+  postsList: [
+    { title_bn: 'বাংলাদেশের প্রাকৃতিক সৌন্দর্য', title_en: 'Natural Beauty of Bangladesh', url: '#', category_bn: 'প্রকৃতি', category_en: 'Nature', image: 'https://picsum.photos/300/150?nature' },
+    { title_bn: 'টেকনোলজি আপডেট', title_en: 'Technology Updates', url: '#', category_bn: 'টেকনোলজি', category_en: 'Technology', image: 'https://picsum.photos/300/150?tech' },
+    { title_bn: 'স্বাস্থ্য টিপস', title_en: 'Health Tips', url: '#', category_bn: 'স্বাস্থ্য', category_en: 'Health', image: 'https://picsum.photos/300/150?health' },
+    { title_bn: 'রেসিপি সংগ্রহ', title_en: 'Recipe Collection', url: '#', category_bn: 'রান্না', category_en: 'Cooking', image: 'https://picsum.photos/300/150?food' },
+    { title_bn: 'শিক্ষা বিষয়ক', title_en: 'Education Related', url: '#', category_bn: 'শিক্ষা', category_en: 'Education', image: 'https://picsum.photos/300/150?education' },
+    { title_bn: 'ক্রীড়া সংবাদ', title_en: 'Sports News', url: '#', category_bn: 'ক্রীড়া', category_en: 'Sports', image: 'https://picsum.photos/300/150?sports' },
+    { title_bn: 'বিনোদন সংবাদ', title_en: 'Entertainment News', url: '#', category_bn: 'বিনোদন', category_en: 'Entertainment', image: 'https://picsum.photos/300/150?movie' },
+    { title_bn: 'রাজনীতি বিশ্লেষণ', title_en: 'Politics Analysis', url: '#', category_bn: 'রাজনীতি', category_en: 'Politics', image: 'https://picsum.photos/300/150?politics' },
+    { title_bn: 'ব্যবসা আইডিয়া', title_en: 'Business Ideas', url: '#', category_bn: 'ব্যবসা', category_en: 'Business', image: 'https://picsum.photos/300/150?business' },
+    { title_bn: 'ভ্রমণ গাইড', title_en: 'Travel Guide', url: '#', category_bn: 'ভ্রমণ', category_en: 'Travel', image: 'https://picsum.photos/300/150?travel' },
+    { title_bn: 'অতিরিক্ত পোস্ট ১', title_en: 'Extra Post 1', url: '#', category_bn: 'অন্যান্য', category_en: 'Other', image: 'https://picsum.photos/300/150?random1' },
+    { title_bn: 'অতিরিক্ত পোস্ট ২', title_en: 'Extra Post 2', url: '#', category_bn: 'অন্যান্য', category_en: 'Other', image: 'https://picsum.photos/300/150?random2' }
+  ],
 
-    function initializeMenu() {
-      menu.innerHTML = CONFIG.menuItems.map(item =>
-        `<a href="${item.url}">${item.name}</a>`
-      ).join('');
+  slidersList: [
+    { type: 'image', url: 'https://i.postimg.cc/0QbXBBbX/474718485-1196040922114350-2813767871145669113-n.jpg' },
+    { type: 'video', url: 'https://www.youtube.com/embed/LwKaA6kOsvA' },
+    { type: 'image', url: 'https://picsum.photos/1200/600?technology' },
+    { type: 'image', url: 'https://picsum.photos/1200/600?city' }
+  ],
+
+  menuItems_bn: [
+    { name: 'হোম', url: '#' },
+    { name: 'আমাদের সম্পর্কে', url: '#' },
+    { name: 'যোগাযোগ', url: '#' },
+    { name: 'গোপনীয়তা', url: '#' }
+  ],
+  menuItems_en: [
+    { name: 'Home', url: '#' },
+    { name: 'About Us', url: '#' },
+    { name: 'Contact', url: '#' },
+    { name: 'Privacy', url: '#' }
+  ],
+  lang: 'bn', // Default language
+  text_bn: {
+    dateText: 'আজকের তারিখ: ',
+    recentPostsTitle: 'সাম্প্রতিক পোস্ট',
+    loadMoreButton: 'আরো পোস্ট দেখুন »',
+    demoWebsite: 'ডেমো ওয়েবসাইট',
+    contactUs: 'যোগাযোগ: ',
+    designedBy: 'ডিজাইন করেছেন:'
+  },
+  text_en: {
+    dateText: 'Today\'s Date: ',
+    recentPostsTitle: 'Recent Posts',
+    loadMoreButton: 'Load More Posts »',
+    demoWebsite: 'Demo Website',
+    contactUs: 'Contact: ',
+    designedBy: 'Designed by:'
+  }
+};
+// CONFIGURATION END
+
+// Menu Toggle and Initialization
+const menuIcon = document.querySelector('.menu-icon');
+const menu = document.getElementById('menu');
+const langSwitchBtn = document.getElementById('lang-switch-btn');
+let currentLang = CONFIG.lang;
+
+function initializeMenu() {
+  const menuItems = currentLang === 'bn' ? CONFIG.menuItems_bn : CONFIG.menuItems_en;
+  menu.innerHTML = menuItems.map(item =>
+    `<a href="${item.url}">${item.name}</a>`
+  ).join('');
+}
+
+menuIcon.addEventListener('click', () => menu.classList.toggle('open'));
+
+// Close menu when clicking outside
+document.addEventListener('click', (event) => {
+  if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+    menu.classList.remove('open');
+  }
+});
+
+// Slider Functionality
+let currentSlide = 0;
+let autoSlideInterval;
+const totalSlides = CONFIG.slidersList.length;
+
+function initializeSlider() {
+  const sliderContainer = document.querySelector('.slider-container');
+  sliderContainer.innerHTML = '';
+
+  CONFIG.slidersList.forEach((slide, index) => {
+    const slideDiv = document.createElement('div');
+    slideDiv.className = 'slider-item';
+
+    if (slide.type === 'image') {
+      slideDiv.innerHTML = `<img src="${slide.url}" alt="Slider ${index + 1}">`;
+    } else if (slide.type === 'video') {
+      slideDiv.innerHTML = `<iframe src="${slide.url}" frameborder="0" allowfullscreen></iframe>`;
     }
 
-    menuIcon.addEventListener('click', () => menu.classList.toggle('open'));
+    sliderContainer.appendChild(slideDiv);
+  });
 
-    // Close menu when clicking outside
-    document.addEventListener('click', (event) => {
-      if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
-        menu.classList.remove('open');
-      }
+  startAutoSlide();
+}
+
+function startAutoSlide() {
+  autoSlideInterval = setInterval(nextSlide, 2000);
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  updateSliderPosition();
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  updateSliderPosition();
+}
+
+function updateSliderPosition() {
+  const sliderContainer = document.querySelector('.slider-container');
+  sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+// Search Functionality
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+
+searchInput.addEventListener('input', function (e) {
+  const query = e.target.value.toLowerCase();
+  searchResults.innerHTML = '';
+
+  if (query.length > 0) {
+    const results = CONFIG.postsList.filter(post => {
+      const title = currentLang === 'bn' ? post.title_bn : post.title_en;
+      return title.toLowerCase().includes(query);
     });
 
-    // Slider Functionality
-    let currentSlide = 0;
-    let autoSlideInterval;
-    const totalSlides = CONFIG.slidersList.length;
-
-    function initializeSlider() {
-      const sliderContainer = document.querySelector('.slider-container');
-      sliderContainer.innerHTML = '';
-
-      CONFIG.slidersList.forEach((slide, index) => {
-        const slideDiv = document.createElement('div');
-        slideDiv.className = 'slider-item';
-
-        if (slide.type === 'image') {
-          slideDiv.innerHTML = `<img src="${slide.url}" alt="Slider ${index + 1}">`;
-        } else if (slide.type === 'video') {
-          slideDiv.innerHTML = `<iframe src="${slide.url}" frameborder="0" allowfullscreen></iframe>`;
-        }
-
-        sliderContainer.appendChild(slideDiv);
-      });
-
-      startAutoSlide();
-    }
-
-    function startAutoSlide() {
-      autoSlideInterval = setInterval(nextSlide, 2000);
-    }
-
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      updateSliderPosition();
-    }
-
-    function prevSlide() {
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      updateSliderPosition();
-    }
-
-    function updateSliderPosition() {
-      const sliderContainer = document.querySelector('.slider-container');
-      sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-
-    // Search Functionality
-    const searchInput = document.getElementById('searchInput');
-    const searchResults = document.getElementById('searchResults');
-
-    searchInput.addEventListener('input', function (e) {
-      const query = e.target.value.toLowerCase();
-      searchResults.innerHTML = '';
-
-      if (query.length > 0) {
-        const results = CONFIG.postsList.filter(post =>
-          post.title.toLowerCase().includes(query)
-        );
-
-        results.forEach(post => {
-          const div = document.createElement('div');
-          div.className = 'search-result-item';
-          div.textContent = post.title;
-          div.onclick = () => window.location.href = post.url;
-          searchResults.appendChild(div);
-        });
-
-        searchResults.style.display = results.length ? 'block' : 'none';
-      } else {
-        searchResults.style.display = 'none';
-      }
+    results.forEach(post => {
+      const div = document.createElement('div');
+      div.className = 'search-result-item';
+      div.textContent = currentLang === 'bn' ? post.title_bn : post.title_en;
+      div.onclick = () => window.location.href = post.url;
+      searchResults.appendChild(div);
     });
 
-    // Posts Loading
-    function initializePosts() {
-      const postsContainer = document.getElementById('posts-container');
-      const loadMoreBtn = document.getElementById('load-more-btn');
-      let visiblePosts = 10;
-      const postsPerLoad = 10;
+    searchResults.style.display = results.length ? 'block' : 'none';
+  } else {
+    searchResults.style.display = 'none';
+  }
+});
 
-      function createPostElement(post) {
-        const postElement = document.createElement('a');
-        postElement.className = 'post';
-        postElement.href = post.url;
-        postElement.style.backgroundImage = `url('${post.image}')`;
-        postElement.innerHTML = `
-          <h3>${post.title}</h3>
-          <div class="post-category">${post.category}</div>
-        `;
-        return postElement;
-      }
+// Posts Loading
+function initializePosts() {
+  const postsContainer = document.getElementById('posts-container');
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  let visiblePosts = 10;
+  const postsPerLoad = 10;
 
-      function loadPosts() {
-        loadMoreBtn.classList.add('loading');
-        const nextPosts = CONFIG.postsList.slice(visiblePosts, visiblePosts + postsPerLoad);
+  function createPostElement(post) {
+    const postElement = document.createElement('a');
+    postElement.className = 'post';
+    postElement.href = post.url;
+    postElement.style.backgroundImage = `url('${post.image}')`;
+    postElement.innerHTML = `
+      <h3>${currentLang === 'bn' ? post.title_bn : post.title_en}</h3>
+      <div class="post-category">${currentLang === 'bn' ? post.category_bn : post.category_en}</div>
+    `;
+    return postElement;
+  }
 
-        nextPosts.forEach(post => {
-          postsContainer.appendChild(createPostElement(post));
-        });
+  function loadPosts() {
+    loadMoreBtn.classList.add('loading');
+    const nextPosts = CONFIG.postsList.slice(visiblePosts, visiblePosts + postsPerLoad);
 
-        visiblePosts += nextPosts.length;
-        loadMoreBtn.style.display = visiblePosts >= CONFIG.postsList.length ? 'none' : 'block';
-        loadMoreBtn.classList.remove('loading');
-      }
-
-      CONFIG.postsList.slice(0, visiblePosts).forEach(post => {
-        postsContainer.appendChild(createPostElement(post));
-      });
-
-      loadMoreBtn.style.display = CONFIG.postsList.length > visiblePosts ? 'block' : 'none';
-      loadMoreBtn.addEventListener('click', loadPosts);
-    }
-
-    // Date Display
-    function initializeDate() {
-      const dateElement = document.getElementById('date');
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      dateElement.textContent = new Date().toLocaleDateString('bn-BD', options);
-    }
-
-    // Event Listeners
-    document.querySelector('.slider-prev').addEventListener('click', () => {
-      clearInterval(autoSlideInterval);
-      prevSlide();
-      startAutoSlide();
+    nextPosts.forEach(post => {
+      postsContainer.appendChild(createPostElement(post));
     });
 
-    document.querySelector('.slider-next').addEventListener('click', () => {
-      clearInterval(autoSlideInterval);
-      nextSlide();
-      startAutoSlide();
-    });
+    visiblePosts += nextPosts.length;
+    loadMoreBtn.style.display = visiblePosts >= CONFIG.postsList.length ? 'none' : 'block';
+    loadMoreBtn.classList.remove('loading');
+  }
 
-    // Initialize All
-    window.addEventListener('DOMContentLoaded', () => {
-      initializeMenu();
-      initializeSlider();
-      initializePosts();
-      initializeDate();
-    });
-  </script>
+  CONFIG.postsList.slice(0, visiblePosts).forEach(post => {
+    postsContainer.appendChild(createPostElement(post));
+  });
+
+  loadMoreBtn.style.display = CONFIG.postsList.length > visiblePosts ? 'block' : 'none';
+  loadMoreBtn.addEventListener('click', loadPosts);
+}
+
+// Date Display
+function initializeDate() {
+  const dateElement = document.getElementById('date');
+  const dateTextElement = document.querySelector('.prayer-time h3');
+  const loadMoreButtonText = document.querySelector('#load-more-btn');
+  const recentPostsTitleElement = document.querySelector('.recent-posts h2');
+  const demoWebsiteElement = document.querySelector('.footer-contact-demo');
+  const contactUsElement = document.querySelector('.footer-contact-number');
+  const designedByElement = document.querySelector('.footer-designer-designedby');
+
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  dateElement.textContent = new Date().toLocaleDateString(currentLang === 'bn' ? 'bn-BD' : 'en-US', options);
+
+  const currentText = currentLang === 'bn' ? CONFIG.text_bn : CONFIG.text_en;
+  dateTextElement.textContent = currentText.dateText + 'নামাজের লাইভ সময় সূচি'; // Keeping "নামাজের লাইভ সময় সূচি" static
+  loadMoreButtonText.textContent = currentText.loadMoreButton;
+  recentPostsTitleElement.textContent = currentText.recentPostsTitle;
+  demoWebsiteElement.textContent = currentText.demoWebsite;
+  contactUsElement.textContent = currentText.contactUs + '+৮৮০ ১২৩৪-৫৬৭৮৯০'; // Keeping number static
+  designedByElement.textContent = currentText.designedBy;
+
+}
+
+function updateContentLanguage() {
+  document.documentElement.lang = currentLang;
+  const prayerTimeTitle = document.querySelector('.prayer-time h3');
+  const recentPostsTitle = document.querySelector('.recent-posts h2');
+  const loadMoreBtnText = document.querySelector('#load-more-btn');
+  const demoWebsiteText = document.querySelector('.footer-contact-demo');
+  const contactUsText = document.querySelector('.footer-contact-number');
+  const designedByText = document.querySelector('.footer-designer-designedby');
+
+  initializeMenu();
+  initializePosts();
+  initializeDate();
+
+  prayerTimeTitle.textContent = currentLang === 'bn' ? 'নামাজের লাইভ সময় সূচি' : 'Live Prayer Timings';
+  recentPostsTitle.textContent = currentLang === 'bn' ? CONFIG.text_bn.recentPostsTitle : CONFIG.text_en.recentPostsTitle;
+  loadMoreBtnText.textContent = currentLang === 'bn' ? CONFIG.text_bn.loadMoreButton : CONFIG.text_en.loadMoreButton;
+  demoWebsiteText.textContent = currentLang === 'bn' ? CONFIG.text_bn.demoWebsite : CONFIG.text_en.demoWebsite;
+  contactUsText.textContent = currentLang === 'bn' ? CONFIG.text_bn.contactUs + '+৮৮০ ১২৩৪-৫৬৭৮৯০' : CONFIG.text_en.contactUs + '+880 1234-567890';
+  designedByText.textContent = currentLang === 'bn' ? CONFIG.text_bn.designedBy : CONFIG.text_en.designedBy;
+}
+
+
+langSwitchBtn.addEventListener('click', () => {
+  currentLang = currentLang === 'bn' ? 'en' : 'bn';
+  langSwitchBtn.textContent = currentLang === 'bn' ? 'Eng' : 'Ben';
+  updateContentLanguage();
+});
+
+// Initialize All
+window.addEventListener('DOMContentLoaded', () => {
+  initializeMenu();
+  initializeSlider();
+  initializePosts();
+  initializeDate();
+});</script>
 </body>
 </html>
