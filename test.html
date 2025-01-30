@@ -933,7 +933,12 @@ function updateAllText() {
 
     // Update designer contact info
     document.getElementById('designerName') && (document.getElementById('designerName').textContent = langData.designerContact.name);
-    document.getElementById('designerFacebook') && (document.getElementById('designerFacebook').textContent = langData.designerContact.facebook);
+   
+if (document.getElementById('designerFacebook')) {
+    document.getElementById('designerFacebook').innerHTML = `<a href="${langData.designerContact.facebook}" target="_blank">Facebook: www.facebook.com/RezaExpertIT</a>`;
+}
+
+
     document.getElementById('designerWhatsApp') && (document.getElementById('designerWhatsApp').textContent = langData.designerContact.whatsapp);
     document.getElementById('designerEmail') && (document.getElementById('designerEmail').textContent = langData.designerContact.email);
 }
