@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head><style>.footer-designer {
@@ -445,15 +446,18 @@ body {
 }
 
 .footer-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid #ccc;
+    display: grid
+;
+    grid-template-columns: 1fr;
+    border-bottom: 1px solid #ccc;
 }
 
 .footer-contact {
-  padding: 15px;
+  padding: 19px;
+    border: solid;
+    border-color: #ffff;
+    border-width: 0px 0px 1px 0px;
 }
-
 .footer-designer {
   padding: 15px;
   border-left: 1px solid #ccc;
@@ -713,17 +717,17 @@ const CONFIG = {
             loadMore: "আরো পোস্ট দেখুন »",
             prayerTime: "নামাজের লাইভ সময় সূচি",
             demoWebsite: "ডেমো ওয়েবসাইট",
-            contact: "যোগাযোগ: ",
-            support: "সাপোর্ট",
-            info: "তথ্য",
-            designedBy: "দ্বারা ডিজাইন দিয়ে তৈরি",
+            contact: "Contact: ",
+            support: "Support",
+            info: "Info",
+            designedBy: "Made with Design by",
             designerContact: {
-                name: "রেজা এক্সপার্ট আইটি",
-                facebook: "ফেসবুক: www.facebook.com/RezaExpertIT",
+                name: "Reza Expert IT",
+                facebook: "Facebook: https://www.facebook.com/RezaExpertIT",
                 whatsapp: "WhatsApp: 01311361595",
-                email: "ইমেইল: rezaexpertit@gmail.com"
+                email: "Email: rezaexpertit@gmail.com"
             },
-            copyright: "কপিরাইট © ২০২৪ | developed by রেজা এক্সপার্ট আইটি"
+            copyright: "Copyright © 2024 | developed by Reza Expert IT"
         },
         en: {
             menu: ['Home', 'About', 'Articles', 'DMCA', 'Privacy Policy', 'Terms'],
@@ -743,7 +747,7 @@ const CONFIG = {
                 whatsapp: "WhatsApp: 01311361595",
                 email: "Email: rezaexpertit@gmail.com"
             },
-            copyright: "Copyright © 2024 | developed by Turjo"
+            copyright: "Copyright © 2024 | developed by Reza Expert IT"
         }
     }
 };
@@ -779,9 +783,9 @@ function updateAllText() {
     document.querySelector('.footer-contact-number') && (document.querySelector('.footer-contact-number').textContent = 
         `${langData.contact}${currentLang === 'bn' ? '+৮৮০ ১২৩৪-৫৬৭৮৯০' : '+880 1234-567890'}`);
     document.querySelector('.footer-contact-support') && (document.querySelector('.footer-contact-support').innerHTML = 
-        currentLang === 'bn' ? '<a href="info.html">সমর্থন</a>' : '<a href="info.html">Support</a>');
+        currentLang === 'bn' ? '<a href="info.html">Support</a>' : '<a href="info.html">Support</a>');
     document.querySelector('.footer-contact-info') && (document.querySelector('.footer-contact-info').innerHTML = 
-        currentLang === 'bn' ? '<a href="info.html">তথ্য</a>' : '<a href="info.html">Info</a>');
+        currentLang === 'bn' ? '<a href="info.html">Info</a>' : '<a href="info.html">Info</a>');
     document.querySelector('.footer-designer-designedby') && (document.querySelector('.footer-designer-designedby').textContent = langData.designedBy);
     document.querySelector('.footer-copyright') && (document.querySelector('.footer-copyright').textContent = langData.copyright);
 
