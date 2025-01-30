@@ -605,7 +605,7 @@ body {
                 <button>🔍</button>
                 <div class="search-results" id="searchResults"></div>
             </div>
-            <button id="lang-switch-btn">Eng</button>
+            <button id="lang-switch-btn">English</button>
         </header>
 
         <!-- Navigation -->
@@ -895,7 +895,7 @@ function updateSliderPosition() {
 document.getElementById('lang-switch-btn')?.addEventListener('click', () => {
     currentLang = currentLang === 'bn' ? 'en' : 'bn';
     document.documentElement.lang = currentLang;
-    document.getElementById('lang-switch-btn').textContent = currentLang === 'bn' ? 'Eng' : 'বাং';
+    document.getElementById('lang-switch-btn').textContent = currentLang === 'bn' ? 'English' : 'বাংলা ';
     updateAllText();
     initializePosts();
 });
