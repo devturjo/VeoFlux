@@ -1,28 +1,23 @@
+<!DOCTYPE html>
 <html lang="bn">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Website</title>
-<style>.footer-designer {
+<head><style>.footer-designer {
   color: red;
 }
 .social-grid {
-    display: grid
-;
-    grid-template-columns: repeat(2, 130px);
-    gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  font-weight: 700;
+  font-size: 18px;
 }
 .social-grid a {
-    margin: 0px 0px 0px 0px;
-    color: #ffff;
-    weight: 700;
-    display: flex
-;
-    front-size: 20px;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 0px;
-    font-size: 14px;
+  margin: 0px 0px 0px 0px;
+  color: #ffff;
+  weight: 700;
+  display: flex;
+  front-size: 20px;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 .footer-copyright {
   color: #ffff;
@@ -49,8 +44,10 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  }.footer-designer span{color: #ffff;}
+  .footer-designer-designedby{
+color: red !important;
 }
-
 .menu.open {
   left: 0;
 }
@@ -168,25 +165,16 @@ body {
   margin: 0px 250px -25px 0px;
 }
 
-.search-box {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  padding: 5px;
-  border-radius: 4px;
-  position: relative;
-}
+    .search-box {
+        width: 120px;
+        display: flex
+;
+        align-items: center;
+        border: none;
+        gap: 2px;
+        margin: 0px 30px 0px 0px;
+    }
 
-.search-box input {
-  border: none;
-  outline: none;
-}
-
-.search-box button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
 
 .nav-banner {
   background: white;
@@ -295,11 +283,12 @@ body {
 }
 
 .profile-box {
-  border: 2px solid #ccc;
-  padding: 15px;
-  text-align: center;
-  height: 380px;
-  overflow-y: auto;
+
+    border: 2px solid #ccc;
+    padding: 0px;
+    text-align: center;
+    height: 380px;
+    overflow-y: hidden;
   flex: 1;
 }
 
@@ -310,6 +299,14 @@ body {
 }
 
 .social-btn {
+
+    padding: 0;
+    background-color: #1877f2;
+    margin: 0;
+    gap: 0px;
+    font-size: 15px;
+    font-weight: 500;
+
   border: 2px solid #ccc;
   padding: 8px;
   text-align: center;
@@ -354,15 +351,17 @@ body {
 }
 
 .social-btn img {
-  width: 45px;
-  height: 45px;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
 }
 
 .footer {
-  background: #000000;
-  padding: 15px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
+    background: #000000;
+    padding: 0px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
 }
 @media (max-width: 767px) {
   .website-name img {
@@ -378,7 +377,7 @@ body {
 ;
     scrollbar-width: none;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
 }
 .search-box {
     margin: 0px 0px 0px 0px;
@@ -398,25 +397,49 @@ body {
     flex-wrap: wrap;
 }
 
-  .search-box {
+.search-box {
+    width: 120px; /* Reduce overall width */
     display: flex;
     align-items: center;
+    gap: 2px; /* Adjust spacing between elements */
+
+  
+}
+
+.search-box input {
+    width: 120px; /* Reduce input width */
+    height: 20px; /* Adjust height */
+    font-size: 14px; /* Smaller font */    border-radius: 10px;
+    padding: 4px;
+}
+
+
+
+.search-results {
+    width: 100%;
+    max-height: 150px; /* Limit height */
+    overflow-y: auto;
+    font-size: 12px;
+}
+
+.social-section {
+    background: white;
+    padding: 0px;
+    margin-top: 5px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    position: relative;
-    margin: 0px 0px 0px 0px;
-  }
-
-  .search-box input {
-    border: none;
-    outline: none;
-  }
-
-  .search-box button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
+    display: grid
+;
+    gap: 15px;
+}
+    .search-box {
+        width: 120px;
+        display: flex
+;
+        align-items: center;
+        border: none;
+        gap: 2px;
+        margin: 0px 30px 0px 0px;
+    }
 }
 
 .footer-info {
@@ -453,7 +476,7 @@ body {
 ;
     scrollbar-width: none;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
 .navI::-webkit-scrollbar {
@@ -470,306 +493,136 @@ body {
 }
 
 .navI {
-  background: #fff;
-  padding: 10px 0;
-  white-space: nowrap;
-  overflow-x: auto;
-  display: flex;
-  scrollbar-width: none;
-  flex-direction: row;
-  justify-content: center;
+    background: #fff;
+    padding: 10px 0;
+    white-space: nowrap;
+    overflow-x: scroll;
+    display: flex
+;
+    scrollbar-width: none;
+    flex-direction: row;
+    justify-content: flex-start;
 }</style>
-</head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Multilingual Website</title>
+    <style>
+        /* Add your CSS here */
+    </style>
+</head>
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="menu-icon">☰</div>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+  
 
-      <h1 class="website-name"><img src="https://i.postimg.cc/0QbXBBbX/474718485-1196040922114350-2813767871145669113-n.jpg" alt="Logo"></h1>
-      <div class="sear">
-        <div class="search-box">
-          <input class="hi" type="text" placeholder="" id="searchInput">
-          <button>🔍</button>
-          <div class="search-results" id="searchResults"></div>
+
+
+
+
+
+    <style>
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        .lang-switch {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+   
+    <div id="mySidenav" class="sidenav"style="z-index: 999;"">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<a href="#" class="about"></a>
+  <a href="#" class="services"></a>
+  <a href="#" class="clients"></a>
+  <a href="#" class="contact"></a>
+</div>
+
+<span style="font-size:30px;cursor:pointer; z-index: 999;" onclick="openNav()">&#9776;</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <h1 class="website-name"><img src="https://i.postimg.cc/0QbXBBbX/474718485-1196040922114350-2813767871145669113-n.jpg" alt="Logo"></h1>
+            <div class="search-box">
+                <input type="text" placeholder="" id="searchInput">
+                <button>🔍</button>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+            <button id="lang-switch-btn">Eng</button>
+        </header>
+
+        <!-- Navigation -->
+        <div class="nav-banner">
+            <nav class="navI" id="mainNav"></nav>
         </div>
-      </div>
-      <button id="lang-switch-btn">Eng</button>
-    </header>
 
-    <div class="menu" id="menu">
-      <!-- Menu items will be populated by JavaScript -->
-    </div>
+        <!-- Content Sections -->
+        <div class="slider-section">
+            <div class="slider-container"></div>
+            <div class="slider-controls">
+                <button class="slider-prev">❮</button>
+                <button class="slider-next">❯</button>
+            </div>
+        </div>
 
-    <div class="nav-banner">
-      <nav class="navI">
-        <a href="https://jago-dummy-01.blogspot.com/search/label/Adventure">হোম</a>
-        <span>পরিচিতি</span>
-        <span>লেখা পড়া</span>
-        <a href="/p/dmca.html">DMCA</a>
-        <a href="/p/privacy-policy.html">Privacy Policy</a>
-        <a href="/p/terms-and-conditions.html">Terms and Conditions</a>
-      </nav>
-    </div>
+        <div class="prayer-time">
+            <h3 id="prayerTimeTitle"></h3>
+            <p id="dateContainer"></p>
+<iframe src="https://timesprayer.com/widgets.php?frame=3&amp;lang=en&amp;name=dhaka&amp;sound=true&amp;fcolor=FFFFFF&amp;scolor=000000&amp;tcolor=FF9C78&amp;frcolor=FFFFFF" style="border: none; overflow: hidden; width: 100%; height: 220px;"></iframe>
+        </div>
 
-    <div class="slider-section">
-      <div class="slider-container"></div>
-      <div class="slider-controls">
-        <button class="slider-prev">❮</button>
-        <button class="slider-next">❯</button>
-      </div>
-    </div>
-
-    <div class="prayer-time">
-<iframe src="https://timesprayer.com/widgets.php?frame=3&amp;lang=en&amp;name=dhaka&amp;sound=true&amp;fcolor=FFFFFF&amp;scolor=000000&amp;tcolor=FF9C78&amp;frcolor=FFFFFF" style="border: none; overflow: hidden; width: 100%; height: 220px;"></iframe><style>/* Base styles */
-.bg-gray-900 {
-  background-color: #1a1a1a;
-  color: #ffffff;
-  min-height: 100vh;
-  padding: 1rem;
-}
-
-/* Header styles */
-.flex {
-  display: flex;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.space-x-2 > * + * {
-  margin-left: 0.5rem;
-}
-
-.space-y-1 > * + * {
-  margin-top: 0.25rem;
-}
-
-.space-y-2 > * + * {
-  margin-top: 0.5rem;
-}
-
-.space-y-4 > * + * {
-  margin-top: 1rem;
-}
-
-/* Menu icon */
-.w-8 {
-  width: 2rem;
-}
-
-.w-6 {
-  width: 1.5rem;
-}
-
-.h-0.5 {
-  height: 0.125rem;
-}
-
-.bg-white {
-  background-color: #ffffff;
-}
-
-/* Info button */
-.rounded-full {
-  border-radius: 9999px;
-}
-
-.border {
-  border-width: 1px;
-}
-
-.border-white {
-  border-color: #ffffff;
-}
-
-/* Text styles */
-.text-sm {
-  font-size: 0.875rem;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-}
-
-.font-bold {
-  font-weight: bold;
-}
-
-/* Clock styles */
-.relative {
-  position: relative;
-}
-
-.absolute {
-  position: absolute;
-}
-
-.inset-0 {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.w-32 {
-  width: 8rem;
-}
-
-.h-32 {
-  height: 8rem;
-}
-
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-
-.mb-8 {
-  margin-bottom: 2rem;
-}
-
-.border-4 {
-  border-width: 4px;
-}
-
-/* Clock marker styles */
-.origin-bottom {
-  transform-origin: bottom;
-}
-
-/* Prayer time entry styles */
-.p-3 {
-  padding: 0.75rem;
-}
-
-.border-l-4 {
-  border-left-width: 4px;
-}
-
-.bg-gray-800 {
-  background-color: #2d3748;
-}
-
-/* Border colors for different prayers */
-.border-blue-500 {
-  border-color: #3b82f6;
-}
-
-.border-purple-500 {
-  border-color: #8b5cf6;
-}
-
-.border-yellow-500 {
-  border-color: #eab308;
-}
-
-.border-green-500 {
-  border-color: #22c55e;
-}
-
-.border-orange-500 {
-  border-color: #f97316;
-}
-
-.border-red-500 {
-  border-color: #ef4444;
-}
-
-.border-pink-500 {
-  border-color: #ec4899;
-}
-
-/* Text colors */
-.text-red-500 {
-  color: #ef4444;
-}
-
-.text-blue-400 {
-  color: #60a5fa;
-}
-
-/* Sound icon styles */
-.ml-2 {
-  margin-left: 0.5rem;
-}
-
-/* Prayer name with annotation styles */
-.prayer-name {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Responsive adjustments */
-@media (max-width: 640px) {
-  .text-2xl {
-    font-size: 1.25rem;
-  }
-  
-  .w-32 {
-    width: 6rem;
-  }
-  
-  .h-32 {
-    height: 6rem;
-  }
-}
-
-/* Clock marker animation */
-@keyframes pulse {
-  0% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
-  }
-}
-
-.clock-marker {
-  animation: pulse 2s infinite;
-}
-
-/* Theme toggle button styles */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  border-radius: 0.375rem;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.theme-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}</style>
-    </div>
-
-    <div class="recent-posts">
-      <h2>সাম্প্রতিক পোস্ট</h2>
-      <div id="posts-container"></div>
-      <div class="more-posts">
-        <button class="more-posts-btn" id="load-more-btn">আরো পোস্ট দেখুন »</button>
-      </div>
-    </div>
+        <div class="recent-posts">
+            <h2 id="recentPostsTitle"></h2>
+            <div id="posts-container"></div>
+            <div class="more-posts">
+                <button class="more-posts-btn" id="load-more-btn"></button>
+            </div>
+        </div>
 
     <div class="social-section">
       <div class="profile-section">
@@ -797,276 +650,273 @@ body {
         <a href="#" class="social-btn imo"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/imo-white-icon.png" alt="imo">imo</a>
       </div>
     </div>
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="footer-info">
+                <div class="footer-contact">
+                    <p class="footer-contact-demo"></p>
+                    <p class="footer-contact-number"></p>
+                    <p><a href="#" class="footer-contact-support"></a></p>
+                    <p><a href="#" class="footer-contact-info"></a></p>
+                </div>
+                <div class="footer-designer">
+                    <span class="footer-designer-designedby"></span><br>
+                    <span id="designerName"></span><br>
+                    <span id="designerFacebook"></span><br>
+                    <span id="designerWhatsApp"></span><br>
+                    <span id="designerEmail"></span>
+                </div>
+            </div>
+            <div class="footer-copyright"></div>
+        </footer>
+    </div>
 
-    <footer class="footer">
-      <div class="footer-info">
-        <div class="footer-contact">
-          <p class="footer-contact-demo">ডেমো ওয়েবসাইট</p>
-          <p class="footer-contact-number">যোগাযোগ: +৮৮০ ১২৩৪-৫৬৭৮৯০</p>
-          <p><a href="https://support.com" class="footer-contact-support">support</a></p>
-          <p><a href="https://support.com" class="footer-contact-info">info</a></p>
-        </div>
-        <div class="footer-designer">
-          <a class="footer-designer-designedby">ডিজাইন করেছেন:</a><br>
-          TURJO<br>
-          ফেসবুক: fb.com<br>
-          WhatsApp: +৮৮০ ১২৩৪-৫৬৭৮৯০<br>
-          ইমেইল: demo@email.com
-        </div>
-      </div>
-      <div class="footer-copyright">
-        কপিরাইট © ২০২৪ | developed by Turjo
-      </div>
-    </footer>
-  </div>
-
-  <script>// CONFIGURATION START
+    <script>
+// CONFIGURATION
 const CONFIG = {
-  postsList: [
-    { title_bn: 'বাংলাদেশের প্রাকৃতিক সৌন্দর্য', title_en: 'Natural Beauty of Bangladesh', url: '#', category_bn: 'প্রকৃতি', category_en: 'Nature', image: 'https://picsum.photos/300/150?nature' },
-    { title_bn: 'টেকনোলজি আপডেট', title_en: 'Technology Updates', url: '#', category_bn: 'টেকনোলজি', category_en: 'Technology', image: 'https://picsum.photos/300/150?tech' },
-    { title_bn: 'স্বাস্থ্য টিপস', title_en: 'Health Tips', url: '#', category_bn: 'স্বাস্থ্য', category_en: 'Health', image: 'https://picsum.photos/300/150?health' },
-    { title_bn: 'রেসিপি সংগ্রহ', title_en: 'Recipe Collection', url: '#', category_bn: 'রান্না', category_en: 'Cooking', image: 'https://picsum.photos/300/150?food' },
-    { title_bn: 'শিক্ষা বিষয়ক', title_en: 'Education Related', url: '#', category_bn: 'শিক্ষা', category_en: 'Education', image: 'https://picsum.photos/300/150?education' },
-    { title_bn: 'ক্রীড়া সংবাদ', title_en: 'Sports News', url: '#', category_bn: 'ক্রীড়া', category_en: 'Sports', image: 'https://picsum.photos/300/150?sports' },
-    { title_bn: 'বিনোদন সংবাদ', title_en: 'Entertainment News', url: '#', category_bn: 'বিনোদন', category_en: 'Entertainment', image: 'https://picsum.photos/300/150?movie' },
-    { title_bn: 'রাজনীতি বিশ্লেষণ', title_en: 'Politics Analysis', url: '#', category_bn: 'রাজনীতি', category_en: 'Politics', image: 'https://picsum.photos/300/150?politics' },
-    { title_bn: 'ব্যবসা আইডিয়া', title_en: 'Business Ideas', url: '#', category_bn: 'ব্যবসা', category_en: 'Business', image: 'https://picsum.photos/300/150?business' },
-    { title_bn: 'ভ্রমণ গাইড', title_en: 'Travel Guide', url: '#', category_bn: 'ভ্রমণ', category_en: 'Travel', image: 'https://picsum.photos/300/150?travel' },
-    { title_bn: 'অতিরিক্ত পোস্ট ১', title_en: 'Extra Post 1', url: '#', category_bn: 'অন্যান্য', category_en: 'Other', image: 'https://picsum.photos/300/150?random1' },
-    { title_bn: 'অতিরিক্ত পোস্ট ২', title_en: 'Extra Post 2', url: '#', category_bn: 'অন্যান্য', category_en: 'Other', image: 'https://picsum.photos/300/150?random2' }
-  ],
-
-  slidersList: [
-    { type: 'image', url: 'https://i.postimg.cc/0QbXBBbX/474718485-1196040922114350-2813767871145669113-n.jpg' },
-    { type: 'video', url: 'https://www.youtube.com/embed/LwKaA6kOsvA' },
-    { type: 'image', url: 'https://picsum.photos/1200/600?technology' },
-    { type: 'image', url: 'https://picsum.photos/1200/600?city' }
-  ],
-
-  menuItems_bn: [
-    { name: 'হোম', url: '#' },
-    { name: 'আমাদের সম্পর্কে', url: '#' },
-    { name: 'যোগাযোগ', url: '#' },
-    { name: 'গোপনীয়তা', url: '#' }
-  ],
-  menuItems_en: [
-    { name: 'Home', url: '#' },
-    { name: 'About Us', url: '#' },
-    { name: 'Contact', url: '#' },
-    { name: 'Privacy', url: '#' }
-  ],
-  lang: 'bn', // Default language
-  text_bn: {
-    dateText: 'আজকের তারিখ: ',
-    recentPostsTitle: 'সাম্প্রতিক পোস্ট',
-    loadMoreButton: 'আরো পোস্ট দেখুন »',
-    demoWebsite: 'ডেমো ওয়েবসাইট',
-    contactUs: 'যোগাযোগ: ',
-    designedBy: 'ডিজাইন করেছেন:'
-  },
-  text_en: {
-    dateText: 'Today\'s Date: ',
-    recentPostsTitle: 'Recent Posts',
-    loadMoreButton: 'Load More Posts »',
-    demoWebsite: 'Demo Website',
-    contactUs: 'Contact: ',
-    designedBy: 'Designed by:'
-  }
+    lang: 'bn',
+    postsList: [
+        { 
+            title_bn: 'বাংলাদেশের প্রাকৃতিক সৌন্দর্য', 
+            title_en: 'Natural Beauty of Bangladesh', 
+            url: '#', 
+            category_bn: 'প্রকৃতি', 
+            category_en: 'Nature', 
+            image: 'https://picsum.photos/300/150?nature' 
+        }, {            
+            title_bn: 'বাংলাদেশের  সৌন্দর্য', 
+            title_en: 'Beauty of Bangladesh', 
+            url: '#', 
+            category_bn: 'প্রকৃতি', 
+            category_en: 'Nature', 
+            image: 'https://picsum.photos/300/150?nature' 
+        }
+    ],
+    slidersList: [
+        { type: 'image', url: 'https://i.postimg.cc/0QbXBBbX/474718485-1196040922114350-2813767871145669113-n.jpg' },
+        { type: 'video', url: 'https://www.youtube.com/embed/LwKaA6kOsvA' }
+    ],
+    texts: {
+        bn: {
+            menu: ['হোম', 'পরিচিতি', 'লেখা পড়া', 'DMCA', 'গোপনীয়তা নীতি', 'শর্তাবলী'],
+            home: "হোম",
+            dateText: "আজকের তারিখ: ",
+            recentPosts: "সাম্প্রতিক পোস্ট",
+            loadMore: "আরো পোস্ট দেখুন »",
+            prayerTime: "নামাজের লাইভ সময় সূচি",
+            demoWebsite: "ডেমো ওয়েবসাইট",
+            contact: "যোগাযোগ: ",
+            support: "সাপোর্ট",
+            info: "তথ্য",
+            designedBy: "ডিজাইন করেছেন:",
+            designerContact: {
+                name: "TURJO",
+                facebook: "ফেসবুক: fb.com",
+                whatsapp: "WhatsApp: +৮৮০ ১২৩৪-৫৬৭৮৯০",
+                email: "ইমেইল: demo@email.com"
+            },
+            copyright: "কপিরাইট © ২০২৪ | developed by Turjo"
+        },
+        en: {
+            menu: ['Home', 'About', 'Articles', 'DMCA', 'Privacy Policy', 'Terms'],
+            home: "Home",
+            dateText: "Today's Date: ",
+            recentPosts: "Recent Posts",
+            loadMore: "Load More Posts »",
+            prayerTime: "Live Prayer Schedule",
+            demoWebsite: "Demo Website",
+            contact: "Contact: ",
+            support: "Support",
+            info: "Info",
+            designedBy: "Designed by:",
+            designerContact: {
+                name: "TURJO",
+                facebook: "Facebook: fb.com",
+                whatsapp: "WhatsApp: +880 1234-567890",
+                email: "Email: demo@email.com"
+            },
+            copyright: "Copyright © 2024 | developed by Turjo"
+        }
+    }
 };
-// CONFIGURATION END
 
-// Menu Toggle and Initialization
-const menuIcon = document.querySelector('.menu-icon');
-const menu = document.getElementById('menu');
-const langSwitchBtn = document.getElementById('lang-switch-btn');
+// GLOBAL VARIABLES
 let currentLang = CONFIG.lang;
-
-function initializeMenu() {
-  const menuItems = currentLang === 'bn' ? CONFIG.menuItems_bn : CONFIG.menuItems_en;
-  menu.innerHTML = menuItems.map(item =>
-    `<a href="${item.url}">${item.name}</a>`
-  ).join('');
-}
-
-menuIcon.addEventListener('click', () => menu.classList.toggle('open'));
-
-// Close menu when clicking outside
-document.addEventListener('click', (event) => {
-  if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
-    menu.classList.remove('open');
-  }
-});
-
-// Slider Functionality
 let currentSlide = 0;
 let autoSlideInterval;
-const totalSlides = CONFIG.slidersList.length;
 
+// LANGUAGE MANAGEMENT
+function updateAllText() {
+    const langData = CONFIG.texts[currentLang];
+
+    // Update navigation menus
+    const updateMenu = (containerId) => {
+        const container = document.getElementById(containerId);
+        if (container) {
+            container.innerHTML = langData.menu
+                .map(item => `<a href="#">${item}</a>`)
+                .join('');
+        }
+    };
+
+    // Update both main navigation and sidenav
+    updateMenu('mainNav');
+    updateMenu('sidenavLinks');
+
+    // Update other text elements
+    document.getElementById('prayerTimeTitle') && (document.getElementById('prayerTimeTitle').textContent = langData.prayerTime);
+    document.getElementById('recentPostsTitle') && (document.getElementById('recentPostsTitle').textContent = langData.recentPosts);
+    document.getElementById('load-more-btn') && (document.getElementById('load-more-btn').textContent = langData.loadMore);
+    document.querySelector('.footer-contact-demo') && (document.querySelector('.footer-contact-demo').textContent = langData.demoWebsite);
+    document.querySelector('.footer-contact-number') && (document.querySelector('.footer-contact-number').textContent = 
+        `${langData.contact}${currentLang === 'bn' ? '+৮৮০ ১২৩৪-৫৬৭৮৯০' : '+880 1234-567890'}`);
+    document.querySelector('.footer-contact-support') && (document.querySelector('.footer-contact-support').innerHTML = 
+        currentLang === 'bn' ? '<a href="info.html">সমর্থন</a>' : '<a href="info.html">Support</a>');
+    document.querySelector('.footer-contact-info') && (document.querySelector('.footer-contact-info').innerHTML = 
+        currentLang === 'bn' ? '<a href="info.html">তথ্য</a>' : '<a href="info.html">Info</a>');
+    document.querySelector('.footer-designer-designedby') && (document.querySelector('.footer-designer-designedby').textContent = langData.designedBy);
+    document.querySelector('.footer-copyright') && (document.querySelector('.footer-copyright').textContent = langData.copyright);
+
+
+
+
+  
+
+
+
+    document.querySelector('.aboutLink') && (document.querySelector('.aboutLink').innerHTML = currentLang === 'bn' ? '<a href="info.html">সম্পর্কে</a>' : '<a href="info.html">About</a>');
+
+
+
+    document.querySelector('.services') && (document.querySelector('.services').innerHTML = 
+        currentLang === 'bn' ? '<a href="info.html">সেবা</a>' : '<a href="info.html">Services</a>');
+
+
+
+    document.querySelector('.clients') && (document.querySelector('.clients').innerHTML = 
+        currentLang === 'bn' ? '<a href="info.html">ক্লায়েন্ট</a>' : '<a href="info.html">Clients</a>');
+
+
+
+    document.querySelector('.contact') && (document.querySelector('.contact').innerHTML = 
+        currentLang === 'bn' ? '<a href="info.html">যোগাযোগ</a>' : '<a href="info.html">Contact</a>');
+
+
+
+
+
+
+
+
+    // Update designer contact info
+    document.getElementById('designerName') && (document.getElementById('designerName').textContent = langData.designerContact.name);
+    document.getElementById('designerFacebook') && (document.getElementById('designerFacebook').textContent = langData.designerContact.facebook);
+    document.getElementById('designerWhatsApp') && (document.getElementById('designerWhatsApp').textContent = langData.designerContact.whatsapp);
+    document.getElementById('designerEmail') && (document.getElementById('designerEmail').textContent = langData.designerContact.email);
+}
+
+// POSTS MANAGEMENT
+function initializePosts() {
+    const container = document.getElementById('posts-container');
+    if (!container) return;
+
+    container.innerHTML = '';
+    CONFIG.postsList.forEach(post => {
+        const postElement = document.createElement('a');
+        postElement.className = 'post';
+        postElement.href = post.url;
+        postElement.style.backgroundImage = `url('${post.image}')`;
+        postElement.innerHTML = ` 
+            <h3>${currentLang === 'bn' ? post.title_bn : post.title_en}</h3>
+            <div class="post-category">${currentLang === 'bn' ? post.category_bn : post.category_en}</div>
+        `;
+        container.appendChild(postElement);
+    });
+}
+
+// SLIDER MANAGEMENT
 function initializeSlider() {
-  const sliderContainer = document.querySelector('.slider-container');
-  sliderContainer.innerHTML = '';
+    const sliderContainer = document.querySelector('.slider-container');
+    if (!sliderContainer) return;
 
-  CONFIG.slidersList.forEach((slide, index) => {
-    const slideDiv = document.createElement('div');
-    slideDiv.className = 'slider-item';
+    sliderContainer.innerHTML = '';
+    CONFIG.slidersList.forEach((slide, index) => {
+        const slideDiv = document.createElement('div');
+        slideDiv.className = 'slider-item';
+        slideDiv.innerHTML = slide.type === 'image' 
+            ? `<img src="${slide.url}" alt="Slider ${index + 1}">`
+            : `<iframe src="${slide.url}" frameborder="0" allowfullscreen></iframe>`;
+        sliderContainer.appendChild(slideDiv);
+    });
 
-    if (slide.type === 'image') {
-      slideDiv.innerHTML = `<img src="${slide.url}" alt="Slider ${index + 1}">`;
-    } else if (slide.type === 'video') {
-      slideDiv.innerHTML = `<iframe src="${slide.url}" frameborder="0" allowfullscreen></iframe>`;
-    }
-
-    sliderContainer.appendChild(slideDiv);
-  });
-
-  startAutoSlide();
+    startAutoSlide();
 }
 
 function startAutoSlide() {
-  autoSlideInterval = setInterval(nextSlide, 2000);
+    autoSlideInterval = setInterval(nextSlide, 5000);
 }
 
 function nextSlide() {
-  currentSlide = (currentSlide + 1) % totalSlides;
-  updateSliderPosition();
+    const totalSlides = CONFIG.slidersList.length;
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSliderPosition();
 }
 
 function prevSlide() {
-  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-  updateSliderPosition();
+    const totalSlides = CONFIG.slidersList.length;
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSliderPosition();
 }
 
 function updateSliderPosition() {
-  const sliderContainer = document.querySelector('.slider-container');
-  sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+    const sliderContainer = document.querySelector('.slider-container');
+    sliderContainer && (sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`);
 }
 
-// Search Functionality
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
-
-searchInput.addEventListener('input', function (e) {
-  const query = e.target.value.toLowerCase();
-  searchResults.innerHTML = '';
-
-  if (query.length > 0) {
-    const results = CONFIG.postsList.filter(post => {
-      const title = currentLang === 'bn' ? post.title_bn : post.title_en;
-      return title.toLowerCase().includes(query);
-    });
-
-    results.forEach(post => {
-      const div = document.createElement('div');
-      div.className = 'search-result-item';
-      div.textContent = currentLang === 'bn' ? post.title_bn : post.title_en;
-      div.onclick = () => window.location.href = post.url;
-      searchResults.appendChild(div);
-    });
-
-    searchResults.style.display = results.length ? 'block' : 'none';
-  } else {
-    searchResults.style.display = 'none';
-  }
+// LANGUAGE TOGGLE
+document.getElementById('lang-switch-btn')?.addEventListener('click', () => {
+    currentLang = currentLang === 'bn' ? 'en' : 'bn';
+    document.documentElement.lang = currentLang;
+    document.getElementById('lang-switch-btn').textContent = currentLang === 'bn' ? 'Eng' : 'বাং';
+    updateAllText();
+    initializePosts();
 });
 
-// Posts Loading
-function initializePosts() {
-  const postsContainer = document.getElementById('posts-container');
-  const loadMoreBtn = document.getElementById('load-more-btn');
-  let visiblePosts = 10;
-  const postsPerLoad = 10;
-
-  function createPostElement(post) {
-    const postElement = document.createElement('a');
-    postElement.className = 'post';
-    postElement.href = post.url;
-    postElement.style.backgroundImage = `url('${post.image}')`;
-    postElement.innerHTML = `
-      <h3>${currentLang === 'bn' ? post.title_bn : post.title_en}</h3>
-      <div class="post-category">${currentLang === 'bn' ? post.category_bn : post.category_en}</div>
-    `;
-    return postElement;
-  }
-
-  function loadPosts() {
-    loadMoreBtn.classList.add('loading');
-    const nextPosts = CONFIG.postsList.slice(visiblePosts, visiblePosts + postsPerLoad);
-
-    nextPosts.forEach(post => {
-      postsContainer.appendChild(createPostElement(post));
-    });
-
-    visiblePosts += nextPosts.length;
-    loadMoreBtn.style.display = visiblePosts >= CONFIG.postsList.length ? 'none' : 'block';
-    loadMoreBtn.classList.remove('loading');
-  }
-
-  CONFIG.postsList.slice(0, visiblePosts).forEach(post => {
-    postsContainer.appendChild(createPostElement(post));
-  });
-
-  loadMoreBtn.style.display = CONFIG.postsList.length > visiblePosts ? 'block' : 'none';
-  loadMoreBtn.addEventListener('click', loadPosts);
+// MENU FUNCTIONS
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
 }
 
-// Date Display
-function initializeDate() {
-  const dateElement = document.getElementById('date');
-  const dateTextElement = document.querySelector('.prayer-time h3');
-  const loadMoreButtonText = document.querySelector('#load-more-btn');
-  const recentPostsTitleElement = document.querySelector('.recent-posts h2');
-  const demoWebsiteElement = document.querySelector('.footer-contact-demo');
-  const contactUsElement = document.querySelector('.footer-contact-number');
-  const designedByElement = document.querySelector('.footer-designer-designedby');
-
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  dateElement.textContent = new Date().toLocaleDateString(currentLang === 'bn' ? 'bn-BD' : 'en-US', options);
-
-  const currentText = currentLang === 'bn' ? CONFIG.text_bn : CONFIG.text_en;
-  dateTextElement.textContent = currentText.dateText + 'নামাজের লাইভ সময় সূচি'; // Keeping "নামাজের লাইভ সময় সূচি" static
-  loadMoreButtonText.textContent = currentText.loadMoreButton;
-  recentPostsTitleElement.textContent = currentText.recentPostsTitle;
-  demoWebsiteElement.textContent = currentText.demoWebsite;
-  contactUsElement.textContent = currentText.contactUs + '+৮৮০ ১২৩৪-৫৬৭৮৯০'; // Keeping number static
-  designedByElement.textContent = currentText.designedBy;
-
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
 }
 
-function updateContentLanguage() {
-  document.documentElement.lang = currentLang;
-  const prayerTimeTitle = document.querySelector('.prayer-time h3');
-  const recentPostsTitle = document.querySelector('.recent-posts h2');
-  const loadMoreBtnText = document.querySelector('#load-more-btn');
-  const demoWebsiteText = document.querySelector('.footer-contact-demo');
-  const contactUsText = document.querySelector('.footer-contact-number');
-  const designedByText = document.querySelector('.footer-designer-designedby');
+// MENU LIST MANAGEMENT (update to include menu list)
+function initializeMenuList() {
+    const container = document.getElementById('menu-container');
+    if (!container) return;
 
-  initializeMenu();
-  initializePosts();
-  initializeDate();
-
-  prayerTimeTitle.textContent = currentLang === 'bn' ? 'নামাজের লাইভ সময় সূচি' : 'Live Prayer Timings';
-  recentPostsTitle.textContent = currentLang === 'bn' ? CONFIG.text_bn.recentPostsTitle : CONFIG.text_en.recentPostsTitle;
-  loadMoreBtnText.textContent = currentLang === 'bn' ? CONFIG.text_bn.loadMoreButton : CONFIG.text_en.loadMoreButton;
-  demoWebsiteText.textContent = currentLang === 'bn' ? CONFIG.text_bn.demoWebsite : CONFIG.text_en.demoWebsite;
-  contactUsText.textContent = currentLang === 'bn' ? CONFIG.text_bn.contactUs + '+৮৮০ ১২৩৪-৫৬৭৮৯০' : CONFIG.text_en.contactUs + '+880 1234-567890';
-  designedByText.textContent = currentLang === 'bn' ? CONFIG.text_bn.designedBy : CONFIG.text_en.designedBy;
+    container.innerHTML = CONFIG.menuList.map(item => `
+        <a href="${item.url}" class="menu-item">
+            <h4>${currentLang === 'bn' ? item.title_bn : item.title_en}</h4>
+            <div class="menu-category">
+                ${currentLang === 'bn' ? item.category_bn : item.category_en}
+            </div>
+        </a>
+    `).join('');
 }
 
-
-langSwitchBtn.addEventListener('click', () => {
-  currentLang = currentLang === 'bn' ? 'en' : 'bn';
-  langSwitchBtn.textContent = currentLang === 'bn' ? 'Eng' : 'Ben';
-  updateContentLanguage();
-});
-
-// Initialize All
+// INITIALIZATION
 window.addEventListener('DOMContentLoaded', () => {
-  initializeMenu();
-  initializeSlider();
-  initializePosts();
-  initializeDate();
-});</script>
+    updateAllText();
+    initializePosts();
+    initializeSlider();
+    initializeMenuList();
+
+    document.querySelector('.slider-prev')?.addEventListener('click', prevSlide);
+    document.querySelector('.slider-next')?.addEventListener('click', nextSlide);
+});
+
+    </script>
 </body>
 </html>
