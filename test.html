@@ -17,7 +17,49 @@
 .arrow {
     margin-left: 5px;
     font-size: 0.8em;
-}
+}.dropdown {
+      position: relative;
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    .dropdown-btn {
+      background-color: #f1f1f1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #ffffff00;
+      min-width: 160px;
+      border: 0px solid #ccc;
+      border-radius: 5px;
+      z-index: 1;
+    }
+
+    .dropdown-content button {
+      padding: 10px;
+      width: 50%;
+      border: non;
+      background-color: #007BFF;
+      color: white;
+      font-size: 13px;
+      text-align: right;
+      cursor: pointer;
+    }
+
+    .dropdown-content button:hover {
+      background-color: #0056b3;
+    }
+
+    .dropdown.open .dropdown-content {
+      display: block;
+    }
 span.arrow {
     font-size: 13px;
     margin: -10px;
@@ -755,15 +797,21 @@ body {
             </div>
             <span style="font-size:30px;cursor:pointer; z-index: 999;" onclick="openNav()">&#9776;</span>
             <h1 class="website-name"><img src="https://i.postimg.cc/0QbXBBbX/474718485-1196040922114350-2813767871145669113-n.jpg" alt="Logo"></h1>
-            <div class="search-box">
-                <input type="text" placeholder="" id="searchInput">
-                <button>🔍</button>
+            <div class="search-box"><a href="https://www.geeksforgeeks.org/html-tutorial/">
+      <button>🔍</button>
+</a>
+             
                 <div class="search-results" id="searchResults"></div>
             </div>
             <div class="lang-buttons">
-                <button id="bn-btn">Bangla</button>
-                <button id="en-btn">English</button>
-                <button id="ur-btn">Urdu</button>
+   <div class="dropdown">
+    <button class="dropdown-btn">Lang</button>
+    <div class="dropdown-content">
+      <button id="bn-btn">Bangla</button>
+      <button id="en-btn">English</button>
+      <button id="ur-btn">Urdu</button>
+    </div>
+  </div>
             </div>
         </header>
 
@@ -1395,7 +1443,26 @@ document.addEventListener('DOMContentLoaded', () => {
     initializePosts();
     initializeMenuList();
 });
+ const dropdown = document.querySelector('.dropdown');
+    const dropdownButton = dropdown.querySelector('.dropdown-btn');
+    const dropdownContent = dropdown.querySelector('.dropdown-content');
 
+    // Toggle the dropdown visibility
+    dropdownButton.addEventListener('click', function() {
+      dropdown.classList.toggle('open');
+    });
+
+    // Add event listeners for each language button
+    document.getElementById('bn-btn').addEventListener('click', function() {
+      dropdown.classList.remove('open'); // Close dropdown after selection
+    });
+    document.getElementById('en-btn').addEventListener('click', function() {
+      dropdown.classList.remove('open'); // Close dropdown after selection
+    });
+    document.getElementById('ur-btn').addEventListener('click', function() {
+
+      dropdown.classList.remove('open'); // Close dropdown after selection
+    });
     </script>
 </body>
 </html>
