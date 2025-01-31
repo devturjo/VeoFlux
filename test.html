@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head><style>.footer-designer {
@@ -134,12 +133,54 @@ button#lang-switch-btn {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
-
+#mySidenav a {
+    text-decoration: none;
+    color: #333;
+    display: flex
+;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
 body {
   background: #f0f8ff;
   line-height: 1.6;
 }
+/* Corrected Sidenav CSS */
+#mySidenav {
+  position: fixed;
+  left: -250px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: white;
+  transition: left 0.3s;
+  z-index: 1000;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
+#mySidenav.open {
+  left: 0;
+}
+
+#mySidenav a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  cursor: pointer;
+}
 .header {
   background: white;
   padding: 10px;
@@ -386,7 +427,7 @@ body {
 ;
     scrollbar-width: none;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-evenly;
 }
 .search-box {
     margin: 0px 0px 0px 0px;
@@ -478,7 +519,41 @@ body {
   opacity: 0.6;
   pointer-events: none;
 }
+/* Corrected Sidenav CSS */
+.sidenav {
+  position: fixed;
+  left: -250px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: white;
+  transition: left 0.3s;
+  z-index: 1000;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
+.sidenav.open {
+  left: 0;
+}
+
+.sidenav a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+} 
 .navI {
     background: #fff;
     padding: 10px 0;
@@ -526,86 +601,24 @@ body {
     <div class="container">
         <!-- Header Section -->
         <header class="header">
-  
-
-
-
-
-
-
-    <style>
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-        .lang-switch {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            background: #fff;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-    </style>
-   
-    <div id="mySidenav" class="sidenav"style="z-index: 999;"">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-<a href="#" class="about"></a>
-  <a href="#" class="services"></a>
-  <a href="#" class="clients"></a>
-  <a href="#" class="contact"></a>
-</div>
-
-<span style="font-size:30px;cursor:pointer; z-index: 999;" onclick="openNav()">&#9776;</span>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div id="sidenavLinks">
+        <!-- Dynamic menu links will be inserted here -->
+    </div>
+            </div>
+            <span style="font-size:30px;cursor:pointer; z-index: 999;" onclick="openNav()">&#9776;</span>
             <h1 class="website-name"><img src="https://i.postimg.cc/0QbXBBbX/474718485-1196040922114350-2813767871145669113-n.jpg" alt="Logo"></h1>
             <div class="search-box">
                 <input type="text" placeholder="" id="searchInput">
                 <button>🔍</button>
                 <div class="search-results" id="searchResults"></div>
             </div>
-            <button id="lang-switch-btn">English</button>
+            <div class="lang-buttons">
+                <button id="bn-btn">Bangla</button>
+                <button id="en-btn">English</button>
+                <button id="ur-btn">Urdu</button>
+            </div>
         </header>
 
         <!-- Navigation -->
@@ -670,22 +683,22 @@ body {
         <footer class="footer">
             <div class="footer-info">
                 <div class="footer-contact">
-                    <p class="footer-contact-demo"></p>
-                    <p class="footer-contact-number"></p>
-                    <p><a href="#" class="footer-contact-support"></a></p>
-                    <p><a href="#" class="footer-contact-info"></a></p>
+                    <p class="footer-contact-demo">Rezaexpertit.online</p>
+                    <p class="footer-contact-number">Contact: 01311361595</p>
+                    <p><a href="info.html" class="footer-contact-support">Support</a></p>
+                    <p><a href="info.html" class="footer-contact-info">Info</a></p>
                 </div>
                 <div class="footer-designer">
-                    <span class="footer-designer-designedby"></span><br>
-                    <span id="designerName"></span><br>
-                    <span id="designerFacebook"></span><br>
-                    <span id="designerWhatsApp"></span><br>
-                    <span id="designerEmail"></span>
+                    <span class="footer-designer-designedby">Made with Design by</span><br>
+                    <span id="designerName">Reza Expert IT</span><br>
+                    <span id="designerFacebook"><a href="https://www.facebook.com/RezaExpertIT" target="_blank">Facebook: www.facebook.com/RezaExpertIT</a></span><br>
+                    <span id="designerWhatsApp">WhatsApp: 01311361595</span><br>
+                    <span id="designerEmail">Email: rezaexpertit@gmail.com</span>
                  <br><span><a href="https://www.rezaexpertit.online" target="_blank">visit: www.rezaexpertit.online</a></span>
 
                 </div>
             </div>
-            <div class="footer-copyright"></div>
+            <div class="footer-copyright">Copyright © 2024 | developed by Reza Expert IT</div>
         </footer>
     </div>
 
@@ -694,134 +707,179 @@ body {
 const CONFIG = {
     lang: 'bn',
 postsList: [
-    { 
-        title_bn: 'বাংলাদেশের প্রাকৃতিক সৌন্দর্য', 
-        title_en: 'Natural Beauty of Bangladesh', 
-        url: '#', 
-        category_bn: 'প্রকৃতি', 
-        category_en: 'Nature', 
-        image: 'https://picsum.photos/300/150?nature' 
-    }, 
-    {            
-        title_bn: 'বাংলাদেশের সৌন্দর্য', 
-        title_en: 'Beauty of Bangladesh', 
-        url: '#', 
-        category_bn: 'প্রকৃতি', 
-        category_en: 'Nature', 
-        image: 'https://picsum.photos/300/150?nature' 
+    {
+        title_bn: 'বাংলাদেশের প্রাকৃতিক সৌন্দর্য',
+        title_en: 'Natural Beauty of Bangladesh',
+        title_ur: 'بنگلہ دیش کی قدرتی خوبصورتی',
+        url: '#',
+        category_bn: 'প্রকৃতি',
+        category_en: 'Nature',
+        category_ur: 'قدرت',
+        image: 'https://picsum.photos/300/150?nature'
     },
-    { 
-        title_bn: 'সুন্দরবনের জীববৈচিত্র্য', 
-        title_en: 'Biodiversity of Sundarbans', 
-        url: '#', 
-        category_bn: 'প্রকৃতি', 
-        category_en: 'Nature', 
-        image: 'https://picsum.photos/300/150?forest' 
-    }, 
-    { 
-        title_bn: 'কক্সবাজার সমুদ্র সৈকত', 
-        title_en: 'Cox’s Bazar Beach', 
-        url: '#', 
-        category_bn: 'ভ্রমণ', 
-        category_en: 'Travel', 
-        image: 'https://picsum.photos/300/150?beach' 
+    {
+        title_bn: 'বাংলাদেশের সৌন্দর্য',
+        title_en: 'Beauty of Bangladesh',
+        title_ur: 'بنگلہ دیش کی خوبصورتی',
+        url: '#',
+        category_bn: 'প্রকৃতি',
+        category_en: 'Nature',
+        category_ur: 'قدرت',
+        image: 'https://picsum.photos/300/150?nature'
     },
-    { 
-        title_bn: 'সাজেক ভ্যালির মোহনীয় দৃশ্য', 
-        title_en: 'Majestic View of Sajek Valley', 
-        url: '#', 
-        category_bn: 'ভ্রমণ', 
-        category_en: 'Travel', 
-        image: 'https://picsum.photos/300/150?mountain' 
-    }, 
-    { 
-        title_bn: 'সিলেটের চা বাগান', 
-        title_en: 'Tea Gardens of Sylhet', 
-        url: '#', 
-        category_bn: 'প্রকৃতি', 
-        category_en: 'Nature', 
-        image: 'https://picsum.photos/300/150?tea' 
-    }, 
-    { 
-        title_bn: 'বান্দরবানের পাহাড়ি সৌন্দর্য', 
-        title_en: 'Hill Beauty of Bandarban', 
-        url: '#', 
-        category_bn: 'ভ্রমণ', 
-        category_en: 'Travel', 
-        image: 'https://picsum.photos/300/150?hill' 
-    }, 
-    { 
-        title_bn: 'সোনারগাঁওয়ের ঐতিহ্য', 
-        title_en: 'Heritage of Sonargaon', 
-        url: '#', 
-        category_bn: 'ঐতিহ্য', 
-        category_en: 'Heritage', 
-        image: 'https://picsum.photos/300/150?heritage' 
-    }, 
-    { 
-        title_bn: 'পাহাড়পুর বৌদ্ধ বিহার', 
-        title_en: 'Paharpur Buddhist Monastery', 
-        url: '#', 
-        category_bn: 'ঐতিহ্য', 
-        category_en: 'Heritage', 
-        image: 'https://picsum.photos/300/150?monastery' 
-    }, 
-    { 
-        title_bn: 'মহাস্থানগড়ের ইতিহাস', 
-        title_en: 'History of Mahasthangarh', 
-        url: '#', 
-        category_bn: 'ঐতিহ্য', 
-        category_en: 'Heritage', 
-        image: 'https://picsum.photos/300/150?history' 
-    }, 
-    { 
-        title_bn: 'শত বছরের পুরনো পানাম নগর', 
-        title_en: 'Centuries-old Panam City', 
-        url: '#', 
-        category_bn: 'ঐতিহ্য', 
-        category_en: 'Heritage', 
-        image: 'https://picsum.photos/300/150?city' 
-    }, 
-    { 
-        title_bn: 'বাংলাদেশের খাবারের স্বাদ', 
-        title_en: 'Taste of Bangladeshi Food', 
-        url: '#', 
-        category_bn: 'খাবার', 
-        category_en: 'Food', 
-        image: 'https://picsum.photos/300/150?food' 
+    {
+        title_bn: 'সুন্দরবনের জীববৈচিত্র্য',
+        title_en: 'Biodiversity of Sundarbans',
+        title_ur: 'سندر بنز کی حیاتیاتی تنوع',
+        url: '#',
+        category_bn: 'প্রকৃতি',
+        category_en: 'Nature',
+        category_ur: 'قدرت',
+        image: 'https://picsum.photos/300/150?forest'
     },
-    { 
-        title_bn: 'বাংলাদেশের ঐতিহ্যবাহী পোশাক', 
-        title_en: 'Traditional Attire of Bangladesh', 
-        url: '#', 
-        category_bn: 'ঐতিহ্য', 
-        category_en: 'Heritage', 
-        image: 'https://picsum.photos/300/150?fashion' 
+    {
+        title_bn: 'কক্সবাজার সমুদ্র সৈকত',
+        title_en: 'Cox’s Bazar Beach',
+        title_ur: 'کاکس بازار بیچ',
+        url: '#',
+        category_bn: 'ভ্রমণ',
+        category_en: 'Travel',
+        category_ur: 'سفر',
+        image: 'https://picsum.photos/300/150?beach'
     },
-    { 
-        title_bn: 'ঢাকার রাতের সৌন্দর্য', 
-        title_en: 'Night Beauty of Dhaka', 
-        url: '#', 
-        category_bn: 'নগর', 
-        category_en: 'City', 
-        image: 'https://picsum.photos/300/150?night' 
+    {
+        title_bn: 'সাজেক ভ্যালির মোহনীয় দৃশ্য',
+        title_en: 'Majestic View of Sajek Valley',
+        title_ur: 'ساجک ویلی کا پرشکوہ منظر',
+        url: '#',
+        category_bn: 'ভ্রমণ',
+        category_en: 'Travel',
+        category_ur: 'سفر',
+        image: 'https://picsum.photos/300/150?mountain'
     },
-    { 
-        title_bn: 'গ্রামের শান্ত জীবন', 
-        title_en: 'Peaceful Village Life', 
-        url: '#', 
-        category_bn: 'গ্রাম', 
-        category_en: 'Village', 
-        image: 'https://picsum.photos/300/150?village' 
+    {
+        title_bn: 'সিলেটের চা বাগান',
+        title_en: 'Tea Gardens of Sylhet',
+        title_ur: 'سلہٹ کے چائے باغات',
+        url: '#',
+        category_bn: 'প্রকৃতি',
+        category_en: 'Nature',
+        category_ur: 'قدرت',
+        image: 'https://picsum.photos/300/150?tea'
+    },
+    {
+        title_bn: 'বান্দরবানের পাহাড়ি সৌন্দর্য',
+        title_en: 'Hill Beauty of Bandarban',
+        title_ur: 'بندر بن کا پہاڑی حسن',
+        url: '#',
+        category_bn: 'ভ্রমণ',
+        category_en: 'Travel',
+        category_ur: 'سفر',
+        image: 'https://picsum.photos/300/150?hill'
+    },
+    {
+        title_bn: 'সোনারগাঁওয়ের ঐতিহ্য',
+        title_en: 'Heritage of Sonargaon',
+        title_ur: 'سونار گاؤں کا ثقافتی ورثہ',
+        url: '#',
+        category_bn: 'ঐতিহ্য',
+        category_en: 'Heritage',
+        category_ur: 'ثقافتی ورثہ',
+        image: 'https://picsum.photos/300/150?heritage'
+    },
+    {
+        title_bn: 'পাহাড়পুর বৌদ্ধ বিহার',
+        title_en: 'Paharpur Buddhist Monastery',
+        title_ur: 'پہار پور بدھ مت خانقاہ',
+        url: '#',
+        category_bn: 'ঐতিহ্য',
+        category_en: 'Heritage',
+        category_ur: 'ثقافتی ورثہ',
+        image: 'https://picsum.photos/300/150?monastery'
+    },
+    {
+        title_bn: 'মহাস্থানগড়ের ইতিহাস',
+        title_en: 'History of Mahasthangarh',
+        title_ur: 'مہاس تھان گڑھ کی تاریخ',
+        url: '#',
+        category_bn: 'ঐতিহ্য',
+        category_en: 'Heritage',
+        category_ur: 'ثقافتی ورثہ',
+        image: 'https://picsum.photos/300/150?history'
+    },
+    {
+        title_bn: 'শত বছরের পুরনো পানাম নগর',
+        title_en: 'Centuries-old Panam City',
+        title_ur: 'صدیوں پرانا پانام شہر',
+        url: '#',
+        category_bn: 'ঐতিহ্য',
+        category_en: 'Heritage',
+        category_ur: 'ثقافتی ورثہ',
+        image: 'https://picsum.photos/300/150?city'
+    },
+    {
+        title_bn: 'বাংলাদেশের খাবারের স্বাদ',
+        title_en: 'Taste of Bangladeshi Food',
+        title_ur: 'بنگلہ دیشی کھانے کا ذائقہ',
+        url: '#',
+        category_bn: 'খাবার',
+        category_en: 'Food',
+        category_ur: 'کھانا',
+        image: 'https://picsum.photos/300/150?food'
+    },
+    {
+        title_bn: 'বাংলাদেশের ঐতিহ্যবাহী পোশাক',
+        title_en: 'Traditional Attire of Bangladesh',
+        title_ur: 'بنگلہ دیش کا روایتی لباس',
+        url: '#',
+        category_bn: 'ঐতিহ্য',
+        category_en: 'Heritage',
+        category_ur: 'ثقافتی ورثہ',
+        image: 'https://picsum.photos/300/150?fashion'
+    },
+    {
+        title_bn: 'ঢাকার রাতের সৌন্দর্য',
+        title_en: 'Night Beauty of Dhaka',
+        title_ur: 'ڈھاکہ کی رات کی خوبصورتی',
+        url: '#',
+        category_bn: 'নগর',
+        category_en: 'City',
+        category_ur: 'شہر',
+        image: 'https://picsum.photos/300/150?night'
+    },
+    {
+        title_bn: 'গ্রামের শান্ত জীবন',
+        title_en: 'Peaceful Village Life',
+        title_ur: 'دیہات کی پر امن زندگی',
+        url: '#',
+        category_bn: 'গ্রাম',
+        category_en: 'Village',
+        category_ur: 'دیہات',
+        image: 'https://picsum.photos/300/150?village'
     }
 ],
     slidersList: [
         { type: 'image', url: 'https://i.postimg.cc/0QbXBBbX/474718485-1196040922114350-2813767871145669113-n.jpg' },
         { type: 'video', url: 'https://www.youtube.com/embed/LwKaA6kOsvA' }
     ],
-    texts: {
+      texts: {
         bn: {
-            menu: ['হোম', 'পরিচিতি', 'লেখা পড়া', 'DMCA', 'গোপনীয়তা নীতি', 'শর্তাবলী'],
+            menu: [ // Main menu - remains as you configured
+                { text: 'হোম', link: 'index.html' },
+                { text: 'পরিচিতি', link: 'about.html' },
+                { text: 'লেখা পড়া', link: 'articles.html' },
+                { text: 'DMCA', link: 'dmca.html' },
+                { text: 'গোপনীয়তা নীতি', link: 'privacy.html' },
+                { text: 'শর্তাবলী', link: 'terms.html' }
+            ],
+            sidenavMenu: [ // New sidenav menu
+                { text: 'ম', link: 'inx.html' },
+                { text: 'পতি', link: 'aut.html' },
+                { text: 'লে', link: 'ales.html' },
+                { text: 'DA', link: 'da.html' },
+                { text: 'গোপনীয়তি', link: 'priv.html' },
+                { text: 'শর্তা', link: 'ters.html' }
+            ],
             home: "হোম",
             dateText: "আজকের তারিখ: ",
             recentPosts: "সাম্প্রতিক পোস্ট",
@@ -836,12 +894,27 @@ postsList: [
                 name: "Reza Expert IT",
                 facebook: "https://www.facebook.com/RezaExpertIT",
                 whatsapp: "WhatsApp: 01311361595",
-                email: "Email: rezaexpertit@gmail.com"
+                email: "rezaexpertit@gmail.com"
             },
             copyright: "Copyright © 2024 | developed by Reza Expert IT"
         },
         en: {
-            menu: ['Home', 'About', 'Articles', 'DMCA', 'Privacy Policy', 'Terms'],
+            menu: [ // Main menu
+                { text: 'Home', link: 'index.html' },
+                { text: 'About', link: 'about.html' },
+                { text: 'Articles', link: 'articles.html' },
+                { text: 'DMCA', link: 'dmca.html' },
+                { text: 'Privacy Policy', link: 'privacy.html' },
+                { text: 'Terms', link: 'terms.html' }
+            ],
+            sidenavMenu: [ // Sidenav menu - English version
+                { text: 'Menu 1 Short', link: 'inx.html' },
+                { text: 'Menu 2 Short', link: 'aut.html' },
+                { text: 'Menu 3 Short', link: 'ales.html' },
+                { text: 'Menu 4 Short', link: 'da.html' },
+                { text: 'Menu 5 Short', link: 'priv.html' },
+                { text: 'Menu 6 Short', link: 'ters.html' }
+            ],
             home: "Home",
             dateText: "Today's Date: ",
             recentPosts: "Recent Posts",
@@ -856,11 +929,67 @@ postsList: [
                 name: "Reza Expert IT",
                 facebook: "https://www.facebook.com/RezaExpertIT",
                 whatsapp: "WhatsApp: 01311361595",
-                email: "Email: rezaexpertit@gmail.com"
+                email: "rezaexpertit@gmail.com"
             },
             copyright: "Copyright © 2024 | developed by Reza Expert IT"
+        },
+        ur: {
+            menu: [ // Main menu
+                { text: 'ہوم', link: 'index.html' },
+                { text: 'تعارف', link: 'about.html' },
+                { text: 'مضامین', link: 'articles.html' },
+                { text: 'DMCA', link: 'dmca.html' },
+                { text: 'رازداری کی پالیسی', link: 'privacy.html' },
+                { text: 'شرائط', link: 'terms.html' }
+            ],
+            sidenavMenu: [ // Sidenav menu - Urdu version
+                { text: 'مینو ۱ مختصر', link: 'inx.html' },
+                { text: 'مینو ۲ مختصر', link: 'aut.html' },
+                { text: 'مینو ۳ مختصر', link: 'ales.html' },
+                { text: 'مینو ۴ مختصر', link: 'da.html' },
+                { text: 'مینو ۵ مختصر', link: 'priv.html' },
+                { text: 'مینو ۶ مختصر', link: 'ters.html' }
+            ],
+            home: "ہوم",
+            dateText: "آج کی تاریخ: ",
+            recentPosts: "تازہ ترین مضامین",
+            loadMore: "مزید پوسٹس لوڈ کریں »",
+            prayerTime: "لائیو نماز کا شیڈول",
+            demoWebsite: "Rezaexpertit.online",
+            contact: "رابطہ: ",
+            support: "سپورٹ",
+            info: "معلومات",
+            designedBy: "ڈیزائن بذریعہ تیار کردہ",
+            designerContact: {
+                name: "Reza Expert IT",
+                facebook: "https://www.facebook.com/RezaExpertIT",
+                whatsapp: "WhatsApp: 01311361595",
+                email: "rezaexpertit@gmail.com"
+            },
+            copyright: "کاپی رائٹ © 2024 | رضا ایکسپرٹ آئی ٹی کی تیار کردہ"
         }
-    }
+    },
+        menuList: [
+        {
+            title_bn: 'মেনু আইটেম ১',
+            title_en: 'Menu Item 1',
+            title_ur: 'مینو آئٹم ۱',
+            category_bn: 'ক্যাটাগরি ১',
+            category_en: 'Category 1',
+            category_ur: 'قسم ۱',
+            url: '#'
+        },
+        {
+            title_bn: 'মেনু আইটেম ২',
+            title_en: 'Menu Item 2',
+            title_ur: 'مینو آئٹم ۲',
+            category_bn: 'ক্যাটাগরি ২',
+            category_en: 'Category 2',
+            category_ur: 'قسم ۲',
+            url: '#'
+        }
+        // Add more menu items as needed
+    ]
 };
 
 // GLOBAL VARIABLES
@@ -868,79 +997,60 @@ let currentLang = CONFIG.lang;
 let currentSlide = 0;
 let autoSlideInterval;
 
-// LANGUAGE MANAGEMENT
 function updateAllText() {
     const langData = CONFIG.texts[currentLang];
+    const enLangDataForFooter = CONFIG.texts['en'];
 
-    // Update navigation menus
-    const updateMenu = (containerId) => {
+    // Updated updateMenu function to accept menuType
+    const updateMenu = (containerId, menuType = 'menu') => { // Default menuType to 'menu'
         const container = document.getElementById(containerId);
         if (container) {
-            container.innerHTML = langData.menu
-                .map(item => `<a href="#">${item}</a>`)
-                .join('');
+            const menuToUse = langData[menuType]; // Select the menu from langData based on menuType
+            if (menuToUse) { // Check if the menuType exists in langData
+                container.innerHTML = menuToUse
+                    .map(item => {
+                        return `<a href="${item.link}">${item.text}</a>`;
+                    })
+                    .join('');
+            } else {
+                console.warn(`Menu type "${menuType}" not found in language data.`);
+                container.innerHTML = ''; // Clear container if menuType is invalid
+            }
         }
     };
 
-    // Update both main navigation and sidenav
-    updateMenu('mainNav');
-    updateMenu('sidenavLinks');
+    // Update main navigation menu
+    updateMenu('mainNav', 'menu'); // Explicitly specify 'menu' for main nav
+    // Update sidenav menu
+    updateMenu('sidenavLinks', 'sidenavMenu'); // Specify 'sidenavMenu' for sidenav
+
+
 
     // Update other text elements
     document.getElementById('prayerTimeTitle') && (document.getElementById('prayerTimeTitle').textContent = langData.prayerTime);
     document.getElementById('recentPostsTitle') && (document.getElementById('recentPostsTitle').textContent = langData.recentPosts);
     document.getElementById('load-more-btn') && (document.getElementById('load-more-btn').textContent = langData.loadMore);
-    document.querySelector('.footer-contact-demo') && (document.querySelector('.footer-contact-demo').textContent = langData.demoWebsite);
-    document.querySelector('.footer-contact-number') && (document.querySelector('.footer-contact-number').textContent = 
-        `${langData.contact}${currentLang === 'bn' ? '01311361595' : '01311361595'}`);
-    document.querySelector('.footer-contact-support') && (document.querySelector('.footer-contact-support').innerHTML = 
-        currentLang === 'bn' ? '<a href="info.html">Support</a>' : '<a href="info.html">Support</a>');
-    document.querySelector('.footer-contact-info') && (document.querySelector('.footer-contact-info').innerHTML = 
-        currentLang === 'bn' ? '<a href="info.html">Info</a>' : '<a href="info.html">Info</a>');
-    document.querySelector('.footer-designer-designedby') && (document.querySelector('.footer-designer-designedby').textContent = langData.designedBy);
-    document.querySelector('.footer-copyright') && (document.querySelector('.footer-copyright').textContent = langData.copyright);
+
+    document.querySelector('.homeLink') && (document.querySelector('.homeLink').innerHTML = currentLang === 'bn' ? '<a href="info.html">হোম</a>' : (currentLang === 'ur' ? '<a href="info.html">ہوم</a>' : '<a href="info.html">Home</a>'));
+    document.querySelector('.aboutLink') && (document.querySelector('.aboutLink').innerHTML = currentLang === 'bn' ? '<a href="info.html">পরিচিতি</a>' : (currentLang === 'ur' ? '<a href="info.html">تعارف  </a>' : '<a href="info.html">About</a>'));
+    document.querySelector('.services') && (document.querySelector('.services').innerHTML = currentLang === 'bn' ? '<a href="info.html">লেখা পড়া</a>' : (currentLang === 'ur' ? '<a href="info.html">مضامین</a>' : '<a href="info.html">Articles</a>'));
+    document.querySelector('.clients') && (document.querySelector('.clients').innerHTML = currentLang === 'bn' ? '<a href="info.html">DMCA</a>' : (currentLang === 'ur' ? '<a href="info.html">DMCA</a>' : '<a href="info.html">DMCA</a>'));
+    document.querySelector('.contact') && (document.querySelector('.contact').innerHTML = currentLang === 'bn' ? '<a href="info.html">গোপনীয়তা নীতি</a>' : (currentLang === 'ur' ? '<a href="info.html">رازداری کی پالیسی</a>' : '<a href="info.html">Privacy Policy</a>'));
 
 
-
-
-  
-
-
-
-    document.querySelector('.aboutLink') && (document.querySelector('.aboutLink').innerHTML = currentLang === 'bn' ? '<a href="info.html">সম্পর্কে</a>' : '<a href="info.html">About</a>');
-
-
-
-    document.querySelector('.services') && (document.querySelector('.services').innerHTML = 
-        currentLang === 'bn' ? '<a href="info.html">সেবা</a>' : '<a href="info.html">Services</a>');
-
-
-
-    document.querySelector('.clients') && (document.querySelector('.clients').innerHTML = 
-        currentLang === 'bn' ? '<a href="info.html">ক্লায়েন্ট</a>' : '<a href="info.html">Clients</a>');
-
-
-
-    document.querySelector('.contact') && (document.querySelector('.contact').innerHTML = 
-        currentLang === 'bn' ? '<a href="info.html">যোগাযোগ</a>' : '<a href="info.html">Contact</a>');
-
-
-
-
-
-
-
-
-    // Update designer contact info
-    document.getElementById('designerName') && (document.getElementById('designerName').textContent = langData.designerContact.name);
-   
-if (document.getElementById('designerFacebook')) {
-    document.getElementById('designerFacebook').innerHTML = `<a href="${langData.designerContact.facebook}" target="_blank">Facebook: www.facebook.com/RezaExpertIT</a>`;
-}
-
-
-    document.getElementById('designerWhatsApp') && (document.getElementById('designerWhatsApp').textContent = langData.designerContact.whatsapp);
-    document.getElementById('designerEmail') && (document.getElementById('designerEmail').textContent = langData.designerContact.email);
+    // Footer remains in English
+    document.querySelector('.footer-contact-demo').textContent = enLangDataForFooter.demoWebsite;
+    document.querySelector('.footer-contact-number').textContent = `${enLangDataForFooter.contact}01311361595`;
+    document.querySelector('.footer-contact-support').innerHTML = '<a href="info.html">Support</a>';
+    document.querySelector('.footer-contact-info').innerHTML = '<a href="info.html">Info</a>';
+    document.querySelector('.footer-designer-designedby').textContent = enLangDataForFooter.designedBy;
+    document.querySelector('.footer-copyright').textContent = enLangDataForFooter.copyright;
+    document.getElementById('designerName').textContent = enLangDataForFooter.designerContact.name;
+    if (document.getElementById('designerFacebook')) {
+        document.getElementById('designerFacebook').innerHTML = `<a href="${enLangDataForFooter.designerContact.facebook}" target="_blank">Facebook: www.facebook.com/RezaExpertIT</a>`;
+    }
+    document.getElementById('designerWhatsApp').textContent = enLangDataForFooter.designerContact.whatsapp;
+    document.getElementById('designerEmail').textContent = enLangDataForFooter.designerContact.email;
 }
 
 // POSTS MANAGEMENT
@@ -954,9 +1064,9 @@ function initializePosts() {
         postElement.className = 'post';
         postElement.href = post.url;
         postElement.style.backgroundImage = `url('${post.image}')`;
-        postElement.innerHTML = ` 
-            <h3>${currentLang === 'bn' ? post.title_bn : post.title_en}</h3>
-            <div class="post-category">${currentLang === 'bn' ? post.category_bn : post.category_en}</div>
+        postElement.innerHTML = `
+            <h3>${currentLang === 'bn' ? post.title_bn : (currentLang === 'ur' ? post.title_ur : post.title_en)}</h3>
+            <div class="post-category">${currentLang === 'bn' ? post.category_bn : (currentLang === 'ur' ? post.category_ur : post.category_en)}</div>
         `;
         container.appendChild(postElement);
     });
@@ -971,7 +1081,7 @@ function initializeSlider() {
     CONFIG.slidersList.forEach((slide, index) => {
         const slideDiv = document.createElement('div');
         slideDiv.className = 'slider-item';
-        slideDiv.innerHTML = slide.type === 'image' 
+        slideDiv.innerHTML = slide.type === 'image'
             ? `<img src="${slide.url}" alt="Slider ${index + 1}">`
             : `<iframe src="${slide.url}" frameborder="0" allowfullscreen></iframe>`;
         sliderContainer.appendChild(slideDiv);
@@ -1002,21 +1112,36 @@ function updateSliderPosition() {
 }
 
 // LANGUAGE TOGGLE
-document.getElementById('lang-switch-btn')?.addEventListener('click', () => {
-    currentLang = currentLang === 'bn' ? 'en' : 'bn';
+document.getElementById('bn-btn').addEventListener('click', () => {
+    currentLang = 'bn';
     document.documentElement.lang = currentLang;
-    document.getElementById('lang-switch-btn').textContent = currentLang === 'bn' ? 'English' : 'বাংলা ';
     updateAllText();
     initializePosts();
 });
 
+document.getElementById('en-btn').addEventListener('click', () => {
+    currentLang = 'en';
+    document.documentElement.lang = currentLang;
+    updateAllText();
+    initializePosts();
+});
+
+document.getElementById('ur-btn').addEventListener('click', () => {
+    currentLang = 'ur';
+    document.documentElement.lang = currentLang;
+    updateAllText();
+    initializePosts();
+});
+
+
+// MENU FUNCTIONS
 // MENU FUNCTIONS
 function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("mySidenav").classList.add("open");
 }
 
 function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("mySidenav").classList.remove("open");
 }
 
 // MENU LIST MANAGEMENT (update to include menu list)
@@ -1024,15 +1149,21 @@ function initializeMenuList() {
     const container = document.getElementById('menu-container');
     if (!container) return;
 
-    container.innerHTML = CONFIG.menuList.map(item => `
-        <a href="${item.url}" class="menu-item">
-            <h4>${currentLang === 'bn' ? item.title_bn : item.title_en}</h4>
+    container.innerHTML = '';
+    CONFIG.menuList.forEach(item => {
+        const menuItemElement = document.createElement('a');
+        menuItemElement.className = 'menu-item';
+        menuItemElement.href = item.url;
+        menuItemElement.innerHTML = `
+            <h4>${currentLang === 'bn' ? item.title_bn : (currentLang === 'ur' ? item.title_ur : item.title_en)}</h4>
             <div class="menu-category">
-                ${currentLang === 'bn' ? item.category_bn : item.category_en}
+                ${currentLang === 'bn' ? item.category_bn : (currentLang === 'ur' ? item.category_ur : item.category_en)}
             </div>
-        </a>
-    `).join('');
+        `;
+        container.appendChild(menuItemElement);
+    });
 }
+
 
 // INITIALIZATION
 window.addEventListener('DOMContentLoaded', () => {
@@ -1061,8 +1192,8 @@ document.addEventListener("DOMContentLoaded", function () {
             postElement.href = post.url;
             postElement.style.backgroundImage = `url('${post.image}')`;
             postElement.innerHTML = `
-                <h3>${currentLang === 'bn' ? post.title_bn : post.title_en}</h3>
-                <div class="post-category">${currentLang === 'bn' ? post.category_bn : post.category_en}</div>
+                <h3>${currentLang === 'bn' ? post.title_bn : (currentLang === 'ur' ? post.title_ur : post.title_en)}</h3>
+                <div class="post-category">${currentLang === 'bn' ? post.category_bn : (currentLang === 'ur' ? post.category_ur : post.category_en)}</div>
             `;
             container.appendChild(postElement);
         });
@@ -1080,6 +1211,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (loadMoreBtn) {
         loadMoreBtn.addEventListener('click', loadMorePosts);
     }
+});
+
+// Set initial language (optional, could be based on user preference or browser language detection)
+document.addEventListener('DOMContentLoaded', () => {
+    const initialLang = 'bn'; // Set default language to Bangla, you can change it to 'en' or 'ur'
+    currentLang = initialLang;
+    document.documentElement.lang = initialLang;
+    updateAllText();
+    initializePosts();
+    initializeMenuList();
 });
 
     </script>
