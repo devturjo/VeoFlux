@@ -61,8 +61,8 @@
       display: block;
     }
 span.arrow {
-    font-size: 13px;
-    margin: -10px;
+    font-size: 11px;
+    margin: -8px -25px 0px 4px;
 }
 .dropdown-content {
     display: none;
@@ -172,7 +172,7 @@ button:active {
                         border-color: #0a58ca;
   }}
                 
-.footer-designer {
+.footer-designer { 
 
 }
 
@@ -402,13 +402,13 @@ body {
 }
 
     .search-box {
-        width: 120px; 
+        width: 45px; 
         display: flex
 ;
         align-items: center;
         border: none;
         gap: 2px;
-        margin: 0px 30px 0px 0px;
+        margin: 0px 0px 0px 0px;
     }
 
 
@@ -601,7 +601,14 @@ body {
     margin-top: 5px;
     border: 1px solid #ccc;
 }
-@media (max-width: 767px) {
+@media (max-width: 767px) {.search-box {
+    width: 45px !important; /* Reduce overall width */
+    display: flex;
+    align-items: center;
+    gap: 2px; /* Adjust spacing between elements */
+
+  
+}
   .website-name img {
     width: 200px;
     height: 85px;
@@ -636,7 +643,7 @@ body {
     }
 
 .search-box {
-    width: 120px; /* Reduce overall width */
+    width: 45px; /* Reduce overall width */
     display: flex;
     align-items: center;
     gap: 2px; /* Adjust spacing between elements */
@@ -1061,8 +1068,8 @@ postsList: [
            menu: [
                 { text: 'হোম', link: 'index.html' },
                 { 
-                    text: 'পরিচিতি', link: 'about.html', 
-                    submenu: [
+                    text: 'পরিচিতি', link: 'https://about.com', 
+                    submenu: [{ text: 'পরিচিতি', link: 'goal.html' },
                         { text: 'আমাদের লক্ষ্য', link: 'goal.html' },
                         { text: 'আমাদের ইতিহাস', link: 'history.html' },
                         { text: 'দল', link: 'team.html' },
@@ -1106,7 +1113,7 @@ postsList: [
                 { text: 'Home', link: 'index.html' },
                 { 
                     text: 'About', link: 'about.html', 
-                    submenu: [
+                    submenu: [{ text: 'About', link: 'goal.html' },
                         { text: 'Our Mission', link: 'goal.html' },
                         { text: 'Our History', link: 'history.html' },
                         { text: 'Team', link: 'team.html' },
@@ -1142,7 +1149,7 @@ postsList: [
                 { text: 'ہوم', link: 'index.html' },
                 { 
                     text: 'تعارف', link: 'about.html', 
-                    submenu: [
+                    submenu: [{ text: 'تعارف', link: 'goal.html' },
                         { text: 'ہمارا مشن', link: 'goal.html' },
                         { text: 'ہماری تاریخ', link: 'history.html' },
                         { text: 'ٹیم', link: 'team.html' },
