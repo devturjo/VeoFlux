@@ -1,1494 +1,592 @@
-
 <!DOCTYPE html>
-<html lang="bn">
-<head><style>/* Basic dropdown styling */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<title>Landing Page</title>
 
-.dropdown-toggle {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer; /* Add cursor pointer for better UX */
-}
+<style>
 
-.arrow {
-    margin-left: 5px;
-    font-size: 0.8em;
-}.dropdown {
-      position: relative;
-      display: inline-block;
-      font-size: 16px;
-    }
-
-    .dropdown-btn {
-      background-color: #f1f1f1;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #ffffff00;
-      min-width: 160px;
-      border: 0px solid #ccc;
-      border-radius: 5px;
-      z-index: 1;
-    }
-
-    .dropdown-content button {
-      padding: 10px;
-      width: 50%;
-      border: non;
-      background-color: #007BFF;
-      color: white;
-      font-size: 13px;
-      text-align: right;
-      cursor: pointer;
-    }
-
-    .dropdown-content button:hover {
-      background-color: #0056b3;
-    }
-
-.dropdown.open .dropdown-content {
-    display: block;
-    margin: 0px 0px 0px -10px;
-    padding: 0px 60px 0px 0px;
-}
-span.arrow {
-    font-size: 11px;
-    margin: -8px -25px 0px 4px;
-}
-.dropdown-content {
-    display: none;
-    position: relative;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 150 !important;
-}
-.dropdown.active .dropdown-content {
-    display: inline;
-    z-index: 150 !important;
-    display: inline-grid
-;
-    justify-content: center;
-} 
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-/* Show dropdown when active */
-.dropdown.active .dropdown-content {
-    display: block;
-}
-
-.dropdown-content a {
-    display: grid !important
-;
-}
-.dropdown-content {
-    margin: 0px 0px -256px 0px;
-    z-index: 1122;
-    position: fixed !important;
-}
-._2p3a{min-width: 157px !important;
-    width: 1020px !important;}
-button{
-
-  background-color: #e1ecf4;
-  border-radius: 10px;
-  border: 1px solid #7aa7c7;
-  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
-  box-sizing: border-box;
-  color: #39739d;
-  cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
-  font-size: 11px;
-  font-weight: 400;
-  line-height: 1.15385;
-  margin: 0;
-  outline: none;
-  padding: 6px .8em;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  white-space: nowrap;
-}
-
-button:hover,
-button:focus {
-  background-color: #b3d3ea;
-  color: #2c5777;
-}
-
-button:focus {
-  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
-}
-
-button:active {
-  background-color: #a0c7e4;
-  box-shadow: none;
-  color: #2c5777;
-}
-
-
-
-#bn-btn, #en-btn, #ur-btn {
-    cursor: pointer;
-    outline: 0;
-    color: #7aa7c7;
-    background-color: #fbfbfb00;
-    border-color: #7aa7c7;
-    display: inline-block;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: left;
-    border: 1px solid #7aa7c7;
-    padding: 6px 6px;
-    font-size: 12px;
-    margin: 5px 0px 0px 0px;
-    border-radius: 7.25px;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-
-                    :hover {
-                        color: #fff;
-                        background-color: #0b5ed7;
-                        border-color: #0a58ca;
-  }}
-                
-.footer-designer { 
-
-}
-
-@media (min-width: 1024px) { /* Adjust for your preferred breakpoint */
-    div#posts-container {
-    display: grid
-;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-}
-
-
-
-
-
-
-
-.social-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  font-weight: 700;
-  font-size: 18px;
-}
-.social-grid a {
-  margin: 0px 0px 0px 0px;
-  color: #ffff;
-  weight: 700;
-  display: flex;
-  front-size: 20px;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-.footer-copyright {
-  color: #ffff;
-}
-.social-grid img{
-
-}
-
-button#lang-switch-btn {
-    padding: 10px 40px;
-    background-color: #98e2ff;
-    border-radius: 7px;
-    font-size: 18px;
-    font-weight: 600;
-}
-/* Menu Styles */
-.menu {
-  position: fixed;
-  left: -250px;
-  top: 0;
-  width: 250px;
-  height: 100%;
-  background: white;
-  transition: left 0.3s;
-  z-index: 1000;
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  }.footer-designer span{color: #ffff;}
-  .footer-designer-designedby{
-
-
-
-}
-.menu.open {
-  left: 0;
-}
-
-.menu a {
-  text-decoration: none;
-  color: #333;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-/* Slider Controls */
-.slider-controls {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  padding: 0 10px;
-}
-
-.slider-controls button {
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.footer-info p {
-  color: #ffff;
-}
-
-.footer-info a {
-  color: #ffff;
-}
-
-/* Search Suggestions */
-.search-results {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: white;
-  z-index: 1000;
-  max-height: 200px;
-  overflow-y: auto;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  display: none;
-}
-
-.search-result-item {
-  padding: 10px;
-  cursor: pointer;
-  border-bottom: 1px solid #eee;
-}
-
-.search-result-item:hover {
-  background: #f5f5f5;
-}
-
-/* Original Styles */
-.post-category {
-  color: #ffff !important;
-}
-
-.post h3 {
-  color: #ffff !important;
-}
-
-* {
-  color: #000;
+.footer-menu ul{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  align-items: center;
 }
-#mySidenav a {
-    text-decoration: none;
-    color: #333;
-    display: flex
-;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-}
-body {
-  background: #f0f8ff;
-  line-height: 1.6;
-}
-/* Corrected Sidenav CSS */
-#mySidenav {
-  position: fixed;
-  left: -250px;
-  top: 0;
-  width: 250px;
-  height: 100%;
-  background: white;
-  transition: left 0.3s;
-  z-index: 1000;
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-#mySidenav.open {
-  left: 0;
-}
-
-#mySidenav a {
+.footer-menu ul li a{
   text-decoration: none;
-  color: #333;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+  color: #fff;
+  font-size: 18px;
+  padding-left: 10px;
 }
 
-.closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-  cursor: pointer;
-}
-    .header {
-        background: white;
-             padding: 3px 20px 0px 0px;
-        border: 1px solid #ccc;
-        display: flex
-;
-        align-items: center;
-        gap: 30px;
-        position: relative;
-        align-content: space-between;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-    }
 
-.menu-icon {
-  font-size: 24px;
-  cursor: pointer;
+.navbar-brand img {
+  width: 100px;
+}
+.navbar-nav li{
+	font-weight:bold;
+}
+.navbar .navbar-nav .nav-link {
+  color: #fff;
+  font-size: 1.1em;
+  padding: 0.5em 1em;
+}
+.td .sd{
+	text-align: center;
 }
 
-.logo {
-  width: 40px;
-  height: 40px;
-  background: #4a4a4a;
+.circle {
+  background: #ddd;
   border-radius: 50%;
-}
-
-.website-name img {
-  width: 250px;
-  height: 100px;
-  margin: 0px 750px -25px 0px;
-}
-
-    .search-box {
-        width: 45px; 
-        display: flex
-;
-        align-items: center;
-        border: none;
-        gap: 2px;
-        margin: 0px 0px 0px 0px;
-    }
-
-
-.nav-banner {
-  background: white;
-  padding: 15px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  text-align: center;
-}
-
-.slider-section {
-  background: white;
-  padding: 15px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  position: relative;
-  overflow: hidden;
-}
-
-.slider-container {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: 100%;
-}
-
-.slider-item {
-  min-width: 100%;
-  height: 510px;
-  border: 1px solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.slider-item img,
-.slider-item iframe {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.prayer-time {
-  background: white;
-  padding: 20px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  text-align: center;
-}
-
-.recent-posts {
-  background: white;
-  padding: 15px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-}
-
-.post {
-  border: 1px solid #ccc;
-  padding: 15px;
-  margin: 10px 0;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  height: 150px;
-  display: flex;
-  align-items: flex-end;
-  color: white;
-}
-
-.post-category {
-  position: absolute;
-  right: 2px;
-  bottom: 2px;
-  border: 1px solid #ccc;
-  padding: 5px;
-  font-size: 14px;
-}
-
-.more-posts {
-  text-align: center;
-  margin: 15px 0;
-}
-
-.more-posts-btn {
-  background: #007bff;
-  color: white;
-  padding: 8px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.social-section {
-  background: white;
-  padding: 15px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
-}
-
-.profile-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.profile-box {
-
-    border: 2px solid #ccc;
-    padding: 0px;
-    text-align: center;
-    height: 380px;
-    overflow-y: hidden;
-  flex: 1;
-}
-
-.social-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
-.social-btn {
-
-    padding: 0;
-    background-color: #1877f2;
-    margin: 0;
-    gap: 0px;
-    font-size: 15px;
-    font-weight: 500;
-
-  border: 2px solid #ccc;
-  padding: 8px;
-  text-align: center;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-}
-
-/* Social Media Colors */
-.social-btn.facebook {
-  background-color: #1877f2;
-}
-
-.social-btn.instagram {
-  background-color: #e4405f;
-}
-
-.social-btn.youtube {
-  background-color: #ff0000;
-}
-
-.social-btn.tiktok {
-  background-color: #000000;
-}
-
-.social-btn.whatsapp {
-  background-color: #25d366;
-}
-
-.social-btn.telegram {
-  background-color: #0088cc;
-}
-
-.social-btn.skype {
-  background-color: #00aff0;
-}
-
-.social-btn.imo {
-  background-color: #ffd700;
-}
-.social-btn.rss {
-  background-color: #007eb4;
-}
-.social-btn img {
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    margin: 0;
-}
-
-.footer {
-    background: #000000;
-    padding: 0px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-}
-@media (max-width: 767px) {.search-box {
-    width: 45px !important; /* Reduce overall width */
-    display: flex;
-    align-items: center;
-    gap: 2px; /* Adjust spacing between elements */
-
-  
-}.dropdown-btn {
-    background-color: #f1f1f1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 13px;
-    margin: 0px 0px 0px -10px;
-}.slider-item {
-  min-width: 100%;
-  height: 210px;
-  border: 1px solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-    }
-    .website-name img {
-        width: 200px;
-        height: 85px;
-        margin: 0px 25px -15px -25px;
-    }.navI {
-    background: #fff;
-    padding: 10px 0;
-    white-space: nowrap;
-    overflow-x: scroll;
-    display: flex
-; 
-    scrollbar-width: none;
-    flex-direction: row;
-    justify-content: space-evenly; 
-}
-.search-box {
-    margin: 0px 0px 0px 0px;
-}
-    .header {
-        background: white;
-        padding: 3px;
-        border: 1px solid #ccc;
-        display: flex
-;
-        align-items: center;
-        gap: 30px;
-        position: relative;
-        justify-content: space-evenly !important;
-        align-content: space-between !important;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-.search-box {
-    width: 45px; /* Reduce overall width */
-    display: flex;
-    align-items: center;
-    gap: 2px; /* Adjust spacing between elements */
-
-  
-}
-
-    .search-box input {
-        width: 80px;
-        height: 20px;
-        font-size: 14px;
-        border-radius: 10px;
-        padding: 4px;
-    }
-
-
-.search-results {
-    width: 100%;
-    max-height: 150px; /* Limit height */
-    overflow-y: auto;
-    font-size: 12px;
-}
-
-.social-section {
-    background: white;
-    padding: 0px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    display: grid
-;
-    gap: 15px;
-}
-    .search-box {
-        width: 120px;
-        display: flex
-;
-        align-items: center;
-        border: none;
-        gap: 2px;
-        margin: 0px 0px 0px 0px;
-    }
-}
-
-.footer-info {
-    display: grid
-;
-    grid-template-columns: 1fr;
-    border-bottom: 1px solid #ccc;
-}
-
-.footer-contact {
-  padding: 19px;
-    border: solid;
-    border-color: #ffff;
-    border-width: 0px 0px 1px 0px;
-}
-.footer-designer {
-  padding: 15px;
-  border-left: 1px solid #ccc;
-}
-
-.footer-copyright {
-  padding: 15px;
-  text-align: center;
-}
-
-.loading {
-  opacity: 0.6;
-  pointer-events: none;
-}
-/* Corrected Sidenav CSS */
-.sidenav {
-  position: fixed;
-  left: -250px;
-  top: 0;
-  width: 250px;
-  height: 100%;
-  background: white;
-  transition: left 0.3s;
-  z-index: 1000;
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.sidenav.open {
-  left: 0;
-}
-
-.sidenav a {
-  text-decoration: none;
-  color: #333;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-.closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-} 
-.navI {
-    background: #fff;
-    padding: 10px 0;
-    white-space: nowrap;
-    overflow-x: scroll;
-    display: flex
-;
-    scrollbar-width: none;
-    flex-direction: row;
-    justify-content: space-evenly !important;
-}
-
-.navI::-webkit-scrollbar {
-  display: none;
-}
-
-.navI a, .navI span {
-  text-decoration: none;
-  color: #000;
-  font-size: 16px;
-  padding: 10px 15px;
+  color: black;
   display: inline-block;
-  flex-shrink: 0;
+  height: 80px;
+  font-weight: bold;
+  font-size: 1.2em;
+  width: 80px;
+  margin: 0 auto;
+  overflow: visible;
 }
 
-.navI {
-    background: #fff;
-    padding: 10px 0;
-    white-space: nowrap;
-    overflow-x: scroll;
-    display: flex
-;
-    scrollbar-width: none;
-    flex-direction: row;
-    justify-content: flex-start;
-}</style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Multilingual Website</title>
-    <style>
-        /* Add your CSS here */
-    </style>
+.circle span svg {
+  overflow: visible;
+
+ margin-left: 25px;
+
+}
+.show-nav {
+  top: 0;
+  transition: .5s ease-in-out .5s;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.4);
+  opacity:1;
+}
+
+button.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+h4.hero-content {
+  font-size: 22px;
+}
+
+/* Form CSS - Hero Form */
+.form-container-hero {
+    position: relative; /* For positioning iframe */
+}
+.form-hero {
+    /* Styles for the form in the hero area */
+    opacity: 1;
+    transition: opacity 0.5s ease; /* For fade out */
+}
+.form-hero.hidden {
+    opacity: 0; /* Fade out when hidden */
+    pointer-events: none; /* Prevent interaction when hidden */
+}
+
+
+/* Form CSS - Sidebar Form */
+.form-container-sidebar {
+    position: relative; /* For sticky positioning */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease; /* For fade in */
+}
+.form-container-sidebar.visible {
+    opacity: 1; /* Fade in when visible */
+}
+.form-sidebar {
+    /* Styles for the form in the sidebar - initially not sticky */
+    width: 100%; /* Take full width of sidebar column */
+    height: 650px; /* Match hero form height */
+}
+
+.form-sticky {
+    position: fixed; /* Make sidebar form sticky */
+    top: 20px;
+    width: 370px; /* Match sidebar column width */
+    z-index: 100;
+    margin-top: 0 !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+@media screen and (min-width: 768px) {
+
+  .navbar-brand img {
+    width: 280px;
+    margin-top: -16%;
+  }
+  .navbar-nav li{
+  	font-weight: bold;
+  }
+
+  .navbar-brand {
+  	margin-top:1px;
+    margin-right: 0;
+    padding: 0 1em;
+    height: 50px;
+  }
+  .sd.number{
+    font-size: 20px;
+  }
+  .form-sticky {
+      width: 370px; /* Adjust width for larger screens if needed */
+  }
+
+
+}
+@media screen and (min-width: 600px) {
+	.td{
+	text-align: right;
+    }
+    .sd{
+	text-align: left;
+    }
+    .form{
+    	margin-top:50px;
+    }
+    .text{
+    	margin-top: 65px;
+    }
+
+}
+
+
+
+
+@media (max-width: 768px) {
+  .footer-logo{
+    padding-bottom: 20px;
+  }
+
+  .sd.number {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  h4.hero-content {
+    font-size: 18px;
+  }
+
+  .container .Contributors-con{
+    margin-top: 0 !important;
+  }
+
+  .last-box{
+    padding-bottom: 30px !important;
+  }
+  .form-sticky, .form-sidebar {
+      width: 90%; /* Adjust width for mobile to take more space */
+      left: 5%; /* Center the form on mobile */
+      margin-left: 0 !important; /* Override potential left margin */
+  }
+  .form{
+      margin-top: 20px; /* Reduce top margin on mobile */
+  }
+
+}
+
+
+</style>
+
+
 </head>
-<body>
+
+
+<div class="container top-header-container" style="padding: 3px 0;">
+  <div class="col-md-12 col-sm-12 col-lg-12 head">
     <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <div id="sidenavLinks">
-        <!-- Dynamic menu links will be inserted here -->
-    </div>
-            </div>
-            <span style="font-size:30px;cursor:pointer; z-index: 999;" onclick="openNav()">&#9776;</span>
-            <h1 class="website-name"><img src="https://i.postimg.cc/0QbXBBbX/474718485-1196040922114350-2813767871145669113-n.jpg" alt="Logo"></h1>
-            
-                <div class="dropdown">
-    <button class="dropdown-btn">🌐︎ ▼</button>
-                
-    <div class="dropdown-content">  <div class="lanav">
-      <button id="bn-btn">Bangla</button>
-      <button id="en-btn">English</button>
-      <button id="ur-btn">Urdu</button>
-    </div> 
-  </div>  </div>
-                <div class="search-results" id="searchResults"></div>
-            </div>
-            <div class="lang-buttons">
-            </div>
-        </header>
-
-        <!-- Navigation -->
-        <div class="nav-banner">
-            <nav class="navI" id="mainNav"></nav>
+      <div class="row top-header-icon d-flex justify-content-between align-items-center" style="font-size: 30px;">
+        <div class="col-12 d-flex justify-content-between">
+          <div class="sd number" style="color: #1c2091; font-weight: bold;">
+            <img src="image/phone.svg" alt=""> 999999999
+          </div>
+          <div class="sd number" style="color: #1c2091; font-weight: bold;">
+            <img src="image/whatsapp.svg" alt=""> 999999999
+          </div>
         </div>
-
-        <!-- Content Sections -->
-        <div class="slider-section">
-            <div class="slider-container"></div>
-            <div class="slider-controls">
-                <button class="slider-prev">❮</button>
-                <button class="slider-next">❯</button>
-            </div>
-        </div>
-
-        <div class="prayer-time">
-            <h3 id="prayerTimeTitle"></h3>
-            <p id="dateContainer"></p>
-<iframe src="https://timesprayer.com/widgets.php?frame=3&amp;lang=en&amp;name=dhaka&amp;sound=true&amp;fcolor=FFFFFF&amp;scolor=000000&amp;tcolor=FF9C78&amp;frcolor=FFFFFF" style="border: none; overflow: hidden; width: 100%; height: 220px;"></iframe>
-        </div>
-
-        <div class="recent-posts">
-            <h2 id="recentPostsTitle"></h2>
-            <div id="posts-container"></div>
-            <div class="more-posts">
-                <button class="more-posts-btn" id="load-more-btn"></button>
-            </div>
-        </div>
-
-    <div class="social-section">
-      <div class="profile-section">
-        <div class="profile-box">
-          <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/biniaminrezaattari01&tabs=timeline&width=1000&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
-            width="100%"
-            height="600px"
-            style="border: none; overflow: hidden;"
-            scrolling="no"
-            frameborder="0"
-            allowfullscreen="true">
-          </iframe>
-        </div>
-
-
-        <div class="social-grid">
-     <a href="#" class="social-btn facebook"><img src="https://img.icons8.com/color/48/facebook.png" alt="Facebook">Facebook</a>
-<a href="#" class="social-btn instagram"><img src="https://img.icons8.com/color/48/instagram-new.png" alt="Instagram">Instagram</a>
-<a href="#" class="social-btn youtube"><img src="https://img.icons8.com/color/48/youtube.png" alt="YouTube">YouTube</a>
-<a href="#" class="social-btn tiktok"><img src="https://img.icons8.com/color/48/tiktok.png" alt="TikTok">TikTok</a>
-<a href="#" class="social-btn whatsapp"><img src="https://img.icons8.com/color/48/whatsapp.png" alt="WhatsApp">WhatsApp</a>
-<a href="#" class="social-btn telegram"><img src="https://img.icons8.com/color/48/telegram-app.png" alt="Telegram">Telegram</a>
-<a href="#" class="social-btn skype"><img src="https://img.icons8.com/color/48/skype.png" alt="Skype">Skype</a>
-<a href="#" class="social-btn imo"><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/imo-white-icon.png" alt="imo">imo</a>
-<a href="#" class="social-btn twitter"><img src="https://img.icons8.com/color/48/twitter.png" alt="Twitter">Twitter</a>
-<a href="#" class="social-btn rss"><img src="https://wcaustin.org/wp-content/uploads/2014/12/LinkedIn-InBug-2CRev.png" alt="LinkedIn">LinkedIn</a>
-<a href="#" class="social-btn pinterest"><img src="https://img.icons8.com/color/48/pinterest.png" alt="Pinterest">Pinterest</a>
-<a href="#" class="social-btn vkontakte"><img src="https://play-lh.googleusercontent.com/GntsGclzheXXASOhjSF1lCOPOznM_OARDObiTW_NQZtpYVwPQr_0ARyRyiXB0_OocmI=s64-rw" alt="VKontakte">VKontakte</a>
       </div>
     </div>
-        <!-- Footer Section -->
-        <footer class="footer">
-            <div class="footer-info">
-                <div class="footer-contact">
-                    <p class="footer-contact-demo">Rezaexpertit.online</p>
-                    <p class="footer-contact-number">Contact: 01311361595</p>
-                    <p><a href="info.html" class="footer-contact-support">Support</a></p>
-                    <p><a href="info.html" class="footer-contact-info">Info</a></p>
-                </div>
-                <div class="footer-designer">
-                    <span class="footer-designer-designedby">Made with Design by</span><br>
-                    <span id="designerName">Reza Expert IT</span><br>
-                    <span id="designerFacebook"><a href="https://www.facebook.com/RezaExpertIT" target="_blank">Facebook: www.facebook.com/RezaExpertIT</a></span><br>
-                    <span id="designerWhatsApp">WhatsApp: 01311361595</span><br>
-                    <span id="designerEmail">Email: rezaexpertit@gmail.com</span>
-                 <br><span><a href="https://www.rezaexpertit.online" target="_blank">visit: www.rezaexpertit.online</a></span>
+  </div>
 
+</div>
+
+<div class="header" style="background: #1c2091; border: 4px dashed;">
+
+  <div class="container header-container">
+
+     <nav class="navbar navbar-expand-md navbar-dark">
+
+      <div class="container-fluid">
+        <a class="navbar-brand d-md-none" href="index.html">
+           <img src="image/logo.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+          <ul class="navbar-nav mx-auto" style="justify-content: space-around; width: 100%;">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#Contributors">About Us</a>
+            </li>
+            <a class="navbar-brand d-none d-md-block" href="index.html">
+              <img src="image/logo.png" alt="logo">
+            </a>
+            <li class="nav-item">
+              <a class="nav-link" href="#our-service">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact-us">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</div>
+
+</div>
+
+
+
+<body>
+
+
+<div class="container">
+
+
+  <div class="col-md-12 col-sm-12 col-lg-12">
+    <div class="row">
+       <div class="col-md-4 col-sm-12 col-lg-4" style="align-items: center; margin: auto;">
+        <div class="hero-image">
+          <img src="image/side.png" style=" width:100%;">
+        </div>
+
+       </div>
+       <div class="col-md-4 form form-container-hero" style="margin-left: auto; margin-right: auto;">
+
+        <center>
+          <iframe id="tada-hero" class="form-hero tada" src="https://admin.clientflow.ai.in/widget/form/677912048c51f" height="650" width="100%" title="Iframe Example" scrolling="no"  style=" overflow: hidden; scroll-behavior:inherit;"></iframe>
+        </center>
+
+       </div>
+         <div class="col-md-4 text">
+
+          <h4 class="hero-content" style="text-align: center;color: #1c2091;">
+            At Book My Business, we believe every idea has the potential to become a successful venture. Our mission is to simplify the complexities of entrepreneurship and business management through a comprehensive suite of professional services. Whether you're launching your dream project or scaling your current operations, our dedicated team of experts is here to guide you through every step.
+            We specialize in end-to-end business solutions tailored to meet the unique needs of start-ups, SMES, and established enterprises. By integrating industry insights with a client-first approach, we empower you to navigate challenges, seize opportunities, and achieve long-term success.
+          </h4>
+        </div>
+
+       <h1 id="our-service" style="text-align:center;text-transform: uppercase;font-size: 40px;color:#1c2091; padding-top: 50px; padding-bottom: 20px;">Our service</h1>
+     </div>
+     <div class="row" style="padding-right:30px;padding-left:30px;">
+         <div class="col-md-9 col-sm-12 col-lg-9" style="margin-top:25px;">
+           <div class="row">
+             <div class="col-md-4 col-sm-12 col-lg-4">
+
+                  <div class="box-body" style="padding-bottom: 50px;">
+                    <div class="col-md-12"><span class="circle"><span><span><svg xmlns="http://www.w3.org/2000/svg" style="color:#007AFF; margin-top:-10px;" width="60" height="60" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+                      <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                      <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+
+                      </svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" style="color:#007AFF;background-color:white;border-radius:50px; border:1px solid; margin-top:-60px; width:20px; height:20px;margin-left: 65px;" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+                       <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+                       </svg></span></span></span><br>
+                    <h4 style="color:#1c2091"><strong>Tax Preparetion</strong></h4>
+                    <p>We prepare everything you need for your tax return</p>
+                  </div>
                 </div>
-            </div>
-            <div class="footer-copyright">Copyright © 2024 | developed by Reza Expert IT</div>
-        </footer>
+
+         </div>
+         <div class="col-md-4 col-sm-12 col-lg-4">
+          <div class="box-body" style="padding-bottom: 50px;">
+                     <div class="col-md-12"><span class="circle"><span><span><center><svg style="margin-left:0px;margin-top:5px;" xmlns="http://www.w3.org/2000/svg" style="color:#007AFF;" width="60" height="60" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+                       <path style="color:#007AFF;" d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                      </svg>
+                    </center>
+
+
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16" style="color:#007AFF; margin-top:-135px; width:28px; height:28px;margin-left:58px;">
+                       <path  d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+
+                    </svg>
+                       </svg></span></span></span><br>
+                      <h4 style="color:#1c2091"><strong>Start-up Packag</strong></h4>
+                      <p>We build financial models you can pitch to investors</p></div>
+                   </div>
+         </div>
+               <div class="col-md-4 col-sm-12 col-lg-4">
+                 <div class="box-body" style="padding-bottom: 50px;">
+                     <div class="col-md-12"><span class="circle"><span><span><center><img src="image/intro.png" style="width:80px;margin-left:30px;margin-top:10px;">
+
+                    </center>
+
+                     </span></span></span><br>
+                      <h4 style="color:#1c2091"><strong>Business Expansion Strategies</strong></h4>
+                      <p>We deliver thoughtful investment advisory services</p></div>
+                   </div>
+         </div>
+
+           </div>
+           <div class="row">
+             <div class="col-md-4 col-sm-12 col-lg-4">
+
+                   <div class="box-body" style="padding-bottom: 50px;">
+                     <div class="col-md-12"><span class="circle"><span><span><svg xmlns="http://www.w3.org/2000/svg" style="color:#007AFF; margin-top:-10px;" width="60" height="60" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+                      <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                      <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+
+                      </svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" style="color:#007AFF;background-color:white;border-radius:50px; border:1px solid; margin-top:-60px; width:20px; height:20px;margin-left: 65px;" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+                       <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+                       </svg></span></span></span><br>
+                     <h4 style="color:#1c2091"><strong>Compliance Management</strong></h4>
+                     <p>We prepare everything you need for your tax return</p>
+                   </div>
+                   </div>
+
+         </div>
+         <div class="col-md-4 col-sm-12 col-lg-4">
+          <div class="box-body" style="padding-bottom: 50px;">
+                     <div class="col-md-12"><span class="circle"><span><span><center><svg style="margin-left:0px;margin-top:5px;" xmlns="http://www.w3.org/2000/svg" style="color:#007AFF;" width="60" height="60" fill="currentColor" class="bi bi-calculator" viewBox="0 0 16 16">
+                       <path style="color:#007AFF;" d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                      </svg>
+                    </center>
+
+
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16" style="color:#007AFF; margin-top:-135px; width:28px; height:28px;margin-left:58px;">
+                       <path  d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+
+                    </svg>
+                       </svg></span></span></span><br>
+                      <h4 style="color:#1c2091"><strong>Supplier Identification</strong></h4>
+                      <p>We build financial models you can pitch to investors</p></div>
+                   </div>
+         </div>
+               <div class="col-md-4 col-sm-12 col-lg-4">
+                 <div class="box-body last-box" style="padding-bottom: 50px;">
+                     <div class="col-md-12 col-sm-12 col-lg-12"><span class="circle"><span><span><center><img src="image/intro.png" style="width:80px;margin-left:30px;margin-top:10px;">
+
+                    </center>
+
+                     </span></span></span><br>
+                      <h4 style="color:#1c2091"><strong>Legal Support and Guidance</strong></h4>
+                      <p>We deliver thoughtful investment advisory services</p></div>
+                   </div>
+         </div>
+
+           </div>
+         </div>
+
+
+       <div class="col-md-3 col-sm-12 col-lg-3 right-column">
+        <div class="form-container-sidebar">
+         <iframe id="tada-sidebar" class="form-sidebar tada" src="https://admin.clientflow.ai.in/widget/form/677912048c51f" height="650" width="100%" title="Iframe Example" scrolling="no"  style=" overflow: hidden; scroll-behavior:inherit;"></iframe>
+        </div>
+         </div>
+     </div>
+
+   </div>
+
+  <div class="container Contributors-con" style="margin-top:40px;">
+    <h1 id="Contributors" style="text-align:center;text-transform: uppercase;font-size: 40px;color:#1c2091;">Contributors</h1>
+    <div class="row" style="padding-right:30px;padding-left:30px;">
+    <div class="col-md-9 col-sm-12 col-lg-9" style="margin-top:25px;">
+      <div class="row">
+        <div class="col-md-4 col-sm-12 col-lg-4" style="margin-bottom: 50px;">
+          <span> <center> <img src="image/1.png" class="rounded-circle img-responsive" alt="Cinque Terre" >
+            <div style="color:#1c2091;margin-top: 20px;">
+            <h4>MOHIT KHURANA</h4>
+            <p>Marketing Analyst</p>
+              <p>Add a short one-line bio or <br> fun fact about your staff.</p>
+              </center></span>
+
+          </div>
+          <div class="col-md-4 col-sm-12 col-lg-4" style="margin-bottom: 50px;">
+          <span> <center> <img src="image/2.png" class="rounded-circle img-responsive" alt="Cinque Terre">
+            <div style="color:#1c2091;margin-top: 20px;">
+            <h4>DILJIT SINGH</h4>
+            <p>IT Officer</p>
+            <p>Add a short one-line bio or <br> fun fact about your staff.</p>
+              </center></span>
+
+          </div>
+          <div class="col-md-4 col-sm-12 col-lg-4" style="margin-bottom: 50px;">
+          <span> <center> <img src="image/3.png" class="rounded-circle img-responsive" alt="Cinque Terre">
+            <div style="color:#1c2091;margin-top: 20px;">
+            <h4>ESHA SHARMA</h4>
+            <p>HR Assistant</p>
+            <p>Add a short one-line bio or <br> fun fact about your staff.</p>
+              </center></span>
+
+          </div>
+
+      </div>
     </div>
 
-    <script>
-// CONFIGURATION
-const CONFIG = {
-    lang: 'bn',
-postsList: [
-    {
-        title_bn: 'বাংলাদেশের প্রাকৃতিক সৌন্দর্য',
-        title_en: 'Natural Beauty of Bangladesh',
-        title_ur: 'بنگلہ دیش کی قدرتی خوبصورتی',
-        url: '#',
-        category_bn: 'প্রকৃতি',
-        category_en: 'Nature',
-        category_ur: 'قدرت',
-        image: 'https://picsum.photos/300/150?nature'
-    },
-    {
-        title_bn: 'বাংলাদেশের সৌন্দর্য',
-        title_en: 'Beauty of Bangladesh',
-        title_ur: 'بنگلہ دیش کی خوبصورتی',
-        url: '#',
-        category_bn: 'প্রকৃতি',
-        category_en: 'Nature',
-        category_ur: 'قدرت',
-        image: 'https://picsum.photos/300/150?nature'
-    },
-    {
-        title_bn: 'সুন্দরবনের জীববৈচিত্র্য',
-        title_en: 'Biodiversity of Sundarbans',
-        title_ur: 'سندر بنز کی حیاتیاتی تنوع',
-        url: '#',
-        category_bn: 'প্রকৃতি',
-        category_en: 'Nature',
-        category_ur: 'قدرت',
-        image: 'https://picsum.photos/300/150?forest'
-    },
-    {
-        title_bn: 'কক্সবাজার সমুদ্র সৈকত',
-        title_en: 'Cox’s Bazar Beach',
-        title_ur: 'کاکس بازار بیچ',
-        url: '#',
-        category_bn: 'ভ্রমণ',
-        category_en: 'Travel',
-        category_ur: 'سفر',
-        image: 'https://picsum.photos/300/150?beach'
-    },
-    {
-        title_bn: 'সাজেক ভ্যালির মোহনীয় দৃশ্য',
-        title_en: 'Majestic View of Sajek Valley',
-        title_ur: 'ساجک ویلی کا پرشکوہ منظر',
-        url: '#',
-        category_bn: 'ভ্রমণ',
-        category_en: 'Travel',
-        category_ur: 'سفر',
-        image: 'https://picsum.photos/300/150?mountain'
-    },
-    {
-        title_bn: 'সিলেটের চা বাগান',
-        title_en: 'Tea Gardens of Sylhet',
-        title_ur: 'سلہٹ کے چائے باغات',
-        url: '#',
-        category_bn: 'প্রকৃতি',
-        category_en: 'Nature',
-        category_ur: 'قدرت',
-        image: 'https://picsum.photos/300/150?tea'
-    },
-    {
-        title_bn: 'বান্দরবানের পাহাড়ি সৌন্দর্য',
-        title_en: 'Hill Beauty of Bandarban',
-        title_ur: 'بندر بن کا پہاڑی حسن',
-        url: '#',
-        category_bn: 'ভ্রমণ',
-        category_en: 'Travel',
-        category_ur: 'سفر',
-        image: 'https://picsum.photos/300/150?hill'
-    },
-    {
-        title_bn: 'সোনারগাঁওয়ের ঐতিহ্য',
-        title_en: 'Heritage of Sonargaon',
-        title_ur: 'سونار گاؤں کا ثقافتی ورثہ',
-        url: '#',
-        category_bn: 'ঐতিহ্য',
-        category_en: 'Heritage',
-        category_ur: 'ثقافتی ورثہ',
-        image: 'https://picsum.photos/300/150?heritage'
-    },
-    {
-        title_bn: 'পাহাড়পুর বৌদ্ধ বিহার',
-        title_en: 'Paharpur Buddhist Monastery',
-        title_ur: 'پہار پور بدھ مت خانقاہ',
-        url: '#',
-        category_bn: 'ঐতিহ্য',
-        category_en: 'Heritage',
-        category_ur: 'ثقافتی ورثہ',
-        image: 'https://picsum.photos/300/150?monastery'
-    },
-    {
-        title_bn: 'মহাস্থানগড়ের ইতিহাস',
-        title_en: 'History of Mahasthangarh',
-        title_ur: 'مہاس تھان گڑھ کی تاریخ',
-        url: '#',
-        category_bn: 'ঐতিহ্য',
-        category_en: 'Heritage',
-        category_ur: 'ثقافتی ورثہ',
-        image: 'https://picsum.photos/300/150?history'
-    },
-    {
-        title_bn: 'শত বছরের পুরনো পানাম নগর',
-        title_en: 'Centuries-old Panam City',
-        title_ur: 'صدیوں پرانا پانام شہر',
-        url: '#',
-        category_bn: 'ঐতিহ্য',
-        category_en: 'Heritage',
-        category_ur: 'ثقافتی ورثہ',
-        image: 'https://picsum.photos/300/150?city'
-    },
-    {
-        title_bn: 'বাংলাদেশের খাবারের স্বাদ',
-        title_en: 'Taste of Bangladeshi Food',
-        title_ur: 'بنگلہ دیشی کھانے کا ذائقہ',
-        url: '#',
-        category_bn: 'খাবার',
-        category_en: 'Food',
-        category_ur: 'کھانا',
-        image: 'https://picsum.photos/300/150?food'
-    },
-    {
-        title_bn: 'বাংলাদেশের ঐতিহ্যবাহী পোশাক',
-        title_en: 'Traditional Attire of Bangladesh',
-        title_ur: 'بنگلہ دیش کا روایتی لباس',
-        url: '#',
-        category_bn: 'ঐতিহ্য',
-        category_en: 'Heritage',
-        category_ur: 'ثقافتی ورثہ',
-        image: 'https://picsum.photos/300/150?fashion'
-    },
-    {
-        title_bn: 'ঢাকার রাতের সৌন্দর্য',
-        title_en: 'Night Beauty of Dhaka',
-        title_ur: 'ڈھاکہ کی رات کی خوبصورتی',
-        url: '#',
-        category_bn: 'নগর',
-        category_en: 'City',
-        category_ur: 'شہر',
-        image: 'https://picsum.photos/300/150?night'
-    },
-    {
-        title_bn: 'গ্রামের শান্ত জীবন',
-        title_en: 'Peaceful Village Life',
-        title_ur: 'دیہات کی پر امن زندگی',
-        url: '#',
-        category_bn: 'গ্রাম',
-        category_en: 'Village',
-        category_ur: 'دیہات',
-        image: 'https://picsum.photos/300/150?village'
-    }
-],
-    slidersList: [
-        { type: 'image', url: 'https://i.postimg.cc/0QbXBBbX/474718485-1196040922114350-2813767871145669113-n.jpg' },
-        { type: 'video', url: 'https://www.youtube.com/embed/LwKaA6kOsvA' }
-    ],
-      texts: {
-        bn: {
-           menu: [
-                { text: 'হোম', link: 'index.html' },
-                { 
-                    text: 'পরিচিতি', link: 'https://about.com', 
-                    submenu: [{ text: 'পরিচিতি', link: 'goal.html' },
-                        { text: 'আমাদের লক্ষ্য', link: 'goal.html' },
-                        { text: 'আমাদের ইতিহাস', link: 'history.html' },
-                        { text: 'দল', link: 'team.html' },
-                        { text: 'ক্যারিয়ার', link: 'career.html' },
-                        { text: 'যোগাযোগ', link: 'contact.html' }
-                    ]
-                },
-                { text: 'লেখা পড়া', link: 'articles.html' },
-                { text: 'DMCA', link: 'dmca.html' },
-                { text: 'গোপনীয়তা নীতি', link: 'privacy.html' },
-                { text: 'শর্তাবলী', link: 'terms.html' }
-            ],
-            sidenavMenu: [ // New sidenav menu
-                { text: 'হোম', link: 'inx.html' },
-                { text: 'আমাদের সম্পর্কে', link: 'aut.html' },
-                { text: 'সেবাসমূহ', link: 'ales.html' },
-                { text: 'যোগাযোগ', link: 'da.html' },
-                { text: 'ব্লগ', link: 'priv.html' },
-                { text: 'প্রশ্ন ও উত্তর', link: 'ters.html' }
-            ],
-            home: "হোম",
-            dateText: "আজকের তারিখ: ",
-            recentPosts: "সাম্প্রতিক পোস্ট",
-            loadMore: "আরো পোস্ট দেখুন »",
-            prayerTime: "নামাজের লাইভ সময় সূচি",
-            demoWebsite: "Rezaexpertit.online",
-            contact: "Contact: ",
-            support: "Support",
-            info: "Info",
-            designedBy: "Made with Design by",
-            designerContact: {
-                name: "Reza Expert IT",
-                facebook: "https://www.facebook.com/RezaExpertIT",
-                whatsapp: "WhatsApp: 01311361595",
-                email: "rezaexpertit@gmail.com"
-            },
-            copyright: "Copyright © 2024 | developed by Reza Expert IT"
-        },
-        en: {
-           menu: [
-                { text: 'Home', link: 'index.html' },
-                { 
-                    text: 'About', link: 'about.html', 
-                    submenu: [{ text: 'About', link: 'goal.html' },
-                        { text: 'Our Mission', link: 'goal.html' },
-                        { text: 'Our History', link: 'history.html' },
-                        { text: 'Team', link: 'team.html' },
-                        { text: 'Career', link: 'career.html' },
-                        { text: 'Contact', link: 'contact.html' }
-                    ]
-                },
-                { text: 'Articles', link: 'articles.html' },
-                { text: 'DMCA', link: 'dmca.html' },
-                { text: 'Privacy Policy', link: 'privacy.html' },
-                { text: 'Terms', link: 'terms.html' }
-            ],
-            home: "Home",
-            dateText: "Today's Date: ",
-            recentPosts: "Recent Posts",
-            loadMore: "Load More Posts »",
-            prayerTime: "Live Prayer Schedule",
-            demoWebsite: "Rezaexpertit.online",
-            contact: "Contact: ",
-            support: "Support",
-            info: "Info",
-            designedBy: "Made with Design by",
-            designerContact: {
-                name: "Reza Expert IT",
-                facebook: "https://www.facebook.com/RezaExpertIT",
-                whatsapp: "WhatsApp: 01311361595",
-                email: "rezaexpertit@gmail.com"
-            },
-            copyright: "Copyright © 2024 | developed by Reza Expert IT"
-        },
-        ur: {
-                menu: [
-                { text: 'ہوم', link: 'index.html' },
-                { 
-                    text: 'تعارف', link: 'about.html', 
-                    submenu: [{ text: 'تعارف', link: 'goal.html' },
-                        { text: 'ہمارا مشن', link: 'goal.html' },
-                        { text: 'ہماری تاریخ', link: 'history.html' },
-                        { text: 'ٹیم', link: 'team.html' },
-                        { text: 'کیریئر', link: 'career.html' },
-                        { text: 'رابطہ', link: 'contact.html' }
-                    ]
-                },
-                { text: 'مضامین', link: 'articles.html' },
-                { text: 'DMCA', link: 'dmca.html' },
-                { text: 'رازداری کی پالیسی', link: 'privacy.html' },
-                { text: 'شرائط', link: 'terms.html' }
-            ],
-            home: "ہوم",
-            dateText: "آج کی تاریخ: ",
-            recentPosts: "تازہ ترین مضامین",
-            loadMore: "مزید پوسٹس لوڈ کریں »",
-            prayerTime: "لائیو نماز کا شیڈول",
-            demoWebsite: "Rezaexpertit.online",
-            contact: "رابطہ: ",
-            support: "سپورٹ",
-            info: "معلومات",
-            designedBy: "ڈیزائن بذریعہ تیار کردہ",
-            designerContact: {
-                name: "Reza Expert IT",
-                facebook: "https://www.facebook.com/RezaExpertIT",
-                whatsapp: "WhatsApp: 01311361595",
-                email: "rezaexpertit@gmail.com"
-            },
-            copyright: "کاپی رائٹ © 2024 | رضا ایکسپرٹ آئی ٹی کی تیار کردہ"
+
+    <div class="col-md-3 col-sm-12 col-lg-3">
+
+    </div>
+  </div>
+
+  </div>
+
+
+  <div class="container">
+    <h1 id="contact-us" style="text-align:center;text-transform: uppercase;font-size: 40px;color:#1c2091;">Contact Us</h1>
+  <div class="row" style="padding-right:30px;padding-left:30px;">
+    <div class="col-md-9 col-sm-12 col-lg-9" style="margin-top:25px;">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-lg-6" style="margin-bottom: 30px; align-items: center; display: flex;">
+          <div class="contact-details">
+            <span style=" display:block; margin-bottom: 15px; font-size: 24px; font-weight: 500;"><img src="image/phone.svg" alt="phone" style="width: 40px; margin-right: 10px;" >999999999</span>
+
+            <span style=" display:block; margin-bottom: 15px; font-size: 24px; font-weight: 500;"><img src="image/Gmail image.png" alt="gmail" style="width: 40px; margin-right: 10px; border-radius: 50%;" >bmb@gmail.com</span>
+
+            <span style=" display:block; margin-bottom: 15px; font-size: 24px; font-weight: 500;"><img src="image/location iamge.png" alt="location" style="width: 40px; margin-right: 10px; border-radius: 50%;" >Office location India</span>
+          </div>
+
+       </div>
+
+       <div class="col-md-6 col-sm-12 col-lg-6" style="margin-bottom: 50px;">
+        <div class="contact-map">
+          <iframe
+          width="100%"
+          height="300px"
+          style="border:0;"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.9024419174576!2d90.39118931536294!3d23.7508855946606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDQ1JzAzLjIiTiA5MMKwMjMnMzMuMCJF!5e0!3m2!1sen!2sbd!4v1620227224648!5m2!1sen!2sbd">
+      </iframe>
+        </div>
+
+     </div>
+
+      </div>
+    </div>
+
+
+    <div class="col-md-3 col-sm-12 col-lg-3">
+
+    </div>
+  </div>
+  </div>
+
+
+    <center>
+  </div>
+</div>
+
+<div class="footer" style="margin-top:40px; background: #1c2091; padding-top: 30px; padding-bottom: 30px;">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-6 col-sm-12 col-lg-6" style="align-items: center; text-align: center;">
+        <div class="footer-logo">
+          <a href="index.html"><img src="image/logo.png" alt="logo" style="width: 100px;"></a>
+        </div>
+     </div>
+
+    <div class="col-md-6 col-sm-12 col-lg-6" style="align-items: center; text-align: center; display: grid;">
+      <div class="footer-menu">
+        <ul>
+          <li>
+            <a href="index.html">Home</a>
+            <a href="#Contributors">About Us</a>
+            <a href="#our-service">Services</a>
+            <a href="#contact-us">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const heroFormContainer = document.querySelector('.form-container-hero');
+        const heroFormIframe = document.getElementById('tada-hero');
+        const sidebarFormContainer = document.querySelector('.form-container-sidebar');
+        const sidebarFormIframe = document.getElementById('tada-sidebar');
+        const servicesSection = document.getElementById('our-service');
+        const rightColumn = document.querySelector('.right-column');
+
+        let isSidebarVisible = false; // Track if sidebar form is visible
+        let isSticky = false; // Track if sidebar form is sticky
+
+        if (!heroFormContainer || !heroFormIframe || !sidebarFormContainer || !sidebarFormIframe || !servicesSection || !rightColumn) {
+            console.error("One or more form elements not found.");
+            return;
         }
-    },
-        menuList: [
-        {
-            title_bn: 'মেনু আইটেম ১',
-            title_en: 'Menu Item 1',
-            title_ur: 'مینو آئٹم ۱',
-            category_bn: 'ক্যাটাগরি ১',
-            category_en: 'Category 1',
-            category_ur: 'قسم ۱',
-            url: '#'
-        },
-        {
-            title_bn: 'মেনু আইটেম ২',
-            title_en: 'Menu Item 2',
-            title_ur: 'مینو آئٹم ۲',
-            category_bn: 'ক্যাটাগরি ২',
-            category_en: 'Category 2',
-            category_ur: 'قسم ۲',
-            url: '#'
-        }
-        // Add more menu items as needed
-    ]
-};
 
-// GLOBAL VARIABLES
-let currentLang = CONFIG.lang;
-let currentSlide = 0;
-let autoSlideInterval;
+        const servicesSectionTop = servicesSection.offsetTop;
+        const stickyThreshold = servicesSectionTop + 100; // Stick after 'Our service' section
 
-function updateAllText() {
-    const langData = CONFIG.texts[currentLang];
-    const enLangDataForFooter = CONFIG.texts['en'];
-
-    // Updated updateMenu function to accept menuType
-function updateMenu(containerId) {
-    const container = document.getElementById(containerId);
-    if (container) {
-        const langData = CONFIG.texts[currentLang].menu;
-        container.innerHTML = langData.map(item => {
-            if (item.submenu) {
-                return `<div class="dropdown">
-                            <a href="${item.link}" class="dropdown-toggle">${item.text} <span class="arrow">▼</span></a>
-                            <div class="dropdown-content">
-                                ${item.submenu.map(sub => `<a href="${sub.link}">${sub.text}</a>`).join('')}
-                            </div>
-                        </div>`;
-            } else {
-                return `<a href="${item.link}">${item.text}</a>`;
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth <= 768) { // Mobile - revert to hero only
+                if (isSidebarVisible) {
+                    sidebarFormContainer.classList.remove('visible');
+                    isSidebarVisible = false;
+                }
+                if (isSticky) {
+                    sidebarFormIframe.classList.remove('form-sticky');
+                    isSticky = false;
+                }
+                heroFormIframe.classList.remove('hidden'); // Ensure hero form is visible on mobile
+                return;
             }
-        }).join('');
 
-        // Add event listeners for dropdown toggles
-        const dropdownToggles = container.querySelectorAll('.dropdown-toggle');
-        dropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', function (e) {
-                e.preventDefault(); // Prevent default link behavior
-                const dropdown = this.parentElement;
-                dropdown.classList.toggle('active');
-            });
+            if (window.scrollY >= servicesSectionTop && !isSidebarVisible) {
+                // Hero form out of view, show sidebar form
+                heroFormIframe.classList.add('hidden'); // Fade out hero form
+                sidebarFormContainer.classList.add('visible'); // Fade in sidebar form
+                isSidebarVisible = true;
+            } else if (window.scrollY < servicesSectionTop && isSidebarVisible) {
+                // Hero form back in view, hide sidebar form
+                heroFormIframe.classList.remove('hidden'); // Fade in hero form
+                sidebarFormContainer.classList.remove('visible'); // Fade out sidebar form
+                isSidebarVisible = false;
+                sidebarFormIframe.classList.remove('form-sticky'); // Ensure not sticky when hidden
+                isSticky = false;
+            }
+
+            if (isSidebarVisible) {
+                if (window.scrollY >= stickyThreshold && !isSticky) {
+                    // Make sidebar form sticky
+                    sidebarFormIframe.classList.add('form-sticky');
+                    isSticky = true;
+                } else if (window.scrollY < stickyThreshold && isSticky) {
+                    // Unstick sidebar form
+                    sidebarFormIframe.classList.remove('form-sticky');
+                    isSticky = false;
+                }
+            }
         });
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    updateMenu("mainNav");
-});
-
-    // Update main navigation menu
-    updateMenu('mainNav', 'menu'); // Explicitly specify 'menu' for main nav
-    // Update sidenav menu
-    updateMenu('sidenavLinks', 'sidenavMenu'); // Specify 'sidenavMenu' for sidenav
-
-
-
-    // Update other text elements
-    document.getElementById('prayerTimeTitle') && (document.getElementById('prayerTimeTitle').textContent = langData.prayerTime);
-    document.getElementById('recentPostsTitle') && (document.getElementById('recentPostsTitle').textContent = langData.recentPosts);
-    document.getElementById('load-more-btn') && (document.getElementById('load-more-btn').textContent = langData.loadMore);
-
-    document.querySelector('.homeLink') && (document.querySelector('.homeLink').innerHTML = currentLang === 'bn' ? '<a href="info.html">হোম</a>' : (currentLang === 'ur' ? '<a href="info.html">ہوم</a>' : '<a href="info.html">Home</a>'));
-    document.querySelector('.aboutLink') && (document.querySelector('.aboutLink').innerHTML = currentLang === 'bn' ? '<a href="info.html">পরিচিতি</a>' : (currentLang === 'ur' ? '<a href="info.html">تعارف  </a>' : '<a href="info.html">About</a>'));
-    document.querySelector('.services') && (document.querySelector('.services').innerHTML = currentLang === 'bn' ? '<a href="info.html">লেখা পড়া</a>' : (currentLang === 'ur' ? '<a href="info.html">مضامین</a>' : '<a href="info.html">Articles</a>'));
-    document.querySelector('.clients') && (document.querySelector('.clients').innerHTML = currentLang === 'bn' ? '<a href="info.html">DMCA</a>' : (currentLang === 'ur' ? '<a href="info.html">DMCA</a>' : '<a href="info.html">DMCA</a>'));
-    document.querySelector('.contact') && (document.querySelector('.contact').innerHTML = currentLang === 'bn' ? '<a href="info.html">গোপনীয়তা নীতি</a>' : (currentLang === 'ur' ? '<a href="info.html">رازداری کی پالیسی</a>' : '<a href="info.html">Privacy Policy</a>'));
-
-
-    // Footer remains in English
-    document.querySelector('.footer-contact-demo').textContent = enLangDataForFooter.demoWebsite;
-    document.querySelector('.footer-contact-number').textContent = `${enLangDataForFooter.contact}01311361595`;
-    document.querySelector('.footer-contact-support').innerHTML = '<a href="info.html">Support</a>';
-    document.querySelector('.footer-contact-info').innerHTML = '<a href="info.html">Info</a>';
-    document.querySelector('.footer-designer-designedby').textContent = enLangDataForFooter.designedBy;
-    document.querySelector('.footer-copyright').textContent = enLangDataForFooter.copyright;
-    document.getElementById('designerName').textContent = enLangDataForFooter.designerContact.name;
-    if (document.getElementById('designerFacebook')) {
-        document.getElementById('designerFacebook').innerHTML = `<a href="${enLangDataForFooter.designerContact.facebook}" target="_blank">Facebook: www.facebook.com/RezaExpertIT</a>`;
-    }
-    document.getElementById('designerWhatsApp').textContent = enLangDataForFooter.designerContact.whatsapp;
-    document.getElementById('designerEmail').textContent = enLangDataForFooter.designerContact.email;
-}
-
-// POSTS MANAGEMENT
-function initializePosts() {
-    const container = document.getElementById('posts-container');
-    if (!container) return;
-
-    container.innerHTML = '';
-    CONFIG.postsList.forEach(post => {
-        const postElement = document.createElement('a');
-        postElement.className = 'post';
-        postElement.href = post.url;
-        postElement.style.backgroundImage = `url('${post.image}')`;
-        postElement.innerHTML = `
-            <h3>${currentLang === 'bn' ? post.title_bn : (currentLang === 'ur' ? post.title_ur : post.title_en)}</h3>
-            <div class="post-category">${currentLang === 'bn' ? post.category_bn : (currentLang === 'ur' ? post.category_ur : post.category_en)}</div>
-        `;
-        container.appendChild(postElement);
     });
-}
-
-// SLIDER MANAGEMENT
-function initializeSlider() {
-    const sliderContainer = document.querySelector('.slider-container');
-    if (!sliderContainer) return;
-
-    sliderContainer.innerHTML = '';
-    CONFIG.slidersList.forEach((slide, index) => {
-        const slideDiv = document.createElement('div');
-        slideDiv.className = 'slider-item';
-        slideDiv.innerHTML = slide.type === 'image'
-            ? `<img src="${slide.url}" alt="Slider ${index + 1}">`
-            : `<iframe src="${slide.url}" frameborder="0" allowfullscreen></iframe>`;
-        sliderContainer.appendChild(slideDiv);
-    });
-
-    startAutoSlide();
-}
-
-function startAutoSlide() {
-    autoSlideInterval = setInterval(nextSlide, 5000);
-}
-
-function nextSlide() {
-    const totalSlides = CONFIG.slidersList.length;
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateSliderPosition();
-}
-
-function prevSlide() {
-    const totalSlides = CONFIG.slidersList.length;
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    updateSliderPosition();
-}
-
-function updateSliderPosition() {
-    const sliderContainer = document.querySelector('.slider-container');
-    sliderContainer && (sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`);
-}
-
-// LANGUAGE TOGGLE
-document.getElementById('bn-btn').addEventListener('click', () => {
-    currentLang = 'bn';
-    document.documentElement.lang = currentLang;
-    updateAllText();
-    initializePosts();
-});
-
-document.getElementById('en-btn').addEventListener('click', () => {
-    currentLang = 'en';
-    document.documentElement.lang = currentLang;
-    updateAllText();
-    initializePosts();
-});
-
-document.getElementById('ur-btn').addEventListener('click', () => {
-    currentLang = 'ur';
-    document.documentElement.lang = currentLang;
-    updateAllText();
-    initializePosts();
-});
+</script>
 
 
-// MENU FUNCTIONS
-// MENU FUNCTIONS
-function openNav() {
-    document.getElementById("mySidenav").classList.add("open");
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").classList.remove("open");
-}
-
-// MENU LIST MANAGEMENT (update to include menu list)
-function initializeMenuList() {
-    const container = document.getElementById('menu-container');
-    if (!container) return;
-
-    container.innerHTML = '';
-    CONFIG.menuList.forEach(item => {
-        const menuItemElement = document.createElement('a');
-        menuItemElement.className = 'menu-item';
-        menuItemElement.href = item.url;
-        menuItemElement.innerHTML = `
-            <h4>${currentLang === 'bn' ? item.title_bn : (currentLang === 'ur' ? item.title_ur : item.title_en)}</h4>
-            <div class="menu-category">
-                ${currentLang === 'bn' ? item.category_bn : (currentLang === 'ur' ? item.category_ur : item.category_en)}
-            </div>
-        `;
-        container.appendChild(menuItemElement);
-    });
-}
-
-
-// INITIALIZATION
-window.addEventListener('DOMContentLoaded', () => {
-    updateAllText();
-    initializePosts();
-    initializeSlider();
-    initializeMenuList();
-
-    document.querySelector('.slider-prev')?.addEventListener('click', prevSlide);
-    document.querySelector('.slider-next')?.addEventListener('click', nextSlide);
-});
-document.addEventListener("DOMContentLoaded", function () {
-    const loadMoreBtn = document.getElementById('load-more-btn');
-    let currentPostIndex = 6; // Initial number of posts shown
-
-    function loadMorePosts() {
-        const container = document.getElementById('posts-container');
-        if (!container) return;
-
-        // Load next 6 posts
-        const postsToShow = CONFIG.postsList.slice(currentPostIndex, currentPostIndex + 6);
-
-        postsToShow.forEach(post => {
-            const postElement = document.createElement('a');
-            postElement.className = 'post';
-            postElement.href = post.url;
-            postElement.style.backgroundImage = `url('${post.image}')`;
-            postElement.innerHTML = `
-                <h3>${currentLang === 'bn' ? post.title_bn : (currentLang === 'ur' ? post.title_ur : post.title_en)}</h3>
-                <div class="post-category">${currentLang === 'bn' ? post.category_bn : (currentLang === 'ur' ? post.category_ur : post.category_en)}</div>
-            `;
-            container.appendChild(postElement);
-        });
-
-        // Update index
-        currentPostIndex += postsToShow.length;
-
-        // Hide button if no more posts
-        if (currentPostIndex >= CONFIG.postsList.length) {
-            loadMoreBtn.style.display = 'none';
-        }
-    }
-
-    // Attach event listener
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', loadMorePosts);
-    }
-});
-
-// Set initial language (optional, could be based on user preference or browser language detection)
-document.addEventListener('DOMContentLoaded', () => {
-    const initialLang = 'bn'; // Set default language to Bangla, you can change it to 'en' or 'ur'
-    currentLang = initialLang;
-    document.documentElement.lang = initialLang;
-    updateAllText();
-    initializePosts();
-    initializeMenuList();
-});
- const dropdown = document.querySelector('.dropdown');
-    const dropdownButton = dropdown.querySelector('.dropdown-btn');
-    const dropdownContent = dropdown.querySelector('.dropdown-content');
-
-    // Toggle the dropdown visibility
-    dropdownButton.addEventListener('click', function() {
-      dropdown.classList.toggle('open');
-    });
-
-    // Add event listeners for each language button
-    document.getElementById('bn-btn').addEventListener('click', function() {
-      dropdown.classList.remove('open'); // Close dropdown after selection
-    });
-    document.getElementById('en-btn').addEventListener('click', function() {
-      dropdown.classList.remove('open'); // Close dropdown after selection
-    });
-    document.getElementById('ur-btn').addEventListener('click', function() {
-
-      dropdown.classList.remove('open'); // Close dropdown after selection
-    });
-    </script>
 </body>
+
 </html>
