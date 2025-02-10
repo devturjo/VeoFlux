@@ -585,7 +585,7 @@
             <span>Available now, only 3 spots left</span>
         </div>
         <h1>
-            <span class="orange-text">DeepOrbitAI</span><br>
+            <span class="orange-text">DeepOrbit</span><br>
             Beyond <span class="star">✦</span> Limits.<br>
             <span class="orange-text">Amplified With AI.</span>
         </h1>
@@ -674,7 +674,7 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         camera.position.z = 2;
 
-        const particleCount = 1000;
+        const particleCount = 1500;
         const posArray = new Float32Array(particleCount * 3);
 
         for (let i = 0; i < posArray.length; i++) {
@@ -685,7 +685,7 @@
         particles.setAttribute("position", new THREE.BufferAttribute(posArray, 3));
 
         const material = new THREE.PointsMaterial({
-            size: 0.007,
+            size: 0.006,
             color: 0xff6b00,
             transparent: true,
             opacity: 0.5,
@@ -845,131 +845,53 @@
 
         menuIcon.addEventListener('click', () => {
             sideMenu.classList.add('open');
-            gsap.fromTo(sideMenu, {x: "100%"}, {x: "0%", duration: 0.5, ease: "power3.out"});
+            gsap.fromTo(sideMenu, {x: "100%"}, {x: "0%", duration: 0.1, ease: "power4.out"});
         });
 
         closeBtn.addEventListener('click', () => {
-            gsap.to(sideMenu, {x: "100%", duration: 0.5, ease: "power3.in", onComplete: () => {
+            gsap.to(sideMenu, {x: "100%", duration: 0.3, ease: "power2.in", onComplete: () => {
                 sideMenu.classList.remove('open');
             }});
         });
     });
 
-class SmoothScroll {
-    constructor(options = {}) {
-        this.options = {
-            duration: options.duration || 800,
-            easing: options.easing || this.easeInOutCubic,
-            multiplier: options.multiplier || 1,
-            threshold: options.threshold || 50,
-            touchpad: options.touchpad || false,
-            mobile: options.mobile !== false
-        };
+(function () {
+  'use strict';
+  const easeFactor = 0.08; 
+  const maxDelta = 500; 
 
-        this.isScrolling = false;
-        this.lastScrollTime = Date.now();
-        this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
-        this.init();
+  let targetScroll = window.scrollY;
+  let currentScroll = window.scrollY;
+  let isAnimating = false;
+
+  function animateScroll() {
+  
+    const delta = targetScroll - currentScroll;
+    currentScroll += delta * easeFactor;
+    window.scrollTo(0, currentScroll);
+    if (Math.abs(delta) > 0.7) {
+      requestAnimationFrame(animateScroll);
+    } else {
+      isAnimating = false;
     }
-
-    init() {
-        if (this.isMobile && !this.options.mobile) return;
-        
-        // Prevent scroll chaining
-        document.documentElement.style.scrollBehavior = 'auto';
-        document.documentElement.style.overscrollBehavior = 'none';
-        
-        this.bindEvents();
+  }
+  function onWheel(event) {
+    event.preventDefault();
+    let scrollAmount = event.deltaY;
+    if (scrollAmount > maxDelta) scrollAmount = maxDelta;
+    if (scrollAmount < -maxDelta) scrollAmount = -maxDelta;
+    targetScroll += scrollAmount;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+    if (!isAnimating) {
+      isAnimating = true;
+      requestAnimationFrame(animateScroll);
     }
+  }
 
-    bindEvents() {
-        window.addEventListener('wheel', this.handleWheel.bind(this), { passive: false });
-        window.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
-        window.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
-    }
+  window.addEventListener('wheel', onWheel, { passive: false });
+})();
 
-    handleWheel(e) {
-        if (this.isScrolling) return;
-        
-        const now = Date.now();
-        const deltaTime = now - this.lastScrollTime;
-        
-        // Detect touchpad
-        if (this.options.touchpad && Math.abs(e.deltaY) < this.options.threshold) {
-            return;
-        }
-
-        // Throttle scroll events
-        if (deltaTime > 40) {
-            e.preventDefault();
-            const delta = e.deltaY * this.options.multiplier;
-            this.smoothScroll(delta);
-            this.lastScrollTime = now;
-        }
-    }
-
-    handleTouchStart(e) {
-        this.touchStartY = e.touches[0].clientY;
-    }
-
-    handleTouchMove(e) {
-        if (!this.touchStartY || this.isScrolling) return;
-
-        const touchDelta = this.touchStartY - e.touches[0].clientY;
-        if (Math.abs(touchDelta) > this.options.threshold) {
-            e.preventDefault();
-            this.smoothScroll(touchDelta * 2);
-            this.touchStartY = null;
-        }
-    }
-
-    smoothScroll(delta) {
-        const startPosition = window.scrollY;
-        const targetPosition = startPosition + delta;
-        const startTime = performance.now();
-        this.isScrolling = true;
-
-        const animate = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / this.options.duration, 1);
-            
-            window.scrollTo({
-                top: startPosition + (targetPosition - startPosition) * this.options.easing(progress)
-            });
-
-            if (progress < 1) {
-                requestAnimationFrame(animate);
-            } else {
-                this.isScrolling = false;
-            }
-        };
-
-        requestAnimationFrame(animate);
-    }
-
-    easeInOutCubic(t) {
-        return t < 0.5 
-            ? 4 * t * t * t 
-            : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    }
-
-    // Additional easing functions
-    static easings = {
-        linear: t => t,
-        easeInQuad: t => t * t,
-        easeOutQuad: t => 1 - (1 - t) * (1 - t),
-        easeInOutQuad: t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
-    };
-}
-
-// Usage
-const smoothScroller = new SmoothScroll({
-    duration: 800,
-    multiplier: 1.2,
-    touchpad: true,
-    threshold: 50
-});
 </script>
 </body>
 </html>
