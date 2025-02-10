@@ -854,6 +854,122 @@
             }});
         });
     });
+
+class SmoothScroll {
+    constructor(options = {}) {
+        this.options = {
+            duration: options.duration || 800,
+            easing: options.easing || this.easeInOutCubic,
+            multiplier: options.multiplier || 1,
+            threshold: options.threshold || 50,
+            touchpad: options.touchpad || false,
+            mobile: options.mobile !== false
+        };
+
+        this.isScrolling = false;
+        this.lastScrollTime = Date.now();
+        this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        this.init();
+    }
+
+    init() {
+        if (this.isMobile && !this.options.mobile) return;
+        
+        // Prevent scroll chaining
+        document.documentElement.style.scrollBehavior = 'auto';
+        document.documentElement.style.overscrollBehavior = 'none';
+        
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        window.addEventListener('wheel', this.handleWheel.bind(this), { passive: false });
+        window.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
+        window.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
+    }
+
+    handleWheel(e) {
+        if (this.isScrolling) return;
+        
+        const now = Date.now();
+        const deltaTime = now - this.lastScrollTime;
+        
+        // Detect touchpad
+        if (this.options.touchpad && Math.abs(e.deltaY) < this.options.threshold) {
+            return;
+        }
+
+        // Throttle scroll events
+        if (deltaTime > 40) {
+            e.preventDefault();
+            const delta = e.deltaY * this.options.multiplier;
+            this.smoothScroll(delta);
+            this.lastScrollTime = now;
+        }
+    }
+
+    handleTouchStart(e) {
+        this.touchStartY = e.touches[0].clientY;
+    }
+
+    handleTouchMove(e) {
+        if (!this.touchStartY || this.isScrolling) return;
+
+        const touchDelta = this.touchStartY - e.touches[0].clientY;
+        if (Math.abs(touchDelta) > this.options.threshold) {
+            e.preventDefault();
+            this.smoothScroll(touchDelta * 2);
+            this.touchStartY = null;
+        }
+    }
+
+    smoothScroll(delta) {
+        const startPosition = window.scrollY;
+        const targetPosition = startPosition + delta;
+        const startTime = performance.now();
+        this.isScrolling = true;
+
+        const animate = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / this.options.duration, 1);
+            
+            window.scrollTo({
+                top: startPosition + (targetPosition - startPosition) * this.options.easing(progress)
+            });
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            } else {
+                this.isScrolling = false;
+            }
+        };
+
+        requestAnimationFrame(animate);
+    }
+
+    easeInOutCubic(t) {
+        return t < 0.5 
+            ? 4 * t * t * t 
+            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    // Additional easing functions
+    static easings = {
+        linear: t => t,
+        easeInQuad: t => t * t,
+        easeOutQuad: t => 1 - (1 - t) * (1 - t),
+        easeInOutQuad: t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2
+    };
+}
+
+// Usage
+const smoothScroller = new SmoothScroll({
+    duration: 800,
+    multiplier: 1.2,
+    touchpad: true,
+    threshold: 50
+});
 </script>
 </body>
 </html>
