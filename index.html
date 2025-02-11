@@ -40,6 +40,15 @@
             border-radius: 50%;
             transform: translate(-50%, -50%);
         }
+@media (max-width: 768px) { /* Adjust breakpoint if needed */
+    .cursor-dot, .cursor-circle {
+        display: none !important;
+    }
+
+    body {
+        cursor: auto !important; /* Restore default cursor */
+    }
+}
 
         .cursor-circle {
             width: 50px;
