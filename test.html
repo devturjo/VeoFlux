@@ -1177,42 +1177,68 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
 
+
+
+
+
 (function () {
-'use strict';
-const easeFactor = 0.08;
-const maxDelta = 500;
+    'use strict';
+    const easeFactor = 0.08;
+    const maxDelta = 500;
 
-let targetScroll = window.scrollY;
-let currentScroll = window.scrollY;
-let isAnimating = false;
+    let targetScroll = window.scrollY;
+    let currentScroll = window.scrollY;
+    let isAnimating = false;
+    let lastUserScroll = Date.now();
 
-function animateScroll() {
+    function animateScroll() {
+        const delta = targetScroll - currentScroll;
+        currentScroll += delta * easeFactor;
+        window.scrollTo(0, currentScroll);
+        
+        if (Math.abs(delta) > 0.5) {
+            requestAnimationFrame(animateScroll);
+        } else {
+            isAnimating = false;
+        }
+    }
 
-const delta = targetScroll - currentScroll;
-currentScroll += delta * easeFactor;
-window.scrollTo(0, currentScroll);
-if (Math.abs(delta) > 0.7) {
-  requestAnimationFrame(animateScroll);
-} else {
-  isAnimating = false;
-}
-}
-function onWheel(event) {
-event.preventDefault();
-let scrollAmount = event.deltaY;
-if (scrollAmount > maxDelta) scrollAmount = maxDelta;
-if (scrollAmount < -maxDelta) scrollAmount = -maxDelta;
-targetScroll += scrollAmount;
-const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
-if (!isAnimating) {
-isAnimating = true;
-requestAnimationFrame(animateScroll);
-}
-}
+    function onWheel(event) {
+        event.preventDefault();
+        let scrollAmount = event.deltaY;
+        
+        if (scrollAmount > maxDelta) scrollAmount = maxDelta;
+        if (scrollAmount < -maxDelta) scrollAmount = -maxDelta;
+        
+        targetScroll += scrollAmount;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+        
+        if (!isAnimating) {
+            isAnimating = true;
+            requestAnimationFrame(animateScroll);
+        }
+        
+        lastUserScroll = Date.now();
+    }
 
-window.addEventListener('wheel', onWheel, { passive: false });
+    // Sync scroll position when user drags scrollbar
+    function handleScroll() {
+        if (!isAnimating && Date.now() - lastUserScroll > 100) {
+            targetScroll = currentScroll = window.scrollY;
+        }
+    }
+
+    window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('scroll', handleScroll);
 })();
+
+
+
+
+
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
