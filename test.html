@@ -20,6 +20,61 @@
         --scrollbar-color: rgba(255, 107, 0, 0.5); /* Scrollbar color */
         --scrollbar-track-color: transparent; /* Scrollbar track color */
     }
+       * {
+
+            cursor: none !important;
+        }
+
+        .cursor-dot, .cursor-circle {
+            pointer-events: none;
+            position: fixed;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.15s ease-out;
+            z-index: 9999;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: #ff6b00;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-circle {
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(255, 107, 0, 0.8);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            /* mix-blend-mode: difference;  Inverted color removed */
+        }
+
+        body:not(.touch-device) {
+            cursor: none;
+        }
+
+        /* Hover effect */
+        .cursor-hover .cursor-dot {
+            transform: translate(-50%, -50%) scale(1.8);
+            background: #ffffff;
+        }
+
+        .cursor-hover .cursor-circle {
+            transform: translate(-50%, -50%) scale(1.8);
+            border-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-width: 0px;
+        }
+
+        .cursor-active .cursor-dot {
+            background: #fff;
+        }
+
+        .cursor-active .cursor-circle {
+            border-color: #fff;
+        }
+
 
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
@@ -695,7 +750,7 @@
     .form-control {
         padding: 1rem;
         border-radius: 8px;
-        border: 1px solid rgba(255,255,255,0.1);
+        border: 1px solid #ff6b00;
         background: rgba(255,255,255,0.02);
         color: var(--light);
         transition: border-color 0.3s ease;
@@ -737,7 +792,7 @@
         color: var(--light);
         text-align: center;
         padding: 2rem;
-        border-top: 1px solid rgba(255,255,255,0.1);
+        border-top: 1px solid #ff6b00;
     }
 
     /* Back to top button */
@@ -747,7 +802,7 @@
         right: 20px;
         z-index: 1000;
         opacity: 0;
-        visibility: hidden;
+        visibility: hidden; 
         transform: translateY(20px);
         transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
     }
@@ -761,6 +816,9 @@
 
 </head>
 <body>
+ <div class="cursor-dot"></div>
+  <div class="cursor-circle"></div>
+
     <div class="loader">
         <div class="loader-content"></div>
     </div>
@@ -1287,6 +1345,66 @@ backToTopBtn.addEventListener('click', (e) => {
     e.preventDefault();
     gsap.to(window, {duration: 1, scrollTo: 0, ease: "power2.inOut"});
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorCircle = document.querySelector('.cursor-circle');
+            let mouseX = 0, mouseY = 0;
+            let dotX = 0, dotY = 0;
+            let circleX = 0, circleY = 0;
+            let isMoving = false;
+
+            function animate() {
+                // Smooth movement
+                dotX += (mouseX - dotX) * 0.35;
+                dotY += (mouseY - dotY) * 0.35;
+                cursorDot.style.left = `${dotX}px`;
+                cursorDot.style.top = `${dotY}px`;
+
+                circleX += (mouseX - circleX) * 0.15;
+                circleY += (mouseY - circleY) * 0.15;
+                cursorCircle.style.left = `${circleX}px`;
+                cursorCircle.style.top = `${circleY}px`;
+
+                requestAnimationFrame(animate);
+            }
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (!isMoving) {
+                    cursorDot.style.opacity = '1';
+                    cursorCircle.style.opacity = '0.8';
+                    isMoving = true;
+                }
+            });
+
+            document.querySelectorAll('a, button, input, [data-cursor]').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    document.body.classList.add('cursor-hover');
+                });
+                el.addEventListener('mouseleave', () => {
+                    document.body.classList.remove('cursor-hover');
+                });
+            });
+
+            document.addEventListener('mousedown', () => {
+                document.body.classList.add('cursor-active');
+            });
+
+            document.addEventListener('mouseup', () => {
+                document.body.classList.remove('cursor-active');
+            });
+
+            document.addEventListener('mouseleave', () => {
+                cursorDot.style.opacity = '0';
+                cursorCircle.style.opacity = '0';
+                isMoving = false;
+            });
+
+            animate();
+        });
 </script>
 </body>
 </html>
