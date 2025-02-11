@@ -1003,7 +1003,7 @@
 </section>
 
 <!-- Mission Section -->
-<section class="mission" id="mission">
+<section class="mission1" id="mission">
     <h2>Our Mission: <span class="orange-text">Innovation</span><br> Driven by <span class="orange-text">AI</span>, Powered by <span class="orange-text">You</span>.</h2>
     <p>First impressions matter. That's why our mission is to create clean, enduring<br>designs that elevate. First impressions matter. That's why our mission.</p>
 </section>
@@ -1114,12 +1114,12 @@ renderer.setSize(window.innerWidth, window.innerHeight);
     gsap.from([".mission h2", ".mission p"], { // Animate mission text together
         scrollTrigger: {
             trigger: ".mission",
-            start: "top bottom-=20%",
+            start: "top 65%",
             toggleActions: "play none none reverse",
         },
         y: 60,
         opacity: 0,
-        duration: 1.5,
+        duration: 1,
         ease: "power2.out",
         stagger: 0.2,
     });
@@ -1407,12 +1407,12 @@ document.addEventListener('DOMContentLoaded', () => {
 gsap.from(".skills-section h2, .skills-section p", {
     scrollTrigger: {
         trigger: ".skills-section",
-        start: "top 80%",
+        start: "top 85%",
         toggleActions: "play none none reverse",
     },
     y: 60,
     opacity: 0,
-    duration: 1.5,
+    duration: 1,
     ease: "power2.out",
     stagger: 0.2,
 });
@@ -1420,12 +1420,12 @@ gsap.from(".skills-section h2, .skills-section p", {
 gsap.from(".benefits h2, .benefits p", {
     scrollTrigger: {
         trigger: ".benefits",
-        start: "top 80%",
+        start: "top 85%",
         toggleActions: "play none none reverse",
     },
     y: 60,
     opacity: 0,
-    duration: 1.5,
+    duration: 1,
     ease: "power2.out",
     stagger: 0.2,
 });
@@ -1433,15 +1433,31 @@ gsap.from(".benefits h2, .benefits p", {
 gsap.from(".contact-section h2, .contact-section p", {
     scrollTrigger: {
         trigger: ".contact-section",
-        start: "top 80%",
+        start: "top 85%",
         toggleActions: "play none none reverse",
     },
     y: 60,
     opacity: 0,
-    duration: 1.5,
+    duration: 1,
     ease: "power2.out",
     stagger: 0.2,
 });
+
+
+
+gsap.from(".mission1 h2, .mission1 p", {
+    scrollTrigger: {
+        trigger: ".mission1",
+        start: "top 85%",
+        toggleActions: "play none none reverse",
+    },
+    y: 60,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+    stagger: 0.2,
+});
+
 
 </script>
 </body>
