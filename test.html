@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 
 <style>
     :root {
@@ -1317,21 +1318,29 @@ gsap.utils.toArray(".skill-bar").forEach(bar => {
 });
 
 // Back to top button functionality (Keep this as is)
-const backToTopBtn = document.querySelector('.back-to-top-btn');
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        backToTopBtn.classList.add('show');
-    } else {
-        backToTopBtn.classList.remove('show');
-    }
-});
+   document.addEventListener("DOMContentLoaded", () => {
+            gsap.registerPlugin(ScrollToPlugin);
 
-backToTopBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    gsap.to(window, {duration: 1, scrollTo: 0, ease: "power2.inOut"});
-});
+            const backToTopBtn = document.querySelector(".back-to-top-btn");
 
+            if (backToTopBtn) {
+                window.addEventListener("scroll", () => {
+                    if (window.scrollY > 300) {
+                        backToTopBtn.classList.add("show");
+                    } else {
+                        backToTopBtn.classList.remove("show");
+                    }
+                });
+
+                backToTopBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    gsap.to(window, { duration: 1, scrollTo: 0, ease: "power2.inOut" });
+                });
+            } else {
+                console.error("Back to Top button not found!");
+            }
+        });
 
 // Initialize Three.js Particle System (Keep this as is - Moved and integrated)
         const canvas = document.getElementById("particle-canvas");
