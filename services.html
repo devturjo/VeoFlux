@@ -1,0 +1,1278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+<style>
+    :root {
+        --primary: #ff6b00;
+        --dark: #000000;
+        --light: #ffffff;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+         --scrollbar-width: 10px; /* Custom scrollbar width */
+        --scrollbar-color: rgba(255, 107, 0, 0.5); /* Scrollbar color */
+        --scrollbar-track-color: transparent; /* Scrollbar track color */
+    }
+       * {
+
+            cursor: none !important;
+        }
+
+        .cursor-dot, .cursor-circle {
+            pointer-events: none;
+            position: fixed;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.15s ease-out;
+            z-index: 9999;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: #ff6b00;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+@media (max-width: 768px) { /* Adjust breakpoint if needed */
+    .cursor-dot, .cursor-circle {
+        display: none !important;
+    }
+
+    body {
+        cursor: auto !important; /* Restore default cursor */
+    }
+}
+
+        .cursor-circle {
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(255, 107, 0, 0.8);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            /* mix-blend-mode: difference;  Inverted color removed */
+        }
+
+        body:not(.touch-device) {
+            cursor: none;
+        }
+
+        /* Hover effect */
+        .cursor-hover .cursor-dot {
+            transform: translate(-50%, -50%) scale(1.8);
+            background: #ffffff;
+        }
+
+        .cursor-hover .cursor-circle {
+            transform: translate(-50%, -50%) scale(1.8);
+            border-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-width: 0px;
+        }
+
+        .cursor-active .cursor-dot {
+            background: #fff;
+        }
+
+        .cursor-active .cursor-circle {
+            border-color: #fff;
+        }
+
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: var(--scrollbar-width);
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: var(--scrollbar-track-color);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--scrollbar-color);
+        border-radius: 6px;
+        border: 2px solid var(--dark); /* Add a border to the thumb */
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: var(--primary);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+        background-color: var(--dark);
+        color: var(--light);
+        overflow-x: hidden;
+        line-height: 1.6;
+    }
+
+    #particle-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .content-wrapper {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Enhanced Navigation */
+    .nav {
+        transform: translate(25%, 20%) !important;
+        background: rgba(71, 71, 71, 0.14);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6.7px);
+        -webkit-backdrop-filter: blur(6.7px);
+        border: 1px solid rgba(71, 71, 71, 0.99);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 70%;
+        z-index: 1000;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
+    }
+
+    .nav.scrolled {
+        padding: 1rem 2rem;
+        background: rgba(71, 71, 71, 0.14);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6.7px);
+        -webkit-backdrop-filter: blur(6.7px);
+        border: 1px solid rgba(71, 71, 71, 0.99);
+    }
+
+    .logo {
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 1.5rem;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .logo::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--primary);
+        transform: translateX(-100%);
+        transition: var(--transition);
+    }
+
+    .logo:hover::after {
+        transform: translateX(0);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2.5rem;
+    }
+
+    .nav-links a {
+        color: var(--light);
+        text-decoration: none;
+        position: relative;
+        padding: 0.5rem 0;
+        font-weight: 500;
+        transition: var(--transition);
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--primary);
+        transform: scaleX(0);
+        transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+        color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+        transform: scaleX(1);
+    }
+
+    /* Mobile Menu Icon */
+    .menu-icon {
+        display: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        font-size: 1.5rem;
+    }
+
+    /* Side Menu */
+    .side-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 250px; /* Adjust width as needed */
+        background-color: var(--dark);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        transform: translateX(100%);
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1001; /* Higher than nav */
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .side-menu.open {
+        transform: translateX(0);
+    }
+
+    .side-menu .close-btn {
+        color: var(--light);
+        font-size: 1.5rem;
+        cursor: pointer;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .side-menu .nav-links-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .side-menu .nav-links-mobile a {
+        color: var(--light);
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+    }
+
+    .side-menu .nav-links-mobile a:hover {
+        color: var(--primary);
+    }
+
+
+    /* Enhanced Hero Section */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10rem 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, rgba(255,107,0,0.1) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .availability {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(0,255,0,0.1);
+        padding: 0.5rem 1rem;
+        border-radius: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .availability-dot {
+        width: 8px;
+        height: 8px;
+        background: #00ff00;
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.5); opacity: 0.5; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+    }
+
+    .orange-text {
+        color: var(--primary);
+        position: relative;
+        display: inline-block;
+    }
+
+    .star {
+        display: inline-block;
+        animation: rotate 6s linear infinite;
+        font-size: 1.5em;
+        vertical-align: middle;
+        margin: 0 0.5rem;
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    /* Enhanced Buttons */
+    .button, .back-to-top-btn, .button-body {
+        background: rgba(255,107,0,0.1);
+        color: var(--light) !important;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        border: 1px solid var(--primary);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 500;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        z-index: 1; /* Ensure button text is above the overlay */
+    }
+
+    .button::before, .back-to-top-btn::before, .button-body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--primary);
+        transform: translateX(-100%);
+        /* transition: var(--transition); */ /* Removed CSS transition for GSAP control */
+        z-index: -1;
+    }
+
+    /* Hover effect will be controlled by GSAP */
+
+
+    .button:hover, .back-to-top-btn:hover, .button-body:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(255,107,0,0.2);
+    }
+
+
+    .button-body{
+        margin: 30px 0px -10px 0px;
+    }
+
+
+    /* Enhanced Benefits Section */
+    .benefits {
+        padding: 12rem 2rem;
+        text-align: center;
+        background: linear-gradient(to bottom, transparent, rgba(255,107,0,0.05), transparent);
+    }
+
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 4rem auto;
+    }
+
+    .benefit-card, .counter-card, .skill-bar-container {
+        background: rgba(255,255,255,0.02);
+        padding: 2.5rem;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.1);
+        position: relative;
+        overflow: hidden;
+        /*transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for card hover */
+    }
+
+    .benefit-card::before, .counter-card::before, .skill-bar-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, transparent, rgba(255,107,0,0.1), transparent);
+        transform: translateX(-100%);
+        transition: var(--transition);
+        z-index: -1;
+    }
+
+    .benefit-card:hover::before, .counter-card:hover::before, .skill-bar-container:hover::before {
+        transform: translateX(100%);
+    }
+
+    .benefit-card:hover, .counter-card:hover, .skill-bar-container:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary);
+        box-shadow: 0 20px 40px rgba(255,107,0,0.1);
+    }
+
+    .benefit-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--primary);
+        border-radius: 50%;
+        margin: 0 auto 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        transition: var(--transition);
+    }
+
+    .benefit-card:hover .benefit-icon {
+        transform: rotateY(360deg);
+    }
+
+    /* Enhanced Mission Section */
+    .mission {
+        padding: 5rem 2rem;
+        text-align: center;
+        position: relative;
+    }
+
+    .mission h2 {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        max-width: 1200px;
+        margin: 0 auto;
+        line-height: 1.3;
+        font-weight: 800;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav {
+            width: 90%;
+            transform: translate(5%, 20%) !important;
+        }
+      .buttonPC .button{
+        display:none;
+       }
+        .nav-links {
+            display: none; /* Hide desktop nav links */
+        }
+        .menu-icon {
+            display: block; /* Show mobile menu icon */
+        }
+        .benefits-grid {
+            grid-template-columns: 1fr;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 3rem);
+        }
+        .hero {
+            padding: 8rem 1rem 2rem 1rem;
+        }
+        .benefits {
+            padding: 10rem 1rem;
+        }
+        .mission {
+            padding: 2rem 1rem;
+        }
+
+        p {
+            margin: 10px 0px;
+            line-height: 20px;
+        }
+    }
+
+    /* Loading Animation */
+    .loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--dark);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .loader-content {
+        width: 40px;
+        height: 40px;
+        border: 3px solid var(--light);
+        border-top-color: var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    /* Hero Carousel Styles */
+    .hero-carousel-container {
+        position: relative;
+        width: 80%; /* Adjust as needed */
+        max-width: 600px; /* Maximum width of carousel */
+        margin: 2rem auto 0; /* Center below the button */
+        perspective: 800px; /* For 3D effect */
+        overflow: hidden;
+    }
+
+    .hero-carousel {
+        display: flex;
+        aspect-ratio: 16 / 9; /* Example aspect ratio */
+        width: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transition */
+    }
+
+    .carousel-slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(100%) scale(0.9); /* Start off-screen and slightly smaller */
+    }
+
+    .carousel-slide.active {
+        opacity: 1;
+        pointer-events: auto;
+        position: relative; /* To bring active slide forward */
+        transform: translateX(0) scale(1); /* Active slide in place and full size */
+        z-index: 1;
+    }
+
+    .carousel-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .carousel-slide:not(.active) {
+        transform: translateX(100%) rotateY(15deg) scale(0.9); /* Example 3D effect for inactive slides */
+    }
+
+    .hero-carousel-container:hover .carousel-slide:not(.active) {
+        opacity: 0.6; /* Dim inactive slides on hover */
+    }
+
+    .hero-carousel-container:hover .carousel-slide.active {
+        transform: translateX(0) scale(1.15); /* Slightly enlarge active slide on hover */
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* Enhance shadow on hover */
+    }
+
+
+        .counter-section {
+        padding: 8rem 2rem;
+        text-align: center;
+    }
+
+
+    .counter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .counter-card {
+        padding: 2rem;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .counter-value {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--primary);
+        line-height: 1;
+    }
+
+    .counter-label {
+        font-size: 1rem;
+        color: var(--light-grey);
+        margin-top: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .counter-section {
+            padding: 6rem 1.5rem;
+        }
+        .counter-grid {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2.5rem;
+        }
+        .counter-card {
+            padding: 2rem;
+        }
+        .counter-value {
+            font-size: 2.5rem;
+        }
+        .counter-label {
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Skill Bar Section */
+    .skills-section {
+        padding: 8rem 2rem;
+        text-align: center;
+        background: linear-gradient(to bottom, rgba(255,107,0,0.05), transparent, rgba(255,107,0,0.05));
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 4rem auto;
+    }
+
+    .skill-bar-container {
+        padding: 2rem;
+    }
+
+    .skill-label {
+        text-align: left;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+
+    .skill-bar-bg {
+        background: rgba(255,255,255,0.05);
+        height: 10px;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .skill-bar {
+        height: 100%;
+        background-color: var(--primary);
+        width: 0%; /* Initial width set to 0 for animation */
+        border-radius: 5px;
+        transition: width 1s ease-out; /* Animation controlled by GSAP now */
+    }
+
+    /* Contact Form Section */
+    .contact-section {
+        padding: 8rem 2rem;
+        text-align: center;
+    }
+
+    .contact-form {
+        max-width: 700px;
+        margin: 2rem auto;
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .form-group label {
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+
+    .form-control {
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #ff6b00;
+        background: rgba(255,255,255,0.02);
+        color: var(--light);
+        transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: rgba(255, 107, 0, 0.1);
+    }
+
+    textarea.form-control {
+        resize: vertical;
+        min-height: 150px;
+
+    }
+
+    .form-submit-btn {
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 8px;
+        background-color: var(--primary);
+        color: var(--dark);
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        align-self: start; /* Align button to the start of the grid item */
+    }
+
+    .form-submit-btn:hover {
+        background-color: #ff8c3b; /* Lighter primary color on hover */
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255,107,0,0.3);
+    }
+
+    /* Footer */
+    .footer {
+        background-color: var(--dark);
+        color: var(--light);
+        text-align: center;
+        padding: 2rem;
+        border-top: 1px solid #ff6b00;
+    }
+
+    /* Back to top button */
+    .back-to-top-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-to-top-btn.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+
+    .js-fade-in {
+        opacity: 0;
+        transform: translateY(50px); /* Increased translateY for more pronounced effect */
+        transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .js-fade-in.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+</head>
+<body>
+ <div class="cursor-dot"></div>
+  <div class="cursor-circle"></div>
+
+    <div class="loader">
+        <div class="loader-content"></div>
+    </div>
+
+
+<canvas id="particle-canvas"></canvas>
+
+
+<div class="content-wrapper">
+    <!-- Navigation -->
+    <nav class="nav js-fade-in"> <!-- Added js-fade-in here -->
+        <a href="#" class="logo">DeepOrbit</a>
+        <div class="nav-links">
+            <a href="#why-us">Why Us</a>
+            <a href="#mission">Mission</a>
+            <a href="#works">Works</a>
+            <a href="#services">Services</a>
+        </div><div class="buttonPC">
+                   <a href="#contact" class="button">Let's Talk →</a></div>
+        <div class="menu-icon">☰</div> <!-- Hamburger menu icon -->
+    </nav>
+
+<!-- Side Menu -->
+<div class="side-menu">
+    <div class="close-btn">×</div> <!-- Close button -->
+    <div class="nav-links-mobile">
+        <a href="#why-us">Why Us</a>
+        <a href="#mission">Mission</a>
+        <a href="#works">Works</a>
+        <a href="#services">Services</a>>
+        <a href="#contact" class="button">Let's Talk →</a>
+    </div>
+</div>
+
+
+    <!-- Image Carousel -->
+    <div class="hero-carousel-container js-fade-in">
+
+    </div>
+
+
+</section>
+
+  
+<!-- Benefits Section -->
+<section class="benefits" id="why-us">
+       <h2 class="js-fade-in">Our <span class="orange-text">Works</span>
+        </h2>
+        <p class="js-fade-in">We care about things that really helps you</p>
+     <div class="benefits-grid js-fade-in">
+        <div class="benefit-card js-fade-in">
+            <div class="benefit-icon">✨</div>
+            <h3>Website Developer</h3>
+            <p>Need a website? We can build it for you from start to finish. Tell us what you need.</p>
+        </div>
+     
+   <div class="benefit-card js-fade-in">
+            <div class="benefit-icon">💻</div>
+            <h3>WordPress Developer</h3>
+            <p>We can make you a great website using WordPress. Easy to use and looks good.</p>
+        </div>
+<div class="benefit-card js-fade-in">
+            <div class="benefit-icon">🖌️</div>
+            <h3>WordPress Designer</h3>
+            <p>Want your WordPress site to look special? We can make it look just how you want.</p>
+        </div>
+<div class="benefit-card js-fade-in">
+            <div class="benefit-icon">🧩</div>
+            <h3>Plugin Developer</h3>
+            <p>Need something extra for your WordPress website? We can make plugins to add new things.</p>
+        </div>
+<div class="benefit-card js-fade-in">
+            <div class="benefit-icon">👨‍💻</div>
+            <h3>Programmer</h3>
+            <p>For all kinds of computer work. If you need code, we can help you with programming.</p>
+        </div>
+<div class="benefit-card js-fade-in">
+            <div class="benefit-icon">🕖</div>
+            <h3>Support</h3>
+            <p>Need a website? We can build it for you from start to finish. Tell us what you need.</p>
+        </div>
+</section>
+
+
+<!-- Contact Section -->
+<section class="contact-section" id="contact">
+    <h2 class="js-fade-in">Let's <span class="orange-text">Connect</span></h2>
+    <p class="js-fade-in">Ready to take the next step? Reach out to us!</p>
+    <form class="contact-form js-fade-in">
+        <div class="form-group js-fade-in">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+        <div class="form-group js-fade-in">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+        <div class="form-group js-fade-in">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="button js-fade-in">Send Message</button>
+    </form>
+</section>
+
+<!-- Footer -->
+<footer class="footer js-fade-in"> <!-- Added js-fade-in here -->
+    <p class="js-fade-in">© 2024 DeepOrbit. Made with ❤️ in Bangladesh.  <br> <small>We are a small team.  Donations are welcome!</small></p>
+</footer>
+<!-- Back to Top Button -->
+<button class="back-to-top-btn button js-fade-in">↑</button> <!-- Added js-fade-in here -->
+
+
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/TextPlugin.min.js"></script>
+
+ <script>
+ document.addEventListener('DOMContentLoaded', function() {
+    // --- Intersection Observer for Fade-In Animations ---
+    const elementsToFadeIn = document.querySelectorAll('.js-fade-in');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Stop observing after animating
+            }
+        });
+    }, {
+        threshold: 0.1 // Adjust threshold as needed
+    });
+
+    elementsToFadeIn.forEach(element => {
+        observer.observe(element);
+    });
+    // --- End Intersection Observer ---
+
+
+    // --- GSAP Animations (Keep these as they are, but REMOVE ScrollTrigger for specific classes) ---
+
+    gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+
+    gsap.from(".mission-button", { // Animate mission button after text
+        scrollTrigger: {
+            trigger: ".mission",
+            start: "top bottom-=20%",
+            toggleActions: "play none none reverse",
+        },
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+    }, "-=0.5");
+
+    gsap.from(".benefits-button", { // Animate benefits button after benefit cards
+        scrollTrigger: {
+            trigger: ".benefits",
+            start: "top center+=15%",
+            toggleActions: "play none none reverse",
+        },
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+    });
+
+
+    // Loader Animation (Keep this as is)
+    const loader = document.querySelector(".loader");
+    window.addEventListener("load", () => {
+        gsap.to(loader, {
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            delay: 0.5,
+            onComplete: () => {
+                loader.style.display = "none";
+                animateParticles(); // Call particle animation after loader
+            },
+        });
+    });
+
+
+    // Navigation Scroll Effect (Keep this as is)
+    window.addEventListener("scroll", () => {
+        document.querySelector(".nav").classList.toggle("scrolled", window.scrollY > 1);
+    });
+
+    // Hero Carousel Functionality (Keep this as is)
+    const carousel = document.querySelector('.hero-carousel');
+    const slides = document.querySelectorAll('.carousel-slide');
+    let currentIndex = 0;
+    let intervalId;
+    const slideDuration = 2000; // 2 seconds
+
+    function nextSlide() {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+    }
+
+    function startCarousel() {
+        intervalId = setInterval(nextSlide, slideDuration);
+    }
+
+    function stopCarousel() {
+        clearInterval(intervalId);
+    }
+
+    startCarousel(); // Start carousel initially
+
+    const carouselContainer = document.querySelector('.hero-carousel-container');
+    carouselContainer.addEventListener('mouseenter', stopCarousel);
+    carouselContainer.addEventListener('mouseleave', startCarousel);
+
+
+    // Mobile Menu functionality (Keep this as is)
+    const menuIcon = document.querySelector('.menu-icon');
+    const sideMenu = document.querySelector('.side-menu');
+    const closeBtn = document.querySelector('.close-btn');
+
+    menuIcon.addEventListener('click', () => {
+        sideMenu.classList.add('open');
+        gsap.fromTo(sideMenu, {x: "100%"}, {x: "0%", duration: 0.1, ease: "power4.out"});
+    });
+
+    closeBtn.addEventListener('click', () => {
+        gsap.to(sideMenu, {x: "100%", duration: 0.3, ease: "power2.in", onComplete: () => {
+            sideMenu.classList.remove('open');
+        }});
+    });
+
+
+    // GSAP Button Hover Effects
+    gsap.utils.toArray(".button, .back-to-top-btn, .button-body").forEach(button => {
+        let before = button.querySelector(':before'); // Select the ::before pseudo-element
+
+        if (!before) { // Create ::before if it doesn't exist (for robustness)
+            before = document.createElement('span');
+            before.style.cssText = `content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--primary); transform: translateX(-100%); z-index: -1;`;
+            button.appendChild(before);
+        }
+
+
+        button.addEventListener('mouseenter', () => {
+            gsap.to(before, { duration: 0.3, translateX: 0, ease: "power2.out" });
+        });
+
+        button.addEventListener('mouseleave', () => {
+            gsap.to(before, { duration: 0.3, translateX: "-100%", ease: "power2.in" });
+        });
+    });
+
+
+// Cursor Animation (Keep this as is)
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorCircle = document.querySelector('.cursor-circle');
+    let mouseX = 0, mouseY = 0;
+    let dotX = 0, dotY = 0;
+    let circleX = 0, circleY = 0;
+    let isMoving = false;
+
+    function animateCursor() { // Renamed to avoid conflict with particle animate function
+        // Smooth movement
+        dotX += (mouseX - dotX) * 0.35;
+        dotY += (mouseY - dotY) * 0.35;
+        cursorDot.style.left = `${dotX}px`;
+        cursorDot.style.top = `${dotY}px`;
+
+        circleX += (mouseX - circleX) * 0.15;
+        circleY += (mouseY - circleY) * 0.15;
+        cursorCircle.style.left = `${circleX}px`;
+        cursorCircle.style.top = `${circleY}px`;
+
+        requestAnimationFrame(animateCursor);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!isMoving) {
+            cursorDot.style.opacity = '1';
+            cursorCircle.style.opacity = '0.8';
+            isMoving = true;
+        }
+    });
+
+    document.querySelectorAll('a, button, input, [data-cursor]').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            document.body.classList.add('cursor-hover');
+        });
+        el.addEventListener('mouseleave', () => {
+            document.body.classList.remove('cursor-hover');
+        });
+    });
+
+    document.addEventListener('mousedown', () => {
+        document.body.classList.add('cursor-active');
+    });
+
+    document.addEventListener('mouseup', () => {
+        document.body.classList.remove('cursor-active');
+    });
+
+    document.addEventListener('mouseleave', () => {
+        cursorDot.style.opacity = '0';
+        cursorCircle.style.opacity = '0';
+        isMoving = false;
+    });
+
+    animateCursor(); // Renamed to avoid conflict
+
+
+});
+
+
+// Smooth Scroll (Keep this as is)
+(function () {
+    'use strict';
+    const easeFactor = 0.08;
+    const maxDelta = 500;
+
+    let targetScroll = window.scrollY;
+    let currentScroll = window.scrollY;
+    let isAnimating = false;
+    let lastUserScroll = Date.now();
+
+    function animateScroll() {
+        const delta = targetScroll - currentScroll;
+        currentScroll += delta * easeFactor;
+        window.scrollTo(0, currentScroll);
+
+        if (Math.abs(delta) > 0.5) {
+            requestAnimationFrame(animateScroll);
+        } else {
+            isAnimating = false;
+        }
+    }
+
+    function onWheel(event) {
+        event.preventDefault();
+        let scrollAmount = event.deltaY;
+
+        if (scrollAmount > maxDelta) scrollAmount = maxDelta;
+        if (scrollAmount < -maxDelta) scrollAmount = -maxDelta;
+
+        targetScroll += scrollAmount;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+        if (!isAnimating) {
+            isAnimating = true;
+            requestAnimationFrame(animateScroll);
+        }
+
+        lastUserScroll = Date.now();
+    }
+
+    // Sync scroll position when user drags scrollbar
+    function handleScroll() {
+        if (!isAnimating && Date.now() - lastUserScroll > 100) {
+            targetScroll = currentScroll = window.scrollY;
+        }
+    }
+
+    window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('scroll', handleScroll);
+})();
+
+
+// Counter Animation (Keep this as is)
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".counter-value").forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-target'));
+    gsap.to(counter, {
+        innerText: target,
+        duration: 2,
+        snap: "innerText",
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: counter.closest('.counter-section'),
+            start: "top center+=20%",
+            // markers: true // For debugging, uncomment to see markers
+        }
+    });
+});
+
+// Skill Bars Animation (Keep this as is)
+gsap.utils.toArray(".skill-bar").forEach(bar => {
+    const skillPercentage = parseInt(bar.getAttribute('data-skill'));
+    gsap.to(bar, {
+        width: `${skillPercentage}%`,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: bar.closest('.skills-section'),
+            start: "top center+=20%",
+            // markers: true
+        }
+    });
+});
+
+// Back to top button functionality (Keep this as is)
+
+   document.addEventListener("DOMContentLoaded", () => {
+            gsap.registerPlugin(ScrollToPlugin);
+
+            const backToTopBtn = document.querySelector(".back-to-top-btn");
+
+            if (backToTopBtn) {
+                window.addEventListener("scroll", () => {
+                    if (window.scrollY > 300) {
+                        backToTopBtn.classList.add("show");
+                    } else {
+                        backToTopBtn.classList.remove("show");
+                    }
+                });
+
+                backToTopBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    gsap.to(window, { duration: 1, scrollTo: 0, ease: "power2.inOut" });
+                });
+            } else {
+                console.error("Back to Top button not found!");
+            }
+        });
+
+// Initialize Three.js Particle System (Keep this as is - Moved and integrated)
+        const canvas = document.getElementById("particle-canvas");
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.position.z = 2;
+
+        const particleCount = 1500;
+        const posArray = new Float32Array(particleCount * 3);
+
+        for (let i = 0; i < posArray.length; i++) {
+            posArray[i] = (Math.random() - 0.5) * 5;
+        }
+
+        const particles = new THREE.BufferGeometry();
+        particles.setAttribute("position", new THREE.BufferAttribute(posArray, 3));
+
+        const material = new THREE.PointsMaterial({
+            size: 0.006,
+            color: 0xff6b00,
+            transparent: true,
+            opacity: 0.5,
+        });
+
+        const particleSystem = new THREE.Points(particles, material);
+        scene.add(particleSystem);
+
+        function animateParticles() {
+            requestAnimationFrame(animateParticles);
+            particleSystem.rotation.y += 0.001;
+            renderer.render(scene, camera);
+        }
+
+
+</script>
+</body>
+</html>
